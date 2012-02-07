@@ -1,0 +1,34 @@
+<!--
+/**
+ * XML Changelog for NSM Site Generator
+ *
+ * @package			NSMSiteGenerator
+ * @version			0.0.1
+ * @author			Leevi Graham <http://leevigraham.com>
+ * @copyright 		Copyright (c) 2007-2010 Newism
+ * @license 		Commercial - please see LICENSE file included with this distribution
+ * @link			http://expressionengine-addons.com/nsm-site-generator
+ * @see				http://expressionengine-addons.com/nsm-addon-updater
+ */
+-->
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:ee_addon="http://newism.com.au/nsm_site_generator/#rss-xml">
+	<channel>
+		<title>NSM Site Generator Changelog</title>
+		<link>https://github.com/newism/nsm.site_generator.ee_addon/versions.xml</link>
+		<description>Most recent changes with links to updates.</description>
+		<item>
+			<title>Version 0.0.1</title>
+			<ee_addon:version>0.0.1</ee_addon:version>
+			<link>https://github.com/newism/nsm.site_generator.ee_addon/tree/0.0.1</link>
+			<pubDate>Thursday, 25 Feb 2010 11:43:55 +1100</pubDate>
+			<description><![CDATA[
+				<ul>
+					<li>Initial release</li>
+				</ul>
+			]]>
+			</description>
+			<enclosure url="https://github.com/newism/nsm.site_generator.ee_addon/zipball/0.0.1" length="16261" type="application/zip" />
+		 </item>
+	</channel>
+</rss>
