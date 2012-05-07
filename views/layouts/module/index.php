@@ -1,6 +1,6 @@
 <div class="tg">
-	<h2>Site templates</h2>
-	<div class="alert info">Choose a generator template from the options below. Each generator may require specific extensions, modules or plugins; be sure to check the specific requirements.</div>
+	<h2>Site bundles</h2>
+	<div class="alert info">Choose a generator bundle from the options below. Each generator may require specific extensions, modules or plugins; be sure to check the specific requirements.</div>
 	<table>
 		<thead>
 			<tr>

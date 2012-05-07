@@ -11,7 +11,14 @@
  * @link			http://expressionengine-addons.com/nsm-site-generator
  */
 
-$config['name'] 	= "NSM Site Generator";
-$config["version"] 	= "0.0.0";
+ if(!defined('NSM_SITE_GENERATOR_VERSION')) {
+ 	define('NSM_SITE_GENERATOR_VERSION', '0.0.1');
+ 	define('NSM_SITE_GENERATOR_NAME', 'NSM Site Generator');
+ 	define('NSM_SITE_GENERATOR_ADDON_ID', 'nsm_site_generator');
+ }
 
-$config['nsm_site_generator']['versions_xml'] = 'http://github.com/newism/nsm.site_generator.ee_addon/raw/master/versions.xml';
+$config['name'] 	= NSM_SITE_GENERATOR_NAME;
+$config["version"] 	= NSM_SITE_GENERATOR_VERSION;
+
+
+$config['nsm_addon_updater']['versions_xml'] = 'http://github.com/newism/nsm.site_generator.ee_addon/raw/master/versions.xml';

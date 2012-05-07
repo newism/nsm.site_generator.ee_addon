@@ -27,9 +27,16 @@ class Nsm_site_generator_mcp{
 		$this->EE =& get_instance();
 		$this->addon_id = strtolower(substr(__CLASS__, 0, -4));
 		$this->cp_url = 'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module='.$this->addon_id.AMP;
-		$this->template_dir = $this->EE->config->item('tmpl_file_basepath') . '_nsm_site_generator_templates';
 
-		$this->EE->load->library("{$this->addon_id}_addon", null, $this->addon_id);
+
+		$this->EE->load->library("{$this->addon_id}_helper", null, $this->addon_id);
+		
+		if (class_exists('Nsm_site_generator_ext') == FALSE)
+			include(PATH_THIRD. 'nsm_site_generator/ext.nsm_site_generator.php');
+
+		$this->ext = new Nsm_site_generator_ext;
+
+		$this->template_dir = $this->ext->settings['bundle_server_path'];
 	}
 
 

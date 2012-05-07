@@ -1,28 +1,30 @@
 <?php
+
+require PATH_THIRD.'nsm_site_generator/config.php';
+
 /**
- * NSM Site Generator Display
+ * NSM Example Addon Display
  * 
  * Usage:
  * 
- * $this->EE->load->library("nsm_site_generator_addon", null, "nsm_site_generator"); // or
  * $this->EE->load->library("{$this->addon_id}_addon", null, $this->addon_id);
  *
  * #  Add the custom field stylesheet to the header 
- * $this->EE->nsm_site_generator->addCSS('custom_field.css');
+ * $this->EE->nsm_example_addon_helper->addCSS('custom_field.css');
  * 
  * # Load the JS for the iframe
- * $this->EE->nsm_site_generator->addJS('custom_field.js');
- * $this->EE->nsm_site_generator->addJS('../lib/jquery.cookie.js');
+ * $this->EE->nsm_example_addon_helper->addJS('custom_field.js');
+ * $this->EE->nsm_example_addon_helper->addJS('../lib/jquery.cookie.js');
  * 
- * @package			NSMSiteGenerator
+ * @package			NsmExampleAddon
  * @version			0.0.1
  * @author			Leevi Graham <http://leevigraham.com>
- * @copyright 		Copyright (c) 2007-2010 Newism
+ * @copyright 		Copyright (c) 2007-2010 Newism <http://newism.com.au>
  * @license 		Commercial - please see LICENSE file included with this distribution
- * @link			http://expressionengine-addons.com/nsm-site-generator
+ * @link			http://expressionengine-addons.com/nsm-example-addon
  */
 
-class Nsm_site_generator_addon{
+class Nsm_site_generator_helper{
 
 	/**
 	 * The addon ID
@@ -47,8 +49,7 @@ class Nsm_site_generator_addon{
 	 * @var $css string The CSS filepath or content
 	 * @var $options array The options for this include
 	 */
-	public function addCSS($css, $options = array())
-	{
+	public function addCSS($css, $options = array()) {
 		$options = array_merge(array(
 			"where" => "head",
 			"type" => "css",
@@ -64,8 +65,7 @@ class Nsm_site_generator_addon{
 	 * @var $js string The JS filepath or content
 	 * @var $options array The options for this include
 	 */
-	public function addJS($js, $options = array())
-	{
+	public function addJS($js, $options = array()) {
 		$options = array_merge(array(
 			"where" => "foot",
 			"type" => "js",
@@ -81,8 +81,7 @@ class Nsm_site_generator_addon{
 	 * @var $content string The CSS/JS content or filepath
 	 * @var $options array The options for this include
 	 */
-	public function addThemeAsset($content, $options)
-	{
+	public function addThemeAsset($content, $options) {
 		$EE =& get_instance();
 
 		$options = array_merge(array(
@@ -119,11 +118,9 @@ class Nsm_site_generator_addon{
 	 * @access private
 	 * @return string The theme URL
 	 */
-	private function _getThemeUrl()
-	{
+	private function _getThemeUrl() {
 		$EE =& get_instance();
-		if(!isset($EE->session->cache[$this->addon_id]['theme_url']))
-		{
+		if(!isset($EE->session->cache[$this->addon_id]['theme_url'])) {
 			$theme_url = $EE->config->item('theme_folder_url');
 			if (substr($theme_url, -1) != '/') $theme_url .= '/';
 			$theme_url .= "third_party/" . $this->addon_id;
@@ -142,8 +139,7 @@ class Nsm_site_generator_addon{
 	 * @param array $options Optional arguments.
 	 * @return string Select box html
 	 */
-	public function selectbox($input_name, array $select_options, $selected_options, array $options = array())
-	{
+	public function selectbox($input_name, array $select_options, $selected_options, array $options = array()) {
 		$valid_options = array(
 			"input_id" => FALSE,
 			"use_lang" => TRUE,
@@ -151,8 +147,7 @@ class Nsm_site_generator_addon{
 			"attributes" => array()
 		);
 
-		foreach ($valid_options as $option => $default_value)
-		{
+		foreach ($valid_options as $option => $default_value) {
 			$$option = (isset($options[$option])) ? $options[$option] : $default_value;
 		}
 		
@@ -169,15 +164,13 @@ class Nsm_site_generator_addon{
 
 		$ret = "<select{$attributes_str}>";
 
-		foreach($select_options as $option_label => $option_value)
-		{
+		foreach($select_options as $option_label => $option_value) {
 			$option_label = ($value_is_label && $option_value) ? lang($option_value) : $option_label;
 			// print($selected. ":" .$option_value . "<br />");
 			if(!is_array($selected_options))
 				$selected_options = array($selected_options);
 
-			foreach ($selected_options as $selected_value)
-			{
+			foreach ($selected_options as $selected_value) {
 				$selected = ($selected_value === $option_value) ? " selected='selected' " : "";
 				if($selected) continue;
 			}
@@ -199,8 +192,7 @@ class Nsm_site_generator_addon{
 	 * @param array $options Optional arguments
 	 * @return string Checkbox html
 	 */
- 	public function checkbox($input_name, $input_value = TRUE, $checked = FALSE, array $options = array())
-	{
+ 	public function checkbox($input_name, $input_value, $checked, array $options = array()) {
 
 		$valid_options = array(
 			"input_id" => FALSE,
@@ -210,8 +202,7 @@ class Nsm_site_generator_addon{
 			"label" => FALSE
 		);
 
-		foreach ($valid_options as $option => $default_value)
-		{
+		foreach ($valid_options as $option => $default_value) {
 			$$option = (isset($options[$option])) ? $options[$option] : $default_value;
 		}
 
@@ -226,20 +217,17 @@ class Nsm_site_generator_addon{
 		), $attributes);
 
 		$attributes_str = "";
-		foreach ($attributes as $key => $value)
-		{
+		foreach ($attributes as $key => $value) {
 			$attributes_str .= " {$key}='{$value}' ";
 		}
 
 		$ret = '<input type="checkbox" '. $attributes_str . $checked . ' />';
 
-		if($label !== FALSE)
-		{
+		if($label !== FALSE) {
 			$ret = '<label class="checkbox" for="'.$input_id.'">' . $ret . ' ' . lang($label) . '</label>';
 		}
 
-		if ($generate_shadow != FALSE)
-		{
+		if ($generate_shadow != FALSE) {
 			$ret = '<input type="hidden" name="' . $input_name . '" value="'.$shadow_value.'" />' . $ret;
 		}
 
@@ -256,16 +244,14 @@ class Nsm_site_generator_addon{
 	 * @param array $options Optional arguments
 	 * @return string Checkbox html
 	 */
-	public function yesNoRadioGroup($input_name, $checked_value, $options = array())
-	{
+	public function yesNoRadioGroup($input_name, $checked_value, $options = array()) {
 		
 		$valid_options = array(
 			"attributes" => array(),
 			"input_id" => FALSE
 		);
 
-		foreach ($valid_options as $option => $default_value)
-		{
+		foreach ($valid_options as $option => $default_value) {
 			$$option = (isset($options[$option])) ? $options[$option] : $default_value;
 		}
 		
@@ -275,8 +261,7 @@ class Nsm_site_generator_addon{
 		), $attributes);
 
 		$attributes_str = "";
-		foreach ($attributes as $key => $value)
-		{
+		foreach ($attributes as $key => $value) {
 			$attributes_str .= " {$key}='{$value}' ";
 		}
 

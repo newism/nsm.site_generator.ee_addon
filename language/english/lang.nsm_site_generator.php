@@ -28,7 +28,7 @@ $lang = array(
 	'save_extension_settings' => 'Save extension settings',
 
 	/* Messages / Alerts */
-	'alert.warning.no_templates' => 'No generator templates were found. Templates must be placed in %s',
+	'alert.warning.no_templates' => 'No generator bundles were found. Templates must be placed in "%s". Please check the extension settings.',
 	'alert.warning.truncate_db' => '<p><strong>Caution:</strong> Checking this box will automatically remove all of the following in the database:</p>
 								<ul class="fiveCol">
 									<li>Channels</li>

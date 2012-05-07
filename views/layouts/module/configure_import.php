@@ -14,7 +14,7 @@
 					Truncte DB
 				</th>
 				<td>
-					<?= Nsm_site_generator_addon::yesNoRadioGroup("{$input_prefix}[general][truncate_db]", FALSE); ?>
+					<?= Nsm_site_generator_helper::yesNoRadioGroup("{$input_prefix}[general][truncate_db]", FALSE); ?>
 				</td>
 			</tr>
 		</tbody>
@@ -39,7 +39,7 @@
 		</thead>
 		<tbody>
 			<?php foreach($channels as $count => $channel) : ?>
-			<tr>
+    			<tr <?php if (in_array($channel['channel_name'], $existing_channels)) : ?>class="alert error"<?php endif; ?>>
 				<th><?= $channel['channel_title'] ?></th>
 				<td><?= $channel->description[0] ?></td>
 				<td style="white-space:nowrap">
