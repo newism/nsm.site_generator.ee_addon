@@ -27,7 +27,7 @@ class Nsm_site_generator_ext
 	// At leaset one hook is needed to install an extension
 	// In some cases you may want settings but not actually use any hooks
 	// In those cases we just use a dummy hook
-	public $hooks = array('dummy_hook_function');
+	public $hooks = array('nsm_site_generator_process_field');
 
 	public $default_site_settings = array(
 		'enabled' => TRUE,
@@ -59,10 +59,14 @@ class Nsm_site_generator_ext
 		if($EE->addons_model->extension_installed($this->addon_id)) {
 			$this->settings = $this->_getSettings();
 		}
-
 		// Init the cache
 		$this->_initCache();
 	}
+
+
+    function nsm_site_generator_process_field($field){
+        return $field;
+    }
 
 	/**
 	 * Initialises a cache for the addon

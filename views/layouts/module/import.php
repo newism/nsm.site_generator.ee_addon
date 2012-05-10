@@ -1,3 +1,4 @@
+<?= $post_import_instructions; ?>
 <div class="tg">
 <div class="alert info">Import complete. Here's the log:</div>
 <?php foreach($log as $log_item): ?>

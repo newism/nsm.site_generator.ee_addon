@@ -35,7 +35,6 @@ class Nsm_site_generator_mcp{
 			include(PATH_THIRD. 'nsm_site_generator/ext.nsm_site_generator.php');
 
 		$this->ext = new Nsm_site_generator_ext;
-
 		$this->template_dir = $this->ext->settings['bundle_server_path'];
 	}
 
@@ -68,7 +67,7 @@ class Nsm_site_generator_mcp{
 					{
 						if(is_dir("{$this->template_dir}/{$f}"))
 						{
-							$generator = $this->_loadXML($f);
+                            $generator = $this->_loadXML($f);
 							$generator['folder'] = $f;
 							$generator["generator_url"] = BASE.AMP.$this->cp_url . "method=configure_import". AMP . "site_template=". $f;
 							$view_data["generators"][] = $generator;
@@ -95,7 +94,6 @@ class Nsm_site_generator_mcp{
 	{
 		$site_template = $this->EE->input->get('site_template');
 		$generator_xml = $this->_loadXML($site_template);
-		$generator = $this->_getGenerator($site_template, $generator_xml);
 
 		$view_data = array(
 			'input_prefix' => __CLASS__,
@@ -124,9 +122,15 @@ class Nsm_site_generator_mcp{
 		// Get the generator
 		$generator = $this->_getGenerator($site_template, $generator_xml);
 		// Generate
-		$generator->generate($this->EE->input->post(__CLASS__));
+	    $generator->generate($this->EE->input->post(__CLASS__));
 
-		$view_data = array("log" => $generator->getLog());
+        $post_import_instructions = $generator_xml->xpath("post_import_instructions");
+
+		$view_data = array(
+            "log" => $generator->getLog(),
+            "post_import_instructions" => (string)$post_import_instructions[0]
+        );
+
 		$out = $this->EE->load->view("layouts/module/import", $view_data, TRUE);
 		return $this->_renderLayout("import", $out);
 	}

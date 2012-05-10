@@ -65,7 +65,7 @@ class Nsm_site_generator_gen
 	 * Required custom field groups fetched from @see Nsm_site_generator_gen::$config. selected channels' field_group attributes
 	 * @var array array(string => array(..)|string)
 	 */
-	protected $custom_field_groups=array();
+	protected $custom_field_groups = array();
 
 	/**
 	* Nsm_site_generator_gen constructor
@@ -100,6 +100,7 @@ class Nsm_site_generator_gen
 		$required_field_groups = array();
 		$required_cat_groups = array();
 		$required_status_groups = array();
+
 
 		/* CHANNELS */
 		$this->_log("Parsing channels config");
@@ -325,10 +326,16 @@ class Nsm_site_generator_gen
 		// parse the config xml and decide what we need to generate based on $options
 		$this->parse_config();
 
-		if (!$this->generateBefore()) return;
+		if (!$this->generateBefore())
+        {
+            return;
+        }
 
 		if($this->options['general']['truncate_db'])
-			$this->_truncateDB();
+        {
+            $this->_truncateDB();
+        }
+
 
 		$this->generateCategories();
 		$this->generateStatuses();
@@ -344,7 +351,7 @@ class Nsm_site_generator_gen
 	* base implementation does nothing, but allows subclasses to override and do potentially meaningful things.
 	* @return void
 	*/
-	protected function generateAfter() { return TRUE;  }
+	protected function generateAfter() { return TRUE; }
 
 	/**
 	* Generates the categories and sets the $this->saved_cat_groups array
@@ -729,7 +736,7 @@ class Nsm_site_generator_gen
 
 			$this->channels[$channel_name]['attrs']['channel_id'] = $channel_id;
 		}
-		
+
 		if(!$channels_created) {
 			$this->_log("log_notice_no_channels_created");
 		}
@@ -753,7 +760,11 @@ class Nsm_site_generator_gen
 		if (!$this->generateRelationshipsBefore()) return;
 
 		// if no channels have been created there is no need to check for relationships
-		if(empty($this->channels)) return;
+		if(empty($this->channels)){
+            $this->_log("log_notice_no_field_relationships_created");
+            return;
+
+        }
 
 		// for each of the required custom field groups
 		foreach ($this->custom_field_groups as $custom_field_group_name => $field_group)
@@ -787,7 +798,7 @@ class Nsm_site_generator_gen
 						);
 						
 						$relationships_created = true;
-						$this->_logSuccess(lang("log_ok_created_relationship"),
+						$this->_logSuccess("log_ok_created_relationship",
 							array(
 								'field_name' => $field['field_name'],
 								'partner_field_name' => $this->channels[$field['field_related_id']]['attrs']['field_name']
@@ -818,11 +829,14 @@ class Nsm_site_generator_gen
 	{
 	    $entries_created = false;
 		$this->_logTitle("Generating channel entries");
-	
-		if (!$this->generateEntriesBefore()) return;
+
+        if (!$this->generateEntriesBefore()) return;
 
 		// if no channels have been created there is no need to check for entris
-		if(empty($this->channels)) return;
+		if(empty($this->channels)) {
+            $this->_log("log_notice_no_entries_created");
+            return;
+        }
 
 		$this->EE->load->library('api');
 		$this->EE->api->instantiate('channel_entries');
@@ -873,14 +887,29 @@ class Nsm_site_generator_gen
                 }
 
 				foreach ($entry->custom_field as $field) {
+
+
+                    if ($this->EE->extensions->active_hook('channel_module_fetch_pagination_data') === TRUE)
+                    {
+                        $field = $this->EE->extensions->universal_call('channel_module_fetch_pagination_data', $field);
+                        if ($this->EE->extensions->end_script === TRUE) return;
+                    }
+
 				    $field_attrs = $this->xmlAttributes($field->attributes());
-				    $field_data = (string)$field;
+				    $field_data = $field;
+
 				    if(false === isset($channel_fields[$field_attrs['id']])) {
 				        continue;
 				    }
+
 				    $field_id = $channel_fields[$field_attrs['id']];
-				    
+
+                    if(is_a($field_data, 'SimpleXMLElement')){
+                        $field_data = (string)$field_data;
+                    }
+
 					$data["field_id_".$field_id] = $field_data;
+
 					if(true === isset($field_attrs['formatting'])) {
     					$data["field_ft_".$field_id] = $field_attrs['formatting'];
 					}
@@ -906,10 +935,13 @@ class Nsm_site_generator_gen
                     $this->_logSuccess(lang("log_ok_created_entry"), array("entry_title" => $data["title"]));
                     $entries_created = false;
                 }
-			}
-		}
 
-		$this->generateEntriesAfter();
+            }
+
+
+        }
+
+        $this->generateEntriesAfter();
 		if(!$entries_created) {
 			$this->_log("log_notice_no_entries_created");
 		}
@@ -1004,7 +1036,7 @@ class Nsm_site_generator_gen
 		$sql[] = "TRUNCATE TABLE `exp_field_formatting`";
 
 
-		$sql[] = "TRUNCATE TABLE `exp_extensions`";
+		$sql[] = "DELETE FROM  `exp_extensions` WHERE `class` <> 'Nsm_site_generator_ext'";
 		$sql[] = "DELETE FROM  `exp_accessories` WHERE `class` <> 'Nsm_morphine_theme_acc'";
 		$sql[] = "DELETE FROM `exp_modules` WHERE `module_name` <> 'Nsm_site_generator'";
 		$sql[] = "TRUNCATE TABLE `exp_actions`";

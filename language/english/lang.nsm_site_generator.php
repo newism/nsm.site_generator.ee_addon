@@ -93,7 +93,7 @@ $lang = array(
 
 	// custom field relationships
 	"log_ok_created_relationship"	=> "Created field relationship between {field_name} and {partner_field_name}",
-	"log_notice_no_field_relationships_created" => "No field relationships were created.",
+	"log_notice_no_field_relationships_created" => "No field relationships were created",
 	
 	// channel entries
 	"log_ok_created_entry"          => "Created entry: <strong>{entry_title}</strong>",
