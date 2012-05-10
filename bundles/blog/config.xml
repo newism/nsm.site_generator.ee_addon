@@ -2,7 +2,7 @@
 <generator_template title="News" download_url="http://leevigraham.com" version="1.0.0">
 	<description>
 	<![CDATA[
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 	]]>
 	</description>
 
@@ -11,8 +11,14 @@
 	</authors>
 
 	<requirements>
-		<requirement type="addon" title="NSM Live Look" version="1.0" download_url="" />
+		<requirement type="addon" title="NSM Live Look v1.0" download_url="" />
 	</requirements>
+
+    <post_import_instructions>
+    <![CDATA[
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	]]>
+    </post_import_instructions>
 
 	<category_groups>
 		<group group_name="Test Channel" id="test_channel">
@@ -87,14 +93,20 @@
 				<requirement type="template" target="channel/*" />
 				<requirement type="template" target="_forms/.comment" />
 				<requirement type="template" target="feeds/channel" />
-			</requirements>
+ 			</requirements>
 			<entry>
 				<field id="title" formatting="none">Entry title</field>
 				<field id="url_title">entry_title</field>
-                <custom_field id="news_alternate_title" type="matrix" formatting="none">News alternate title</custom_field>
+                <custom_field id="news_alternate_title" type="matrix" formatting="none">
+                    <data formatting="none">adfdsf1</data>
+                    <data1>adfdsf2</data1>
+                    <data2>adfdsf3</data2>
+                    <data3>adfdsf4</data3>
+                </custom_field>
                 <custom_field id="news_summary">News summary</custom_field>
                 <custom_field id="news_content">News content</custom_field>
                 <custom_field id="news_extended_content">News extended content</custom_field>
+                <custom_tab id="news_extended_content">News extended content</custom_tab>
                 <category id="news_2" />
                 <category id="news_3" />
                 <category id="news_4" />
@@ -109,6 +121,5 @@
 			</description>
 		</channel>
 	</channels>
-
 
 </generator_template>

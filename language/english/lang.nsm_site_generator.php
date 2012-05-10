@@ -28,7 +28,7 @@ $lang = array(
 	'save_extension_settings' => 'Save extension settings',
 
 	/* Messages / Alerts */
-	'alert.warning.no_templates' => 'No generator templates were found. Templates must be placed in %s',
+	'alert.warning.no_templates' => 'No generator bundles were found. Templates must be placed in "%s". Please check the extension settings.',
 	'alert.warning.truncate_db' => '<p><strong>Caution:</strong> Checking this box will automatically remove all of the following in the database:</p>
 								<ul class="fiveCol">
 									<li>Channels</li>
@@ -93,7 +93,7 @@ $lang = array(
 
 	// custom field relationships
 	"log_ok_created_relationship"	=> "Created field relationship between {field_name} and {partner_field_name}",
-	"log_notice_no_field_relationships_created" => "No field relationships were created.",
+	"log_notice_no_field_relationships_created" => "No field relationships were created",
 	
 	// channel entries
 	"log_ok_created_entry"          => "Created entry: <strong>{entry_title}</strong>",

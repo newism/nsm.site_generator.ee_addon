@@ -14,7 +14,7 @@
 					Truncte DB
 				</th>
 				<td>
-					<?= Nsm_site_generator_addon::yesNoRadioGroup("{$input_prefix}[general][truncate_db]", FALSE); ?>
+					<?= Nsm_site_generator_helper::yesNoRadioGroup("{$input_prefix}[general][truncate_db]", FALSE); ?>
 				</td>
 			</tr>
 		</tbody>
@@ -39,27 +39,27 @@
 		</thead>
 		<tbody>
 			<?php foreach($channels as $count => $channel) : ?>
-			<tr>
-				<th><?= $channel['channel_title'] ?></th>
+    			<tr <?php if (in_array($channel['channel_name'], $existing_channels)) : ?>class="alert error"<?php endif; ?>>
+				<th scope="row" style="width:auto; vertical-align: top"><?= $channel['channel_title'] ?></th>
 				<td><?= $channel->description[0] ?></td>
-				<td style="white-space:nowrap">
+				<td style="white-space:nowrap; vertical-align: top">
 					<?php if($custom_field_group = $xml->xpath("custom_field_groups/group[@id='{$channel['field_group']}']")) : ?>
 						<?= $custom_field_group[0]["group_name"] ?>
 					<?php endif; ?>
 				</td>
-				<td style="white-space:nowrap">
+				<td style="white-space:nowrap; vertical-align: top">
 					<?php if($status_group = $xml->xpath("status_groups/group[@id='{$channel['status_group']}']")) : ?>
 						<?= $status_group[0]["group_name"] ?>
 					<?php endif; ?>
 				</td>
-				<td style="white-space:nowrap">
+				<td style="white-space:nowrap; vertical-align: top">
 					<?php if($category_group = $xml->xpath("category_groups/group[@id='{$channel['cat_group']}']")) : ?>
 						<!--a href="#cat_group-<?= $category_group[0]['id'] ?>"--><?= $category_group[0]["group_name"] ?><!-- /a -->
 					<?php endif; ?>
 				</td>
-				<td style="white-space:nowrap">
+				<td style="white-space:nowrap; vertical-align: top">
 					<?php if (in_array($channel['channel_name'], $existing_channels)) : ?>
-					This channel already exists.
+					<div class="error">This channel already exists.</div>
 					<?php else: ?>
 					<input 
 						type="checkbox" 
