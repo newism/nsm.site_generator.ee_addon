@@ -24,6 +24,10 @@ $lang = array(
 	'configure_import_page_title' => '2. Configure Import',
 	'import_page_title' => '3. Import Complete',
 
+	'configure_export_page_title' => 'Export',
+	'configure_export_nav_title' => 'Export',
+	'export_page_title' => 'Export Complete',
+
 	/* Extension */
 	'save_extension_settings' => 'Save extension settings',
 

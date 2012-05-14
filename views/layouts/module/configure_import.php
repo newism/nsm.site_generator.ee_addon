@@ -33,7 +33,7 @@
 				<th scope="col">Status Group</th>
 				<th scope="col">Category Group</th>
 				<th scope="col" style="width:100px;">
-					<input type="checkbox" class="NSM_MagicCheckboxesTrigger" /> Import
+					<input type="checkbox" class="NSM_MagicCheckboxesTrigger" style="float:right" /> Import
 				</th>
 			</tr>
 		</thead>
@@ -62,6 +62,7 @@
 					<div class="error">This channel already exists.</div>
 					<?php else: ?>
 					<input 
+					    style="float:right"
 						type="checkbox" 
 						class="NSM_MagicCheckboxesTrigger" 
 						name="<?=$input_prefix?>[channels][]" 
@@ -75,6 +76,6 @@
 	</table>
 </div>
 
-<div class="action">
+<div class="action" style="text-align:right">
 	<input type="submit" class="submit" value="Begin Import" />
 </div>

@@ -1,7 +1,11 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php //if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+require PATH_THIRD.'nsm_site_generator/config.php';
+require 'libraries/nsm_site_generator_gen.php';
+
 
 /**
- * NSM Site Generator CP 
+ * NSM Site Generator CP
  *
  * @package			NSMSiteGenerator
  * @version			0.0.1
@@ -13,14 +17,16 @@
  */
 
 /**
-* Require the base generator class
-*/
-if(!class_exists('Nsm_site_generator_gen'))
-	require_once('libraries/nsm_site_generator_gen.php');
+ * Require the base generator class
+ */
 
 class Nsm_site_generator_mcp{
 
-	private $pages = array("index");
+    public static $addon_id = NSM_SITE_GENERATOR_ADDON_ID;
+
+	private $pages = array("index", "configure_export");
+
+    public $EE;
 
 	public function __construct()
 	{
@@ -30,7 +36,7 @@ class Nsm_site_generator_mcp{
 
 
 		$this->EE->load->library("{$this->addon_id}_helper", null, $this->addon_id);
-		
+
 		if (class_exists('Nsm_site_generator_ext') == FALSE)
 			include(PATH_THIRD. 'nsm_site_generator/ext.nsm_site_generator.php');
 
@@ -135,6 +141,90 @@ class Nsm_site_generator_mcp{
 		return $this->_renderLayout("import", $out);
 	}
 
+	/**
+	 * Display configuration options for exporting XML
+	 *
+	 * @access public
+	 * @return string The page layout
+	 */
+	public function configure_export()
+	{
+
+        $this->EE =& get_instance();
+	    $this->EE->load->library($this->addon_id."_helper");
+
+	    $this->EE->db->select('
+	        channels.channel_id as channel_id,
+	        channels.channel_title as channel_title,
+	        channels.cat_group as channel_category_group,
+	        status_groups.group_id as status_group_id,
+	        status_groups.group_name as status_group_name,
+	        field_groups.group_id as field_group_id,
+	        field_groups.group_name as field_group_name
+	    ');
+        $this->EE->db->from('channels');
+        $this->EE->db->join('status_groups', 'channels.status_group = status_groups.group_id', 'left');
+        $this->EE->db->join('field_groups', 'channels.field_group = field_groups.group_id', 'left');
+
+        $query = $this->EE->db->get();
+        $channels = $query->result_array();
+
+        $required_category_groups = array();
+        foreach ($channels as &$channel) {
+            $channel['entries'] = array();
+            if(!empty($channel['channel_category_group'])) {
+                $channel_categories = explode("|", $channel['channel_category_group']);
+                $required_category_groups = array_merge($required_category_groups, $channel_categories);
+                $channel['channel_category_group'] = $channel_categories;
+            } else {
+                $channel['channel_category_group'] = array();
+            }
+        }
+
+        $this->EE->db->select('group_name, group_id');
+        $this->EE->db->from('exp_category_groups');
+        $this->EE->db->where_in('group_id', $required_category_groups);
+        $query = $this->EE->db->get();
+        $categories = $query->result_array();
+
+        $indexed_categories = array();
+        foreach ($categories as $category) {
+            $indexed_categories[$category['group_id']] = $category;
+        }
+
+        foreach ($channels as &$channel) {
+            if(!empty($channel['channel_category_group'])) {
+                foreach ($channel['channel_category_group'] as $key => $category) {
+                    $channel['channel_category_group'][$key] = $indexed_categories[$category];
+                }
+            }
+        }
+
+        // var_dump($categories);
+        // var_dump($required_category_groups);
+        // var_dump($channels);
+        // exit;
+
+		$view_data = array(
+			'input_prefix' => __CLASS__,
+            'channels' => $channels,
+            'data' => array(
+                'title' => false,
+                'version' => false,
+                'description' => false,
+                'download_url' => false,
+                'post_import_instructions' => false,
+            )
+		);
+
+		$out = $this->EE->load->view("layouts/module/configure_export", $view_data, TRUE);
+		$out = form_open($this->cp_url . "method=export", FALSE) . $out . "</form>";
+		return $this->_renderLayout("configure_export", $out);
+	}
+
+    public function export()
+    {
+    }
 
 	/**
 	 * Render the layout for the specified page
