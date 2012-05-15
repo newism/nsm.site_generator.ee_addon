@@ -58,43 +58,47 @@
 	</ul>
 
 	<?php foreach ($channels as $count => $channel) : ?>
-	<table class="data NSM_MagicCheckboxes" id="channel_prefs-<?= $channel['channel_id'] ?>">
+	<div id="channel_prefs-<?= $channel['channel_id'] ?>">
+	<table class="data NSM_MagicCheckboxes">
 	    <thead>
 	        <tr>
-	            <th scope="col"></th>
-	            <th scope="col"></th>
+	            <th scope="col" colspan="2"></th>
 	            <th scope="col">Export <input type="checkbox" style="float:right" /></th>
 	        </tr>
 	    </thead>
 	    <tbody>
             <tr class="odd">
-                <th scope="row">Channel</th>
+                <th scope="row">Channel Title:</th>
                 <td><?= $channel['channel_title'] ?></td>
-                <td><input type="checkbox" style="float:right" /></td>
-            </tr>
-            <tr class="even">
-                <th scope="row">Field Group</th>
-                <td><?php print($channel['field_group_name']); ?></td>
-                <td><input type="checkbox" style="float:right" /></td>
+                <td rowspan="4"><input type="checkbox" style="float:right" /></td>
             </tr>
             <tr class="odd">
-                <th scope="row">Status Group</th>
-                <td><?php print($channel['status_group_name']); ?></td>
-                <td><input type="checkbox" style="float:right" /></td>
+                <th scope="row">Field Group:</th>
+                <td><?php print($channel['field_group_name']); ?></td>
             </tr>
-            <?php foreach($channel['channel_category_group'] as $cat_count => $category_group): ?>
-
-            <?php endforeach; ?>
-            <tr>
-                <th scope="row">Channel Entries</th>
+            <tr class="odd">
+                <th scope="row">Status Group:</th>
+                <td>
+                    <?php print($channel['status_group_name']); ?><br />
+                </td>
+            </tr>
+            <tr class="odd">
+                <th scope="row">Category Groups:</th>
+                <td>
+                     <?php foreach($channel['channel_category_group'] as $cat_count => $category_group): ?>
+                    <?php endforeach; ?>
+                </td>
+            </tr>
+            <tr class="odd">
+                <th scope="row">Entries:</th>
                 <td></td>
-                <td></td>
+                <td rowspan="4"><input type="checkbox" style="float:right" /></td>
             </tr>
         </tbody>
 	</table>
+    </div>
 	<?php endforeach; ?>
 </div>
-
 
 <div class="action" style="text-align:right">
 	<input type="submit" class="submit" value="Begin Export" />
