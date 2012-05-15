@@ -224,6 +224,8 @@ class Nsm_site_generator_mcp{
 
     public function export()
     {
+        var_dump($_POST);
+        exit;
     }
 
 	/**

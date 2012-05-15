@@ -62,37 +62,54 @@
 	<table class="data NSM_MagicCheckboxes">
 	    <thead>
 	        <tr>
-	            <th scope="col" colspan="2"></th>
-	            <th scope="col">Export <input type="checkbox" style="float:right" /></th>
+	            <th scope="col">Attribute</th>
+	            <th scope="col" style="width:20px">ID</th>
+	            <th scope="col">Title</th>
+	            <th scope="col" style="width:70px">Export <input type="checkbox" style="float:right" /></th>
 	        </tr>
 	    </thead>
 	    <tbody>
             <tr class="odd">
                 <th scope="row">Channel Title:</th>
+                <td></td>
                 <td><?= $channel['channel_title'] ?></td>
-                <td rowspan="4"><input type="checkbox" style="float:right" /></td>
+                <td rowspan="4"><input
+                    type="checkbox"
+                    style="float:right"
+                    name="<?=$input_prefix?>[channels][<?php print($channel['channel_id']); ?>][enabled]"
+                    value=""
+                /></td>
             </tr>
             <tr class="odd">
                 <th scope="row">Field Group:</th>
+                <td></td>
                 <td><?php print($channel['field_group_name']); ?></td>
             </tr>
             <tr class="odd">
                 <th scope="row">Status Group:</th>
+                <td></td>
                 <td>
                     <?php print($channel['status_group_name']); ?><br />
                 </td>
             </tr>
             <tr class="odd">
                 <th scope="row">Category Groups:</th>
+                <td></td>
                 <td>
-                     <?php foreach($channel['channel_category_group'] as $cat_count => $category_group): ?>
+                    <?php foreach($channel['channel_category_group'] as $cat_count => $category_group): ?>
                     <?php endforeach; ?>
                 </td>
             </tr>
             <tr class="odd">
                 <th scope="row">Entries:</th>
                 <td></td>
-                <td rowspan="4"><input type="checkbox" style="float:right" /></td>
+                <td></td>
+                <td rowspan="4"><input
+                    type="checkbox"
+                    style="float:right"
+                    name="<?=$input_prefix?>[channels][<?php print($channel['channel_id']); ?>][entries]"
+                    value=""
+                /></td>
             </tr>
         </tbody>
 	</table>
