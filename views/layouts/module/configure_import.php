@@ -41,7 +41,7 @@
 			<?php foreach($channels as $count => $channel) : ?>
     			<tr <?php if (in_array($channel['channel_name'], $existing_channels)) : ?>class="alert error"<?php endif; ?>>
 				<th scope="row" style="width:auto; vertical-align: top"><?= $channel['channel_title'] ?></th>
-				<td><?= $channel->description[0] ?></td>
+				<td><?= $channel->bundle_channel_description[0] ?></td>
 				<td style="white-space:nowrap; vertical-align: top">
 					<?php if($custom_field_group = $xml->xpath("custom_field_groups/group[@id='{$channel['field_group']}']")) : ?>
 						<?= $custom_field_group[0]["group_name"] ?>

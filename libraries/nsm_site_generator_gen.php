@@ -709,6 +709,7 @@ class Nsm_site_generator_gen
 			// else create it
 			else
 			{
+				
 				// Set the field group
 				$channel['attrs']['field_group'] = (
 					isset($channel['attrs']['field_group'])

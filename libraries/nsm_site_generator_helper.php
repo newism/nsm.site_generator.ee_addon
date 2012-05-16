@@ -24,7 +24,8 @@ require PATH_THIRD.'nsm_site_generator/config.php';
  * @link			http://expressionengine-addons.com/nsm-example-addon
  */
 
-class Nsm_site_generator_helper{
+class Nsm_site_generator_helper
+{
 
 	/**
 	 * The addon ID
@@ -37,8 +38,100 @@ class Nsm_site_generator_helper{
 	/**
 	 * Constructs the class and sets the addon id
 	 */
-	public function __construct(){
-		$this->addon_id = strtolower(substr(__CLASS__, 0, -8));
+	public function __construct()
+	{
+		$this->addon_id = NSM_SITE_GENERATOR_ADDON_ID;
+	}
+
+	public function exportGetChannelsArray()
+	{
+		$EE =& get_instance();
+	    $EE->db->select('
+	        channels.channel_id as channel_id,
+	        channels.channel_title as channel_title,
+	        channels.cat_group as channel_category_group,
+	        status_groups.group_id as status_group_id,
+	        status_groups.group_name as status_group_name,
+	        field_groups.group_id as field_group_id,
+	        field_groups.group_name as field_group_name
+	    ');
+        $EE->db->from('channels');
+        $EE->db->join('status_groups', 'channels.status_group = status_groups.group_id', 'left');
+        $EE->db->join('field_groups', 'channels.field_group = field_groups.group_id', 'left');
+
+        $query = $EE->db->get();
+        $channels = $query->result_array();
+		return $channels;
+	}
+	
+	public function exportGetCategoryGroupsArrayById($group_ids = array())
+	{
+		if (count($group_ids) == 0) {
+			return array();
+		}
+		$EE =& get_instance();
+		$EE->db->select('group_name, group_id');
+        $EE->db->from('category_groups');
+        $EE->db->where_in('group_id', $group_ids);
+        $query = $EE->db->get();
+        $categories = $query->result_array();
+		return $categories;
+	}
+	
+	public function exportIndexCategoriesByGroupId($categories)
+	{
+		$indexed_categories = array();
+        foreach ($categories as $category) {
+            $indexed_categories[$category['group_id']] = $category;
+        }
+		return $indexed_categories;
+	}
+
+	public function exportMergeChannelsWithIndexedCategories($channels, $indexed_categories)
+	{
+        foreach ($channels as &$channel) {
+            if (!empty($channel['channel_category_group'])) {
+                foreach ($channel['channel_category_group'] as $key => $category) {
+                    $channel['channel_category_group'][$key] = $indexed_categories[$category];
+                }
+            }
+        }
+		return $channels;
+	}
+
+	public function exportGetChannelEntriesArrayByChannelId($channels)
+	{
+		$EE =& get_instance();
+		$channel_ids = array();
+		foreach ($channels as $channel) {
+			$channel_ids[] = $channel['channel_id'];
+		}
+		$EE->db->select('entry_id, channel_id, title');
+		$EE->db->from('channel_titles');
+		$EE->db->where_in('channel_id', $channel_ids);
+		$query = $EE->db->get();
+        $entries = $query->result_array();
+		return $entries;
+	}
+
+	public function exportIndexChannelEntriesByChannelId($channel_entries)
+	{
+		$indexed_entries = array();
+		foreach ($channel_entries as $entry) {
+			$indexed_entries[$entry['channel_id']][] = $entry;
+		}
+		return $indexed_entries;
+	}
+
+	public function exportMergeChannelsWithEntries($channels, $channel_entries)
+	{
+		foreach ($channels as &$channel) {
+			if (empty($channel_entries[$channel['channel_id']])) {
+				continue;
+			}
+			$channel['entries'] = $channel_entries[$channel['channel_id']];
+		}
+		return $channels;
 	}
 
 	/**
@@ -49,7 +142,8 @@ class Nsm_site_generator_helper{
 	 * @var $css string The CSS filepath or content
 	 * @var $options array The options for this include
 	 */
-	public function addCSS($css, $options = array()) {
+	public function addCSS($css, $options = array())
+	{
 		$options = array_merge(array(
 			"where" => "head",
 			"type" => "css",
@@ -65,7 +159,8 @@ class Nsm_site_generator_helper{
 	 * @var $js string The JS filepath or content
 	 * @var $options array The options for this include
 	 */
-	public function addJS($js, $options = array()) {
+	public function addJS($js, $options = array())
+	{
 		$options = array_merge(array(
 			"where" => "foot",
 			"type" => "js",
@@ -81,7 +176,8 @@ class Nsm_site_generator_helper{
 	 * @var $content string The CSS/JS content or filepath
 	 * @var $options array The options for this include
 	 */
-	public function addThemeAsset($content, $options) {
+	public function addThemeAsset($content, $options)
+	{
 		$EE =& get_instance();
 
 		$options = array_merge(array(
@@ -93,17 +189,19 @@ class Nsm_site_generator_helper{
 
 		switch ($options["type"]) {
 			case 'css':
-				if($options["file"])
+				if ($options["file"]) {
 					$content = '<link rel="stylesheet" type="text/css" href="'.$options["theme_url"] . "/styles/" . $content.'" />';
-				else
+				} else {
 					$content = '<style type="text/css" media="screen">'.$content.'</style>';
+				}
 				break;
 			
 			case 'js':
-				if($options["file"])
+				if ($options["file"]) {
 					$content = '<script type="text/javascript" charset="utf-8" src="'.$options["theme_url"] . "/scripts/" . $content.'"></script>';
-				else
+				} else {
 					$content = '<script type="text/javascript" charset="utf-8">'.$content.'</script>';
+				}
 				break;
 		}
 
@@ -118,11 +216,14 @@ class Nsm_site_generator_helper{
 	 * @access private
 	 * @return string The theme URL
 	 */
-	private function _getThemeUrl() {
+	private function _getThemeUrl()
+	{
 		$EE =& get_instance();
-		if(!isset($EE->session->cache[$this->addon_id]['theme_url'])) {
+		if (!isset($EE->session->cache[$this->addon_id]['theme_url'])) {
 			$theme_url = $EE->config->item('theme_folder_url');
-			if (substr($theme_url, -1) != '/') $theme_url .= '/';
+			if (substr($theme_url, -1) != '/') {
+				$theme_url .= '/';
+			}
 			$theme_url .= "third_party/" . $this->addon_id;
 			$EE->session->cache[$this->addon_id]['theme_url'] = $theme_url;
 		}
@@ -139,7 +240,8 @@ class Nsm_site_generator_helper{
 	 * @param array $options Optional arguments.
 	 * @return string Select box html
 	 */
-	public function selectbox($input_name, array $select_options, $selected_options, array $options = array()) {
+	public function selectbox($input_name, array $select_options, $selected_options, array $options = array())
+	{
 		$valid_options = array(
 			"input_id" => FALSE,
 			"use_lang" => TRUE,
@@ -159,20 +261,24 @@ class Nsm_site_generator_helper{
 		), $attributes);
 
 		$attributes_str = "";
-		foreach ($attributes as $key => $value)
+		foreach ($attributes as $key => $value) {
 			$attributes_str .= " {$key}='{$value}' ";
-
+		}
+		
 		$ret = "<select{$attributes_str}>";
 
-		foreach($select_options as $option_label => $option_value) {
+		foreach ($select_options as $option_label => $option_value) {
 			$option_label = ($value_is_label && $option_value) ? lang($option_value) : $option_label;
 			// print($selected. ":" .$option_value . "<br />");
-			if(!is_array($selected_options))
+			if (!is_array($selected_options)) {
 				$selected_options = array($selected_options);
-
+			}
+			
 			foreach ($selected_options as $selected_value) {
 				$selected = ($selected_value === $option_value) ? " selected='selected' " : "";
-				if($selected) continue;
+				if ($selected) {
+					continue;
+				}
 			}
 			$ret .= "<option value='{$option_value}'{$selected}>{$option_label}</option>";
 		}
@@ -192,7 +298,8 @@ class Nsm_site_generator_helper{
 	 * @param array $options Optional arguments
 	 * @return string Checkbox html
 	 */
- 	public function checkbox($input_name, $input_value, $checked, array $options = array()) {
+ 	public function checkbox($input_name, $input_value, $checked, array $options = array())
+	{
 
 		$valid_options = array(
 			"input_id" => FALSE,
@@ -223,7 +330,7 @@ class Nsm_site_generator_helper{
 
 		$ret = '<input type="checkbox" '. $attributes_str . $checked . ' />';
 
-		if($label !== FALSE) {
+		if ($label !== FALSE) {
 			$ret = '<label class="checkbox" for="'.$input_id.'">' . $ret . ' ' . lang($label) . '</label>';
 		}
 

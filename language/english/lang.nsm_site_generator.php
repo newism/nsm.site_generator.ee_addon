@@ -18,15 +18,15 @@ $lang = array(
 	'nsm_site_generator_module_name' => 'NSM Site Generator',
 	'nsm_site_generator_module_description' => 'Generate scaffold templates, channels etc.',
 
-	'index_page_title' => 'NSM Site Generator: Dashboard',
-	'index_nav_title' => 'Dashboard',
+	'nsm_site_generator_index_page_title' => 'NSM Site Generator: Import',
+	'nsm_site_generator_index_nav_title' => 'Import',
 	
-	'configure_import_page_title' => '2. Configure Import',
-	'import_page_title' => '3. Import Complete',
+	'nsm_site_generator_configure_import_page_title' => '2. Configure Import',
+	'nsm_site_generator_import_page_title' => '3. Import Complete',
 
-	'configure_export_page_title' => 'Export',
-	'configure_export_nav_title' => 'Export',
-	'export_page_title' => 'Export Complete',
+	'nsm_site_generator_configure_export_page_title' => 'Export',
+	'nsm_site_generator_configure_export_nav_title' => 'Export',
+	'nsm_site_generator_export_page_title' => 'Export Complete',
 
 	/* Extension */
 	'save_extension_settings' => 'Save extension settings',

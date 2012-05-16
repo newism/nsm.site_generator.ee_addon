@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generator_template title="Test bundle" download_url="/here/" version="1.0">
+	<description>
+	<![CDATA[test description]]>
+	</description>
+
+	<authors>
+		<author  name="Newism" url="http://newism.com.au" />
+
+	</authors>
+
+	<requirements>
+		
+	</requirements>
+
+    <post_import_instructions>
+    <![CDATA[post install shiz]]>
+    </post_import_instructions>
+
+	<category_groups>
+		<group  group_name="Test Channel" sort_order="a" field_html_formatting="all">
+	<category  cat_name="News1" cat_url_title="news_1" />
+<category  cat_name="News1.1.1" cat_url_title="news_1_1_1" />
+<category  cat_name="News2" cat_url_title="news_2" />
+<category  cat_name="News3" cat_url_title="news_3" />
+<category  cat_name="News4" cat_url_title="news_4" />
+<category  cat_name="News5" cat_url_title="news_5" />
+
+</group>
+<group >
+	
+</group>
+
+	</category_groups>
+
+	<template_groups>
+		
+	</template_groups>
+
+	<custom_field_groups>
+				
+<group group_name="Test Channel" id="">
+	<field  field_name="news_alternate_title" field_label="Alternative Title" field_type="text" field_pre_populate="n" field_related_to="channel" field_related_orderby="title" field_related_sort="desc" field_ta_rows="6" field_maxl="128" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_content_type="any" field_settings="YTowOnt9"/>
+<field  field_name="news_summary" field_label="Summary" field_type="text" field_pre_populate="n" field_related_to="channel" field_related_orderby="title" field_related_sort="desc" field_ta_rows="6" field_maxl="128" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="1" field_content_type="any" field_settings="YTowOnt9"/>
+<field  field_name="news_content" field_label="Content" field_type="text" field_pre_populate="n" field_related_to="channel" field_related_orderby="title" field_related_sort="desc" field_ta_rows="6" field_maxl="128" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="2" field_content_type="any" field_settings="YTowOnt9"/>
+<field  field_name="news_extended_content" field_label="Extended Content" field_type="textarea" field_pre_populate="n" field_related_to="channel" field_related_orderby="title" field_related_sort="desc" field_ta_rows="6" field_maxl="128" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="3" field_content_type="any" field_settings="YTowOnt9"/>
+
+</group>
+		
+<group group_name="" id="">
+	
+</group>
+
+	</custom_field_groups>
+
+	<status_groups>
+		<group group_name="Status Group" id="">
+	<status  status="open" />
+<status  status="closed" />
+<status  status="pending" />
+<status  status="featured" />
+
+</group>
+	
+	</status_groups>
+
+	
+<channels>
+	
+	<requirements>
+		
+	</requirements>
+	
+	
+<channel
+	channel_name="news"
+	channel_title="News"
+	 channel_url="/test_channel/" status_group="Status Group" comment_url="/test_channel/post/" field_group="Test Channel" channel_description="foo"
+>
+	<bundle_channel_description>
+	<![CDATA[
+		
+	]]>
+	</bundle_channel_description>
+	<requirements>
+		
+		</requirements>
+	
+	<entry  title="Entry title" url_title="entry_title" status="open" allow_comments="n" sticky="n">
+	<field id="title" formatting="none">Entry title</field>
+	<field id="url_title">entry_title</field>
+    
+	
+
+	<custom_field  id="news_alternate_title" formatting="none"><![CDATA[
+                    
+                    
+                    
+                    
+                ]]></custom_field>
+<custom_field  id="news_summary" formatting="none"><![CDATA[News summary]]></custom_field>
+<custom_field  id="news_content" formatting="none"><![CDATA[News content]]></custom_field>
+<custom_field  id="news_extended_content" formatting="none"><![CDATA[News extended content]]></custom_field>
+
+
+	
+	
+	
+</entry>
+
+	
+</channel>
+
+<channel
+	channel_name="pages"
+	channel_title="Pages"
+	 status_group="Status Group"
+>
+	<bundle_channel_description>
+	<![CDATA[
+		
+	]]>
+	</bundle_channel_description>
+	<requirements>
+		
+		</requirements>
+	
+	
+	
+</channel>
+
+	
+</channels>
+
+
+</generator_template>

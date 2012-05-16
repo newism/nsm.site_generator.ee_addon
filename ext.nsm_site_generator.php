@@ -165,7 +165,8 @@ class Nsm_site_generator_ext
 
 		$EE =& get_instance();
 		$site_settings = $this->default_site_settings;
-
+		$site_settings['bundle_server_path'] = $this->_getDefaultBundleDir();
+		
 		// No site id, use the current one.
 		if(!$site_id) {
 			$site_id = SITE_ID;
@@ -175,6 +176,10 @@ class Nsm_site_generator_ext
 		return $site_settings;
 	}
 
+	public function _getDefaultBundleDir()
+	{
+		return dirname(__FILE__) . '/bundles/';
+	}
 
 
 	// ===============================

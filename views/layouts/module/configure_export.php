@@ -10,14 +10,14 @@
             <td><input
 				type="text"
 				value="<?= form_prep($data['title']) ?>"
-				name="<?=$input_prefix?>[title]"
+				name="<?= $input_prefix; ?>[title]"
 			/></td>
         </tr>
         <tr>
             <th scope="row">Description</th>
             <td><textarea
 				type="text"
-				name="<?=$input_prefix?>[description]"
+				name="<?= $input_prefix; ?>[description]"
 			><?= form_prep($data['description']) ?></textarea></td>
         </tr>
         <tr>
@@ -25,7 +25,7 @@
             <td><input
 				type="text"
 				value="<?= form_prep($data['version']) ?>"
-				name="<?=$input_prefix?>[version]"
+				name="<?= $input_prefix; ?>[version]"
 			/></td>
         </tr>
         <tr>
@@ -33,14 +33,14 @@
             <td><input
 				type="text"
 				value="<?= form_prep($data['download_url']) ?>"
-				name="<?=$input_prefix?>[download_url]"
+				name="<?= $input_prefix; ?>[download_url]"
 			/></td>
         </tr>
         <tr>
             <th scope="row">Post Import Instructions</th>
             <td><textarea
 				type="text"
-				name="<?=$input_prefix?>[post_import_instructions]"
+				name="<?= $input_prefix; ?>[post_import_instructions]"
 			><?= form_prep($data['post_import_instructions']) ?></textarea></td>
         </tr>
     </table>
@@ -48,17 +48,28 @@
 
 <div class="tg" id="channels">
 	<h2>Which channels would you like to export?</h2>
+	
+	<?php if (count($channels) == 0) : ?>
+	
+	<div class="alert error">
+		<p>There are no channels set up in this site.</p>
+	</div>
+	
+	<?php else: ?>
+	
 	<div class="alert info">Check any of the options below to import the channel, it's related categories, statuses and custom fields as defined in the XML config.</div>
-
+	
     <ul class="menu tabs">
 		<?php foreach ($channels as $count => $channel) : ?>
-			<li><a href="#channel_prefs-<?= $channel['channel_id'] ?>"><?=  $channel['channel_title'] ?></a></li>
+			<li><a href="#channel_prefs-<?= $channel['channel_id']; ?>"><?= $channel['channel_title']; ?></a></li>
 		<?php endforeach; ?>
 		<li><a href="#channel_prefs-show_all"><?= lang("Show all"); ?></a></li>
 	</ul>
 
 	<?php foreach ($channels as $count => $channel) : ?>
-	<div id="channel_prefs-<?= $channel['channel_id'] ?>">
+		<?php $entry_count = count($channel['entries']); ?>
+		
+	<div id="channel_prefs-<?= $channel['channel_id']; ?>">
 	<table class="data NSM_MagicCheckboxes">
 	    <thead>
 	        <tr>
@@ -72,49 +83,77 @@
             <tr class="odd">
                 <th scope="row">Channel Title:</th>
                 <td></td>
-                <td><?= $channel['channel_title'] ?></td>
-                <td rowspan="4"><input
-                    type="checkbox"
-                    style="float:right"
-                    name="<?=$input_prefix?>[channels][<?php print($channel['channel_id']); ?>][enabled]"
-                    value=""
-                /></td>
+                <td><?= $channel['channel_title']; ?></td>
+                <td rowspan="4">
+					<?=  $EE->nsm_site_generator_helper->checkbox(
+							"{$input_prefix}[channels][{$channel['channel_id']}][enabled]",
+							true,
+							$data['channels'][$channel['channel_id']]['enabled'],
+							array('generate_shadow' => true)
+						);
+					?>
+				</td>
             </tr>
             <tr class="odd">
                 <th scope="row">Field Group:</th>
                 <td></td>
-                <td><?php print($channel['field_group_name']); ?></td>
+                <td><?= $channel['field_group_name']; ?></td>
             </tr>
             <tr class="odd">
                 <th scope="row">Status Group:</th>
                 <td></td>
                 <td>
-                    <?php print($channel['status_group_name']); ?><br />
+                    <?= $channel['status_group_name']; ?><br />
                 </td>
             </tr>
             <tr class="odd">
                 <th scope="row">Category Groups:</th>
                 <td></td>
                 <td>
-                    <?php foreach($channel['channel_category_group'] as $cat_count => $category_group): ?>
+                    <?php foreach($channel['channel_category_group'] as $cat_count => $category_group) : ?>
                     <?php endforeach; ?>
                 </td>
             </tr>
-            <tr class="odd">
-                <th scope="row">Entries:</th>
-                <td></td>
-                <td></td>
-                <td rowspan="4"><input
-                    type="checkbox"
-                    style="float:right"
-                    name="<?=$input_prefix?>[channels][<?php print($channel['channel_id']); ?>][entries]"
-                    value=""
-                /></td>
+            <tr class="odd <?= (!$entry_count ? "alert error" : "") ?>">
+                <th scope="row" rowspan="<?= (!$entry_count ? 1 : $entry_count) ?>">Entries:</th>
+				
+				<?php if (!$entry_count) : ?>
+				
+				<td colspan="3">No channel entries</td>
+				
+				<?php else: ?>
+				
+				<?php foreach($channel['entries'] as $entry) : ?>
+					
+				<td><?= $entry['entry_id'] ?></td>
+                <td><?= $entry['title'] ?></td>
+                <td>
+					<?php
+						if(empty($data['channels'][$channel['channel_id']]['entries'])) {
+							$data['channels'][$channel['channel_id']]['entries'] = array();
+						}
+					?>
+					<?=  
+
+						$EE->nsm_site_generator_helper->checkbox(
+							"{$input_prefix}[channels][{$channel['channel_id']}][entries][]",
+							$entry['entry_id'],
+							in_array($entry['entry_id'], $data['channels'][$channel['channel_id']]['entries'])
+						); ?>
+				</td>
+					
+                <?php endforeach; ?>
+
+				<?php endif; ?>
+                
             </tr>
         </tbody>
 	</table>
     </div>
 	<?php endforeach; ?>
+	
+<?php endif; ?>
+	
 </div>
 
 <div class="action" style="text-align:right">

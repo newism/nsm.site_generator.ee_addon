@@ -14,10 +14,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php if($error) : ?>
-				<tr><td class="alert error" colspan="6"><?= $error ?></td></tr>
+			<?php if ($error) : ?>
+				<tr><td class="alert error" colspan="7"><?= $error ?></td></tr>
 			<?php endif; ?>
-			<?php if($generators) : ?>
+			<?php if ($generators) : ?>
 				<?php foreach ($generators as $count => $generator) : ?>
 				<tr>
 					<th scope="row" style="width:auto">
@@ -35,7 +35,7 @@
 					<td style="white-space: nowrap"><?= $generator["version"] ?></td>
 					<td><a href="<?= $generator["download_url"] ?>">Documentation</a></td>
                     <td style="white-space: nowrap">
-                        <?php if($required_addons = $generator->xpath("requirements/requirement[@type='addon']")) : ?>
+                        <?php if ($required_addons = $generator->xpath("requirements/requirement[@type='addon']")) : ?>
                         <?php foreach ($required_addons as $addon): ?>
                             <a href="<?= $addon["download_url"] ?>"><?= $addon["title"]; ?> <?= $addon["version"]; ?></a><br />
                             <?php endforeach; ?>
