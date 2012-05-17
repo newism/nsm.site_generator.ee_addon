@@ -194,6 +194,7 @@ class Nsm_site_generator_mcp{
             );
 
             foreach ($channels as $channel) {
+                $data['channels'][$channel['channel_id']]['enabled'] = false;
                 $data['channels'][$channel['channel_id']]['entries'] = array();
             }
         }

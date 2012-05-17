@@ -1,125 +1,485 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<generator_template title="News" download_url="http://leevigraham.com" version="1.0.0">
-	<description>
-	<![CDATA[
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	]]>
-	</description>
+<generator_bundle>
 
-	<authors>
-		<author name="Leevi Graham" url="http://newism.com.au"/>
-	</authors>
+<title><![CDATA[ NSM Site Template ]]></title>
+<download_url><![CDATA[  ]]></download_url>
+<version><![CDATA[ 0.0.0 ]]></version>
+<description><![CDATA[ Test site structure bundle for NSM Site Generator  ]]></description>
+<post_import_instructions><![CDATA[ Post import instructions go here… ]]></post_import_instructions>
 
-	<requirements>
-		<requirement type="addon" title="NSM Live Look v1.0" download_url="" />
-	</requirements>
+<authors>
+    <author name="Newism" url="http://newism.com.au" />
+    <author name="Leevi Graham" url="http://leevigraham.com" />
+</authors>
 
-    <post_import_instructions>
-    <![CDATA[
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	]]>
-    </post_import_instructions>
+<requirements>
+    <requirement type="addon" name="NSM Better Meta" version="1.0.0" url="http://ee-garage.com/nsm-better-meta" />
+    <requirement type="addon" name="NSM Live Look" version="1.0.0" url="http://ee-garage.com/nsm-live-look" />
+</requirements>
 
-	<category_groups>
-		<group group_name="Test Channel" id="test_channel">
-			<category cat_name="News1" cat_url_title="news_1">
-				<category cat_name="News1.1.1" cat_url_title="news_1_1_1" />
-			</category>
-			<category cat_name="News2" cat_url_title="news_2" />
-			<category cat_name="News3" cat_url_title="news_3" />
-			<category cat_name="News4" cat_url_title="news_4" />
-			<category cat_name="News5" cat_url_title="news_5" />
-		</group>
-	</category_groups>
+<category_groups>
+  <group group_name="Default category group" sort_order="a" field_html_formatting="all" can_edit_categories="" can_delete_categories="" exclude_group="0" group_ref_id="category_group_1">
+  </group>
+  <group group_name="News" sort_order="a" field_html_formatting="all" can_edit_categories="" can_delete_categories="" exclude_group="0" group_ref_id="category_group_2">
+    <category cat_name="Category2" cat_url_title="category2" cat_description="" cat_image="0" cat_order="2" />
+    <category cat_name="Category3" cat_url_title="category3" cat_description="" cat_image="0" cat_order="3" />
+    <category cat_name="Category1" cat_url_title="category1" cat_description="" cat_image="0" cat_order="1" />
+  </group>
+  <group group_name="Galleries" sort_order="a" field_html_formatting="all" can_edit_categories="" can_delete_categories="" exclude_group="0" group_ref_id="category_group_4">
+    <category cat_name="Front End Developers" cat_url_title="front-end-developers" cat_description="" cat_image="0" cat_order="2" />
+    <category cat_name="Back End Developers" cat_url_title="back-end-developers" cat_description="" cat_image="0" cat_order="1" />
+  </group>
+  <group group_name="Events" sort_order="a" field_html_formatting="all" can_edit_categories="" can_delete_categories="" exclude_group="0" group_ref_id="category_group_6">
+    <category cat_name="EventCategory2" cat_url_title="eventcategory2" cat_description="" cat_image="0" cat_order="2" />
+    <category cat_name="EventCategory1" cat_url_title="eventcategory1" cat_description="" cat_image="0" cat_order="1" />
+  </group>
+</category_groups>
 
-	<template_groups>
-		<group group_name="_components">
-			<template template_name=".comments" />
-		</group>
-		<group group_name="_includes">
-			<template template_name=".head" />
-			<template template_name=".foot" />
-		</group>
-		<group group_name="_forms">
-			<template template_name=".comment" />
-			<template template_name=".contact" />
-		</group>
-		<group group_name="feeds">
-			<template template_name="channel" template_type="rss" />
-		</group>
-		<group group_name="channel" is_site_default="y">
-			<template template_name=".sidebar"/>
-			<template template_name="category-archive"/>
-			<template template_name="date-archive"/>
-			<template template_name="post"/>
-		</group>
-		<group group_name="pages">
-			<template template_name="404"/>
-			<template template_name="contact"/>
-		</group>
-		<group group_name="site" />
-	</template_groups>
+<field_groups>
+  <group group_name="Pages" group_ref_id="field_group_4">
+    <field field_name="page_content" field_label="Content" field_instructions="" field_type="wygwam" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="4" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="128" field_required="n" field_text_direction="ltr" field_search="y" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="1" field_content_type="any" field_settings="YTo4OntzOjY6ImNvbmZpZyI7czoxOiIxIjtzOjU6ImRlZmVyIjtzOjE6Im4iO3M6MTg6ImZpZWxkX3Nob3dfc21pbGV5cyI7czoxOiJuIjtzOjE5OiJmaWVsZF9zaG93X2dsb3NzYXJ5IjtzOjE6Im4iO3M6MjE6ImZpZWxkX3Nob3dfc3BlbGxjaGVjayI7czoxOiJuIjtzOjI2OiJmaWVsZF9zaG93X2Zvcm1hdHRpbmdfYnRucyI7czoxOiJuIjtzOjI0OiJmaWVsZF9zaG93X2ZpbGVfc2VsZWN0b3IiO3M6MToibiI7czoyMDoiZmllbGRfc2hvd193cml0ZW1vZGUiO3M6MToibiI7fQ=="/>
+  </group>
+  <group group_name="News" group_ref_id="field_group_5">
+    <field field_name="news_content" field_label="news_content" field_instructions="" field_type="wygwam" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="4" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="128" field_required="n" field_text_direction="ltr" field_search="y" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="1" field_content_type="any" field_settings="YTo4OntzOjY6ImNvbmZpZyI7czoxOiIxIjtzOjU6ImRlZmVyIjtzOjE6Im4iO3M6MTg6ImZpZWxkX3Nob3dfc21pbGV5cyI7czoxOiJuIjtzOjE5OiJmaWVsZF9zaG93X2dsb3NzYXJ5IjtzOjE6Im4iO3M6MjE6ImZpZWxkX3Nob3dfc3BlbGxjaGVjayI7czoxOiJuIjtzOjI2OiJmaWVsZF9zaG93X2Zvcm1hdHRpbmdfYnRucyI7czoxOiJuIjtzOjI0OiJmaWVsZF9zaG93X2ZpbGVfc2VsZWN0b3IiO3M6MToibiI7czoyMDoiZmllbGRfc2hvd193cml0ZW1vZGUiO3M6MToibiI7fQ=="/>
+    <field field_name="news_gallery" field_label="Gallery" field_instructions="" field_type="playa" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="8" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="128" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="2" field_content_type="any" field_settings="YToxMjp7czo1OiJtdWx0aSI7czoxOiJ5IjtzOjc6ImV4cGlyZWQiO3M6MToibiI7czo2OiJmdXR1cmUiO3M6MToieSI7czo4OiJjaGFubmVscyI7YToxOntpOjA7czoxOiI4Ijt9czo3OiJvcmRlcmJ5IjtzOjU6InRpdGxlIjtzOjQ6InNvcnQiO3M6MzoiQVNDIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30="/>
+  </group>
+  <group group_name="Testimonials" group_ref_id="field_group_7">
+    <field field_name="testimonial_content" field_label="Content" field_instructions="Enter the testimonial.
 
-	<custom_field_groups>
-		<group group_name="Test Channel" id="test_channel">
-			<field field_label="Alternative Title" field_name="news_alternate_title" />
-			<field field_label="Summary" field_name="news_summary" />
-			<field field_label="Content" field_name="news_content" />
-			<field field_label="Extended Content" field_name="news_extended_content" field_type="textarea" />
-		</group>
-	</custom_field_groups>
+To create an excerpt, place your mouse curse where you wish to include a 'Read More' link and then click the 'Page Break' icon at the top of the editor." field_type="wygwam" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="4" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="128" field_required="y" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="1" field_content_type="any" field_settings="YTo4OntzOjY6ImNvbmZpZyI7czoxOiIxIjtzOjU6ImRlZmVyIjtzOjE6Im4iO3M6MTg6ImZpZWxkX3Nob3dfc21pbGV5cyI7czoxOiJuIjtzOjE5OiJmaWVsZF9zaG93X2dsb3NzYXJ5IjtzOjE6Im4iO3M6MjE6ImZpZWxkX3Nob3dfc3BlbGxjaGVjayI7czoxOiJuIjtzOjI2OiJmaWVsZF9zaG93X2Zvcm1hdHRpbmdfYnRucyI7czoxOiJuIjtzOjI0OiJmaWVsZF9zaG93X2ZpbGVfc2VsZWN0b3IiO3M6MToibiI7czoyMDoiZmllbGRfc2hvd193cml0ZW1vZGUiO3M6MToibiI7fQ=="/>
+    <field field_name="testimonial_testifier" field_label="Testifier" field_instructions="Enter the name of the testifier." field_type="text" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="4" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="255" field_required="y" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="2" field_content_type="any" field_settings="YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30="/>
+    <field field_name="testimonial_role" field_label="Role" field_instructions="Enter the the testifiers role in their company" field_type="text" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="4" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="255" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="3" field_content_type="any" field_settings="YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30="/>
+    <field field_name="testimonial_company" field_label="Company" field_instructions="Enter the the testifiers company" field_type="text" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="4" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="255" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="4" field_content_type="any" field_settings="YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30="/>
+    <field field_name="testimonial_company_url" field_label="Company URL" field_instructions="" field_type="text" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="4" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="255" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="5" field_content_type="any" field_settings="YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30="/>
+  </group>
+  <group group_name="People" group_ref_id="field_group_8">
+    <field field_name="people_alphabetise" field_label="Alphabetise" field_instructions="Select the surname initial" field_type="pt_dropdown" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="4" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="128" field_required="y" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="xhtml" field_show_fmt="n" field_order="1" field_content_type="any" field_settings="YTo3OntzOjc6Im9wdGlvbnMiO2E6Mjc6e3M6MDoiIjtzOjE6Ii0iO3M6MToiYSI7czoxOiJBIjtzOjE6ImIiO3M6MToiQiI7czoxOiJjIjtzOjE6IkMiO3M6MToiZCI7czoxOiJEIjtzOjE6ImUiO3M6MToiRSI7czoxOiJmIjtzOjE6IkYiO3M6MToiZyI7czoxOiJHIjtzOjE6ImgiO3M6MToiSCI7czoxOiJpIjtzOjE6IkkiO3M6MToiaiI7czoxOiJKIjtzOjE6ImsiO3M6MToiSyI7czoxOiJsIjtzOjE6IkwiO3M6MToibSI7czoxOiJNIjtzOjE6Im4iO3M6MToiTiI7czoxOiJvIjtzOjE6Ik8iO3M6MToicCI7czoxOiJQIjtzOjE6InEiO3M6MToiUSI7czoxOiJyIjtzOjE6IlIiO3M6MToicyI7czoxOiJTIjtzOjE6InQiO3M6MToiVCI7czoxOiJ1IjtzOjE6IlUiO3M6MToidiI7czoxOiJWIjtzOjE6InciO3M6MToiVyI7czoxOiJ4IjtzOjE6IlgiO3M6MToieSI7czoxOiJZIjtzOjE6InoiO3M6MToiWiI7fXM6MTg6ImZpZWxkX3Nob3dfc21pbGV5cyI7czoxOiJuIjtzOjE5OiJmaWVsZF9zaG93X2dsb3NzYXJ5IjtzOjE6Im4iO3M6MjE6ImZpZWxkX3Nob3dfc3BlbGxjaGVjayI7czoxOiJuIjtzOjI2OiJmaWVsZF9zaG93X2Zvcm1hdHRpbmdfYnRucyI7czoxOiJuIjtzOjI0OiJmaWVsZF9zaG93X2ZpbGVfc2VsZWN0b3IiO3M6MToibiI7czoyMDoiZmllbGRfc2hvd193cml0ZW1vZGUiO3M6MToibiI7fQ=="/>
+    <field field_name="people_role" field_label="Role" field_instructions="Enter the role of this people" field_type="text" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="4" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="255" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="2" field_content_type="any" field_settings="YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30="/>
+    <field field_name="people_qualifications" field_label="Qualifications" field_instructions="Enter this persons qualifications." field_type="text" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="4" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="255" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="3" field_content_type="any" field_settings="YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30="/>
+    <field field_name="people_phone" field_label="Phone" field_instructions="Enter this persons phone number." field_type="text" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="4" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="255" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="4" field_content_type="any" field_settings="YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30="/>
+    <field field_name="people_email" field_label="Email" field_instructions="Enter this persons email address." field_type="text" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="4" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="255" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="5" field_content_type="any" field_settings="YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30="/>
+    <field field_name="people_photo" field_label="Photo" field_instructions="Upload this persons profile image" field_type="file" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="4" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="128" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="6" field_content_type="any" field_settings="YTo4OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6NToiaW1hZ2UiO3M6MTk6ImFsbG93ZWRfZGlyZWN0b3JpZXMiO3M6MToiNCI7czoxODoiZmllbGRfc2hvd19zbWlsZXlzIjtzOjE6Im4iO3M6MTk6ImZpZWxkX3Nob3dfZ2xvc3NhcnkiO3M6MToibiI7czoyMToiZmllbGRfc2hvd19zcGVsbGNoZWNrIjtzOjE6Im4iO3M6MjY6ImZpZWxkX3Nob3dfZm9ybWF0dGluZ19idG5zIjtzOjE6Im4iO3M6MjQ6ImZpZWxkX3Nob3dfZmlsZV9zZWxlY3RvciI7czoxOiJuIjtzOjIwOiJmaWVsZF9zaG93X3dyaXRlbW9kZSI7czoxOiJuIjt9"/>
+    <field field_name="people_bio" field_label="Bio" field_instructions="Enter this persons bio." field_type="wygwam" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="4" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="128" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="7" field_content_type="any" field_settings="YTo4OntzOjY6ImNvbmZpZyI7czoxOiIxIjtzOjU6ImRlZmVyIjtzOjE6Im4iO3M6MTg6ImZpZWxkX3Nob3dfc21pbGV5cyI7czoxOiJuIjtzOjE5OiJmaWVsZF9zaG93X2dsb3NzYXJ5IjtzOjE6Im4iO3M6MjE6ImZpZWxkX3Nob3dfc3BlbGxjaGVjayI7czoxOiJuIjtzOjI2OiJmaWVsZF9zaG93X2Zvcm1hdHRpbmdfYnRucyI7czoxOiJuIjtzOjI0OiJmaWVsZF9zaG93X2ZpbGVfc2VsZWN0b3IiO3M6MToibiI7czoyMDoiZmllbGRfc2hvd193cml0ZW1vZGUiO3M6MToibiI7fQ=="/>
+  </group>
+  <group group_name="Galleries" group_ref_id="field_group_9">
+    <field field_name="galleries_thumbnail" field_label="Gallery Thumbnail" field_instructions="Upload an thumbnail for the gallery. This will appear on the Galleries index page." field_type="assets" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="8" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="128" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="2" field_content_type="any" field_settings="YToxMDp7czo4OiJmaWxlZGlycyI7YToxOntpOjA7czoxOiI1Ijt9czo1OiJtdWx0aSI7czoxOiJuIjtzOjQ6InZpZXciO3M6NjoidGh1bWJzIjtzOjk6InNob3dfY29scyI7YTo0OntpOjA7czo0OiJuYW1lIjtpOjE7czo2OiJmb2xkZXIiO2k6MjtzOjQ6ImRhdGUiO2k6MztzOjQ6InNpemUiO31zOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30="/>
+    <field field_name="galleries_content" field_label="Content" field_instructions="" field_type="wygwam" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="8" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="128" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="3" field_content_type="any" field_settings="YTo4OntzOjY6ImNvbmZpZyI7czoxOiIxIjtzOjU6ImRlZmVyIjtzOjE6Im4iO3M6MTg6ImZpZWxkX3Nob3dfc21pbGV5cyI7czoxOiJuIjtzOjE5OiJmaWVsZF9zaG93X2dsb3NzYXJ5IjtzOjE6Im4iO3M6MjE6ImZpZWxkX3Nob3dfc3BlbGxjaGVjayI7czoxOiJuIjtzOjI2OiJmaWVsZF9zaG93X2Zvcm1hdHRpbmdfYnRucyI7czoxOiJuIjtzOjI0OiJmaWVsZF9zaG93X2ZpbGVfc2VsZWN0b3IiO3M6MToibiI7czoyMDoiZmllbGRfc2hvd193cml0ZW1vZGUiO3M6MToibiI7fQ=="/>
+  </group>
+  <group group_name="Events" group_ref_id="field_group_10">
+    <field field_name="events_start_date" field_label="Start Date" field_instructions="" field_type="date" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="9" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="128" field_required="y" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="1" field_content_type="any" field_settings="YTo2OntzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30="/>
+    <field field_name="events_end_date" field_label="End Date" field_instructions="" field_type="date" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="9" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="128" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="2" field_content_type="any" field_settings="YTo2OntzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30="/>
+    <field field_name="events_content" field_label="Content" field_instructions="" field_type="wygwam" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="9" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="128" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="3" field_content_type="any" field_settings="YTo4OntzOjY6ImNvbmZpZyI7czoxOiIxIjtzOjU6ImRlZmVyIjtzOjE6Im4iO3M6MTg6ImZpZWxkX3Nob3dfc21pbGV5cyI7czoxOiJuIjtzOjE5OiJmaWVsZF9zaG93X2dsb3NzYXJ5IjtzOjE6Im4iO3M6MjE6ImZpZWxkX3Nob3dfc3BlbGxjaGVjayI7czoxOiJuIjtzOjI2OiJmaWVsZF9zaG93X2Zvcm1hdHRpbmdfYnRucyI7czoxOiJuIjtzOjI0OiJmaWVsZF9zaG93X2ZpbGVfc2VsZWN0b3IiO3M6MToibiI7czoyMDoiZmllbGRfc2hvd193cml0ZW1vZGUiO3M6MToibiI7fQ=="/>
+  </group>
+</field_groups>
 
-	<status_groups>
-		<group group_name="Status Group" id="test_channel">
-			<status status="open" />
-			<status status="closed" />
-			<status status="pending" />
-			<status status="featured" />
-		</group>
-	</status_groups>
+<status_groups>
+  <group group_name="Workflow" group_ref_id="status_group_2">
+  </group>
+  <group group_name="News" group_ref_id="status_group_4">
+    <status status="closed" highlight="990000" />
+  </group>
+  <group group_name="Events" group_ref_id="status_group_5">
+    <status status="Pending" highlight="" />
+  </group>
+  <group group_name="Testimonials" group_ref_id="status_group_6">
+    <status status="Archived" highlight="" />
+  </group>
+</status_groups>
 
-	<channels>
-		<requirements>
-			<requirement type="template" target="_includes/*" />
-			<requirement type="template" target="_components/*" />
-		</requirements>
-		<channel channel_name="news" channel_title="News" channel_url="/test_channel/" status_group="test_channel" cat_group="test_channel" comment_url="/test_channel/post/" field_group="test_channel">
-			<description>
-			<![CDATA[
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			]]>
-			</description>
-			<requirements>
-				<requirement type="template" target="channel/*" />
-				<requirement type="template" target="_forms/.comment" />
-				<requirement type="template" target="feeds/channel" />
- 			</requirements>
-			<entry>
-				<field id="title" formatting="none">Entry title</field>
-				<field id="url_title">entry_title</field>
-                <custom_field id="news_alternate_title" type="matrix" formatting="none">
-                    <data formatting="none">adfdsf1</data>
-                    <data1>adfdsf2</data1>
-                    <data2>adfdsf3</data2>
-                    <data3>adfdsf4</data3>
-                </custom_field>
-                <custom_field id="news_summary">News summary</custom_field>
-                <custom_field id="news_content">News content</custom_field>
-                <custom_field id="news_extended_content">News extended content</custom_field>
-                <custom_tab id="news_extended_content">News extended content</custom_tab>
-                <category id="news_2" />
-                <category id="news_3" />
-                <category id="news_4" />
-                <category id="news_5" />
-			</entry>
-		</channel>
-		<channel channel_name="pages" channel_title="Pages" status_group="test_channel">
-			<description>
-			<![CDATA[
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			]]>
-			</description>
-		</channel>
-	</channels>
-
-</generator_template>
+<channels>
+  <channel channel_name="pages" channel_title="Pages" channel_url="http://local.ee2.tmpl/" channel_description="" channel_lang="en" cat_group="" status_group="status_group_2" deft_status="open" field_group="field_group_4" search_excerpt="" deft_category="" deft_comments="y" channel_require_membership="y" channel_max_chars="" channel_html_formatting="all" channel_allow_img_urls="y" channel_auto_link_urls="y" channel_notify="n" comment_url="" comment_system_enabled="y" comment_require_membership="n" comment_use_captcha="n" comment_moderate="n" comment_max_chars="5000" comment_timelock="0" comment_require_email="y" comment_text_formatting="xhtml" comment_html_formatting="safe" comment_allow_img_urls="n" comment_auto_link_urls="y" comment_notify="n" comment_notify_authors="n" comment_notify_emails="" comment_expiration="0" search_results_url="" ping_return_url="" show_button_cluster="y" rss_url="" enable_versioning="n" max_revisions="10" default_entry_title="" url_title_prefix="" live_look_template="0">
+    <entry title="Account - Create" url_title="account-create" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"></field>
+    </entry>
+    <entry title="Account - Update" url_title="account-update" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"></field>
+    </entry>
+    <entry title="Home" url_title="home" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec sed odio dui.</p>
+<p>
+	Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas faucibus mollis interdum.</p>
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla. Sed posuere consectetur est at lobortis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+<p>
+	Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vestibulum id ligula porta felis euismod semper. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+<p>
+	Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper. Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+]]></field>
+    </entry>
+    <entry title="Account - Login" url_title="account-login" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"></field>
+    </entry>
+    <entry title="Account - Forgot Password" url_title="account-forgot-password" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"></field>
+    </entry>
+    <entry title="Account" url_title="account" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"></field>
+    </entry>
+    <entry title="News" url_title="news" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	News page content</p>
+]]></field>
+    </entry>
+    <entry title="Search" url_title="search" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Search page contents</p>
+]]></field>
+    </entry>
+    <entry title="Contact" url_title="contact" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+<p>
+	Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+]]></field>
+    </entry>
+    <entry title="Account" url_title="account1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	The Account page content&nbsp;Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+]]></field>
+    </entry>
+    <entry title="Login" url_title="login" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	This is the login page</p>
+<p>
+	&nbsp;</p>
+]]></field>
+    </entry>
+    <entry title="Forgot Username" url_title="forgot-username" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Forgot Username page content</p>
+]]></field>
+    </entry>
+    <entry title="Forgot Password" url_title="forgot-password" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Forgt Password page content</p>
+]]></field>
+    </entry>
+    <entry title="Update Account" url_title="update-account" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	The Account Update page content</p>
+]]></field>
+    </entry>
+    <entry title="Account Create" url_title="account-create1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	the account create page content</p>
+]]></field>
+    </entry>
+    <entry title="four04" url_title="four04" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	The 404 page</p>
+]]></field>
+    </entry>
+    <entry title="Navigation" url_title="navigation" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+<p>
+	Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+<p>
+	Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+]]></field>
+    </entry>
+    <entry title="Content" url_title="content" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor.</p>
+<p>
+	Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec sed odio dui. Maecenas faucibus mollis interdum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.</p>
+<p>
+	Donec sed odio dui. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+]]></field>
+    </entry>
+    <entry title="Testimonials" url_title="testimonials" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Page Content for testimonials</p>
+]]></field>
+    </entry>
+    <entry title="People" url_title="people" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	People &nbsp;page content</p>
+]]></field>
+    </entry>
+    <entry title="Thanks for contacting us" url_title="thanks-for-contacting-us" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+]]></field>
+    </entry>
+    <entry title="Galleries" url_title="galleries" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Galleries page content</p>
+]]></field>
+    </entry>
+    <entry title="Events" url_title="events" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="page_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Events page content</p>
+]]></field>
+    </entry>
+  </channel>
+  <channel channel_name="news" channel_title="News" channel_url="/news/details" channel_description="" channel_lang="en" cat_group="category_group_2" status_group="status_group_4" deft_status="open" field_group="field_group_5" search_excerpt="7" deft_category="" deft_comments="y" channel_require_membership="y" channel_max_chars="" channel_html_formatting="all" channel_allow_img_urls="y" channel_auto_link_urls="n" channel_notify="n" comment_url="/news/details" comment_system_enabled="y" comment_require_membership="n" comment_use_captcha="y" comment_moderate="n" comment_max_chars="5000" comment_timelock="0" comment_require_email="y" comment_text_formatting="xhtml" comment_html_formatting="safe" comment_allow_img_urls="n" comment_auto_link_urls="n" comment_notify="n" comment_notify_authors="n" comment_notify_emails="" comment_expiration="0" search_results_url="/news/details" ping_return_url="" show_button_cluster="y" rss_url="" enable_versioning="n" max_revisions="10" default_entry_title="" url_title_prefix="" live_look_template="0">
+    <entry title="Post One" url_title="post-one" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="news_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Sed posuere consectetur est at lobortis. Vestibulum id ligula porta felis euismod semper. Aenean lacinia bibendum nulla sed consectetur. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper.</p>
+<!--read_more-->
+<p>
+	&nbsp;</p>
+<p>
+	Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vestibulum id ligula porta felis euismod semper.</p>
+<p>
+	&nbsp;</p>
+]]></field>
+      <field field_name="news_gallery" type="playa" formatting="none"></field>
+    </entry>
+    <entry title="Post Two" url_title="post-two" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="news_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Donec sed odio dui. Donec sed odio dui. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis.</p>
+<p>
+	Nullam id dolor id nibh ultricies vehicula ut id elit. Donec ullamcorper nulla non metus auctor fringilla. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+<!--read_more-->
+<p>
+	Nullam quis risus eget urna mollis ornare vel eu leo. Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla.</p>
+<p>
+	&nbsp;</p>
+]]></field>
+      <field field_name="news_gallery" type="playa" formatting="none"></field>
+    </entry>
+    <entry title="Post Three" url_title="post-three" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field field_name="news_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+<p>
+	Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Cras mattis consectetur purus sit amet fermentum. Donec ullamcorper nulla non metus auctor fringilla. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+]]></field>
+      <field field_name="news_gallery" type="playa" formatting="none"></field>
+    </entry>
+    <entry title="Post Four" url_title="post-four" status="Featured" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field field_name="news_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Vestibulum id ligula porta felis euismod semper. Etiam porta sem malesuada magna mollis euismod.</p>
+<!--read_more-->
+<p>
+	Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+<p>
+	Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+<p>
+	Donec id elit non mi porta gravida at eget metus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
+]]></field>
+      <field field_name="news_gallery" type="playa" formatting="none"></field>
+    </entry>
+    <entry title="Post Five" url_title="post-five" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="news_content" type="wygwam" formatting="none"></field>
+      <field field_name="news_gallery" type="playa" formatting="none"></field>
+    </entry>
+    <entry title="Post Six" url_title="post-six" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="news_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+<p>
+	Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Cras mattis consectetur purus sit amet fermentum. Donec ullamcorper nulla non metus auctor fringilla. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+]]></field>
+      <field field_name="news_gallery" type="playa" formatting="none"></field>
+    </entry>
+  </channel>
+  <channel channel_name="testimonials" channel_title="Testimonials" channel_url="/testimonials/details" channel_description="" channel_lang="en" cat_group="" status_group="status_group_6" deft_status="open" field_group="field_group_7" search_excerpt="15" deft_category="" deft_comments="y" channel_require_membership="y" channel_max_chars="" channel_html_formatting="all" channel_allow_img_urls="y" channel_auto_link_urls="n" channel_notify="n" comment_url="/testimonials/details" comment_system_enabled="y" comment_require_membership="n" comment_use_captcha="n" comment_moderate="n" comment_max_chars="5000" comment_timelock="0" comment_require_email="y" comment_text_formatting="xhtml" comment_html_formatting="safe" comment_allow_img_urls="n" comment_auto_link_urls="n" comment_notify="n" comment_notify_authors="n" comment_notify_emails="" comment_expiration="0" search_results_url="/testimonials/details" ping_return_url="/testimonials/details" show_button_cluster="y" rss_url="" enable_versioning="n" max_revisions="10" default_entry_title="" url_title_prefix="" live_look_template="0">
+    <entry title="Testimonial 1" url_title="testimonial-1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="testimonial_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	This is the testimonial excerpt. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+<!--read_more-->
+<p>
+	Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+<p>
+	Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Donec sed odio dui.</p>
+]]></field>
+      <field field_name="testimonial_testifier" type="text" formatting="none"><![CDATA[ Name of testifier]]></field>
+      <field field_name="testimonial_role" type="text" formatting="none"><![CDATA[ Role]]></field>
+      <field field_name="testimonial_company" type="text" formatting="none"><![CDATA[ Company]]></field>
+      <field field_name="testimonial_company_url" type="text" formatting="none"></field>
+    </entry>
+    <entry title="Testimonial 2" url_title="testimonial-2" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="testimonial_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	This is the testimonial excerpt. Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+<!--read_more-->
+<p>
+	Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+<p>
+	Donec ullamcorper nulla non metus auctor fringilla. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor.</p>
+<p>
+	Aenean lacinia bibendum nulla sed consectetur. Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+]]></field>
+      <field field_name="testimonial_testifier" type="text" formatting="none"><![CDATA[ Name of testifier]]></field>
+      <field field_name="testimonial_role" type="text" formatting="none"><![CDATA[ Role]]></field>
+      <field field_name="testimonial_company" type="text" formatting="none"><![CDATA[ Company]]></field>
+      <field field_name="testimonial_company_url" type="text" formatting="none"><![CDATA[ website.com]]></field>
+    </entry>
+    <entry title="Testimonial 3" url_title="testimonial-3" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="testimonial_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	This is the testimonial excerpt. Maecenas sed diam eget risus varius blandit sit amet non magna. Cras mattis consectetur purus sit amet fermentum. Aenean eu leo quam.&nbsp;</p>
+<!--read_more-->
+<p>
+	Sed posuere consectetur est at lobortis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+<p>
+	Nulla vitae elit libero, a pharetra augue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+<p>
+	Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec ullamcorper nulla non metus auctor fringilla. Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum.</p>
+]]></field>
+      <field field_name="testimonial_testifier" type="text" formatting="none"><![CDATA[ Name of testifier]]></field>
+      <field field_name="testimonial_role" type="text" formatting="none"><![CDATA[ Role]]></field>
+      <field field_name="testimonial_company" type="text" formatting="none"><![CDATA[ Company]]></field>
+      <field field_name="testimonial_company_url" type="text" formatting="none"><![CDATA[ website.com]]></field>
+    </entry>
+  </channel>
+  <channel channel_name="people" channel_title="People" channel_url="/people" channel_description="" channel_lang="en" cat_group="" status_group="" deft_status="open" field_group="field_group_8" search_excerpt="20" deft_category="" deft_comments="y" channel_require_membership="y" channel_max_chars="" channel_html_formatting="all" channel_allow_img_urls="y" channel_auto_link_urls="n" channel_notify="n" comment_url="/people/details" comment_system_enabled="y" comment_require_membership="n" comment_use_captcha="n" comment_moderate="n" comment_max_chars="5000" comment_timelock="0" comment_require_email="y" comment_text_formatting="xhtml" comment_html_formatting="safe" comment_allow_img_urls="n" comment_auto_link_urls="n" comment_notify="n" comment_notify_authors="n" comment_notify_emails="" comment_expiration="0" search_results_url="/people/details" ping_return_url="/people/details" show_button_cluster="y" rss_url="" enable_versioning="n" max_revisions="10" default_entry_title="" url_title_prefix="" live_look_template="0">
+    <entry title="Toby Flenderson" url_title="toby-flenderson" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="people_alphabetise" type="pt_dropdown" formatting="xhtml"><![CDATA[ f]]></field>
+      <field field_name="people_role" type="text" formatting="none"><![CDATA[ Deputy of Accounts]]></field>
+      <field field_name="people_qualifications" type="text" formatting="none"><![CDATA[ School Certificate]]></field>
+      <field field_name="people_phone" type="text" formatting="none"><![CDATA[ 02 1234 5678]]></field>
+      <field field_name="people_email" type="text" formatting="none"><![CDATA[ test@test.com]]></field>
+      <field field_name="people_photo" type="file" formatting="none"><![CDATA[ {filedir_4}toby.png]]></field>
+      <field field_name="people_bio" type="wygwam" formatting="none"><![CDATA[ <p>
+	Maecenas sed diam eget risus varius blandit sit amet non magna. Cras mattis consectetur purus sit amet fermentum. Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+<!--read_more-->
+<p>
+	Maecenas faucibus mollis interdum. Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+<p>
+	Maecenas sed diam eget risus varius blandit sit amet non magna. Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+]]></field>
+    </entry>
+    <entry title="Phil McDonald" url_title="phil-mcdonald" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="people_alphabetise" type="pt_dropdown" formatting="xhtml"><![CDATA[ m]]></field>
+      <field field_name="people_role" type="text" formatting="none"><![CDATA[ Assistant to the Regional Manager]]></field>
+      <field field_name="people_qualifications" type="text" formatting="none"><![CDATA[ GCE]]></field>
+      <field field_name="people_phone" type="text" formatting="none"><![CDATA[ 02 1234 5678]]></field>
+      <field field_name="people_email" type="text" formatting="none"><![CDATA[ test@test.com]]></field>
+      <field field_name="people_photo" type="file" formatting="none"><![CDATA[ {filedir_4}phil.png]]></field>
+      <field field_name="people_bio" type="wygwam" formatting="none"><![CDATA[ <p>
+	Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla. Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum.</p>
+<!--read_more-->
+<p>
+	Donec sed odio dui. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.</p>
+<p>
+	Nullam quis risus eget urna mollis ornare vel eu leo. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+]]></field>
+    </entry>
+    <entry title="Barry Bullwinkle" url_title="barry-bullwinkle" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="people_alphabetise" type="pt_dropdown" formatting="xhtml"><![CDATA[ b]]></field>
+      <field field_name="people_role" type="text" formatting="none"><![CDATA[ General Manager]]></field>
+      <field field_name="people_qualifications" type="text" formatting="none"></field>
+      <field field_name="people_phone" type="text" formatting="none"><![CDATA[ 02 1234 5678]]></field>
+      <field field_name="people_email" type="text" formatting="none"><![CDATA[ test@test.com]]></field>
+      <field field_name="people_photo" type="file" formatting="none"><![CDATA[ {filedir_4}filbert.png]]></field>
+      <field field_name="people_bio" type="wygwam" formatting="none"><![CDATA[ <p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+<p>
+	Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+]]></field>
+    </entry>
+    <entry title="Steve Stiltz" url_title="steve-stiltz" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="people_alphabetise" type="pt_dropdown" formatting="xhtml"><![CDATA[ s]]></field>
+      <field field_name="people_role" type="text" formatting="none"></field>
+      <field field_name="people_qualifications" type="text" formatting="none"></field>
+      <field field_name="people_phone" type="text" formatting="none"><![CDATA[ 02 1234 5678]]></field>
+      <field field_name="people_email" type="text" formatting="none"></field>
+      <field field_name="people_photo" type="file" formatting="none"><![CDATA[ {filedir_4}jerry.png]]></field>
+      <field field_name="people_bio" type="wygwam" formatting="none"><![CDATA[ <p>
+	Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+<!--read_more-->
+<p>
+	Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla sed consectetur. Sed posuere consectetur est at lobortis.</p>
+]]></field>
+    </entry>
+    <entry title="Chris Buttery" url_title="chris-buttery" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="people_alphabetise" type="pt_dropdown" formatting="xhtml"><![CDATA[ b]]></field>
+      <field field_name="people_role" type="text" formatting="none"><![CDATA[ Web Designer]]></field>
+      <field field_name="people_qualifications" type="text" formatting="none"></field>
+      <field field_name="people_phone" type="text" formatting="none"></field>
+      <field field_name="people_email" type="text" formatting="none"><![CDATA[ chris.buttery@newism.com.au]]></field>
+      <field field_name="people_photo" type="file" formatting="none"><![CDATA[ {filedir_4}profile1_saturated.png]]></field>
+      <field field_name="people_bio" type="wygwam" formatting="none"><![CDATA[ <p>
+	Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+<p>
+	Cras justo odio, dapibus ac facilisis in, egestas eget quam. Curabitur blandit tempus porttitor. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+<p>
+	Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+<p>
+	Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec id elit non mi porta gravida at eget metus. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla.</p>
+]]></field>
+    </entry>
+  </channel>
+  <channel channel_name="galleries" channel_title="Galleries" channel_url="/galleries" channel_description="" channel_lang="en" cat_group="category_group_4" status_group="" deft_status="open" field_group="field_group_9" search_excerpt="28" deft_category="" deft_comments="y" channel_require_membership="y" channel_max_chars="" channel_html_formatting="all" channel_allow_img_urls="y" channel_auto_link_urls="n" channel_notify="n" comment_url="/galleries/view" comment_system_enabled="y" comment_require_membership="n" comment_use_captcha="n" comment_moderate="n" comment_max_chars="5000" comment_timelock="0" comment_require_email="y" comment_text_formatting="xhtml" comment_html_formatting="safe" comment_allow_img_urls="n" comment_auto_link_urls="n" comment_notify="n" comment_notify_authors="n" comment_notify_emails="" comment_expiration="0" search_results_url="/galleries/view" ping_return_url="/galleries/view" show_button_cluster="y" rss_url="" enable_versioning="n" max_revisions="10" default_entry_title="" url_title_prefix="" live_look_template="0">
+    <entry title="Gallery 1" url_title="gallery-1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="galleries_thumbnail" type="assets" formatting="none"><![CDATA[ {filedir_5}Gallery1/ben.png]]></field>
+      <field field_name="galleries_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	About this gallery&nbsp;Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ullamcorper nulla non metus auctor fringilla. Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean lacinia bibendum nulla sed consectetur.</p>
+]]></field>
+    </entry>
+    <entry title="Gallery 2" url_title="gallery-2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="galleries_thumbnail" type="assets" formatting="none"><![CDATA[ {filedir_5}Gallery2/wayde.png]]></field>
+      <field field_name="galleries_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	About this gallery.<br />
+	Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis euismod.</p>
+<p>
+	Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Donec ullamcorper nulla non metus auctor fringilla.</p>
+]]></field>
+    </entry>
+    <entry title="Gallery 3" url_title="gallery-3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="galleries_thumbnail" type="assets" formatting="none"><![CDATA[ {filedir_5}Gallery3/ant.png]]></field>
+      <field field_name="galleries_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	About this gallery.<br />
+	Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+]]></field>
+    </entry>
+  </channel>
+  <channel channel_name="events" channel_title="Events" channel_url="/events/details" channel_description="" channel_lang="en" cat_group="category_group_6" status_group="status_group_5" deft_status="open" field_group="field_group_10" search_excerpt="32" deft_category="" deft_comments="y" channel_require_membership="y" channel_max_chars="" channel_html_formatting="all" channel_allow_img_urls="y" channel_auto_link_urls="y" channel_notify="n" comment_url="/events/details" comment_system_enabled="y" comment_require_membership="n" comment_use_captcha="n" comment_moderate="n" comment_max_chars="5000" comment_timelock="0" comment_require_email="y" comment_text_formatting="xhtml" comment_html_formatting="safe" comment_allow_img_urls="n" comment_auto_link_urls="y" comment_notify="n" comment_notify_authors="n" comment_notify_emails="" comment_expiration="0" search_results_url="/events/details" ping_return_url="" show_button_cluster="y" rss_url="" enable_versioning="n" max_revisions="10" default_entry_title="" url_title_prefix="" live_look_template="0">
+    <entry title="Event 3" url_title="event-3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="events_start_date" type="date" formatting="none"><![CDATA[ 1337149230]]></field>
+      <field field_name="events_end_date" type="date" formatting="none"><![CDATA[ 1340950830]]></field>
+      <field field_name="events_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+<!--read_more-->
+<p>
+	&nbsp;</p>
+<p>
+	Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+<p>
+	Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras mattis consectetur purus sit amet fermentum. Maecenas faucibus mollis interdum. Curabitur blandit tempus porttitor.</p>
+<p>
+	Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+]]></field>
+    </entry>
+    <entry title="Event 2" url_title="event-2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="events_start_date" type="date" formatting="none"><![CDATA[ 1334297979]]></field>
+      <field field_name="events_end_date" type="date" formatting="none"><![CDATA[ 1335766779]]></field>
+      <field field_name="events_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec ullamcorper nulla non metus auctor fringilla.</p>
+<!--read_more-->
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+<p>
+	Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+<p>
+	Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras mattis consectetur purus sit amet fermentum. Maecenas faucibus mollis interdum. Curabitur blandit tempus porttitor.</p>
+<p>
+	Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+]]></field>
+    </entry>
+    <entry title="Event 1" url_title="event-1" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field field_name="events_start_date" type="date" formatting="none"><![CDATA[ 1333174749]]></field>
+      <field field_name="events_end_date" type="date" formatting="none"><![CDATA[ 1335507549]]></field>
+      <field field_name="events_content" type="wygwam" formatting="none"><![CDATA[ <p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+<!--read_more-->
+<p>
+	Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+<p>
+	Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+<p>
+	Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras mattis consectetur purus sit amet fermentum. Maecenas faucibus mollis interdum. Curabitur blandit tempus porttitor.</p>
+<p>
+	Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+]]></field>
+    </entry>
+  </channel>
+</channels>
+</generator_bundle>

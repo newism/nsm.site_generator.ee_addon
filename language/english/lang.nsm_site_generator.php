@@ -18,13 +18,13 @@ $lang = array(
 	'nsm_site_generator_module_name' => 'NSM Site Generator',
 	'nsm_site_generator_module_description' => 'Generate scaffold templates, channels etc.',
 
-	'index_page_title' => 'NSM Site Generator: Import',
+	'index_page_title' => 'NSM Site Generator: Import Site Structure',
 	'index_nav_title' => 'Import',
 	
 	'configure_import_page_title' => '2. Configure Import',
 	'import_page_title' => '3. Import Complete',
 
-	'configure_export_page_title' => 'NSM Site Generator: Export',
+	'configure_export_page_title' => 'NSM Site Generator: Export Site Structure',
 	'configure_export_nav_title' => 'Export',
 	'export_page_title' => 'Export Complete',
 
@@ -32,7 +32,7 @@ $lang = array(
 	'save_extension_settings' => 'Save extension settings',
 
 	/* Messages / Alerts */
-	'alert.warning.no_templates' => 'No generator bundles were found. Templates must be placed in "%s". Please check the extension settings.',
+	'alert.warning.no_templates' => 'No site structure bundles were found. Templates must be placed in "%s". Please check the extension settings.',
 	'alert.warning.truncate_db' => '<p><strong>Caution:</strong> Checking this box will automatically remove all of the following in the database:</p>
 								<ul class="fiveCol">
 									<li>Channels</li>

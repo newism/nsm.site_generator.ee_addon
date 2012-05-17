@@ -59,13 +59,13 @@
 
     <?php foreach ($channels as $count => $channel) : ?>
     <div id="channel_prefs-<?= $channel['channel_id'] ?>">
-    <table class="">
+    <table>
         <thead>
             <tr>
                 <th scope="col">Attribute</th>
                 <th scope="col" style="width:20px">ID</th>
                 <th scope="col">Title</th>
-                <th scope="col" style="width:70px">Export <input type="checkbox" style="float:right" /></th>
+                <th scope="col" style="width:40px; text-align:right">Export</th>
             </tr>
         </thead>
         <tbody>
@@ -73,27 +73,50 @@
                 <th scope="row">Channel Title:</th>
                 <td style="text-align:right"><?= $channel['channel_id'] ?></td>
                 <td><?= $channel['channel_title'] ?></td>
-                <td rowspan="<?= count($channel['cat_group'])+3 ?>" style="text-align:right; vertical-align:top">
+
+                <?php 
+                    $cat_count = count($channel['cat_group']);
+                    $rowspan = ($cat_count) ? $cat_count : 1; 
+                    $rowspan =+ 4;
+                ?>
+                <td rowspan="<?= $rowspan ?>" style="text-align:right; vertical-align:top;">
                     <?=
                         $EE->nsm_site_generator_helper->checkbox(
                             $input_prefix.'[channels]['.$channel['channel_id'].'][enabled]',
                             true,
-                            array_key_exists($channel['channel_id'], $data['channels']),
+                            $data['channels'][$channel['channel_id']]['enabled'],
                             array('generate_shadow' => true)
                         );
                     ?>
                 </td>
             </tr>
+
+            <?php if(false != (string)$channel['field_group_name']) : ?>
             <tr class="even">
-                <th scope="row">Field Group:</th>
-                <td style="text-align:right"><?= print($channel['field_group_id']); ?></td>
-                <td><?= print($channel['field_group_name']); ?></td>
+                <th scope="row">Field Group:<?php $channel['field_group_name']; ?>
+                </th>
+                <td style="text-align:right"><?= $channel['field_group_id']; ?></td>
+                <td><?= $channel['field_group_name']; ?></td>
             </tr>
+            <?php else: ?>
+            <tr class="even alert error">
+                <th scope="row">Field Group:<?php $channel['field_group_name']; ?></th>
+                <td colspan="2">No field groups assigned to this channel.</td>
+            </tr>
+            <?php endif; ?>
+
+            <?php if(false != (string)$channel['status_group_name']) : ?>
             <tr class="odd">
                 <th scope="row">Status Group:</th>
                 <td style="text-align:right"><?= $channel['status_group_id']; ?></td>
                 <td><?= $channel['status_group_name']; ?></td>
             </tr>
+            <?php else: ?>
+            <tr class="odd alert error">
+                <th scope="row">Status Group:</th>
+                <td colspan="2">No status groups assigned to this channel.</td>
+            </tr>
+            <?php endif; ?>
 
             <?php if(empty($channel['cat_group'])) : ?>
                 <tr class="even alert error">
@@ -126,7 +149,7 @@
                     <?php endif; ?>
                     <td style="text-align:right"><?= $entry['entry_id']; ?></td>
                     <td><?= $entry['title']; ?> (<?= $entry['url_title']; ?>)</td>
-                    <td style="text-align:right; vertical-align:top">
+                    <td style="text-align:right; vertical-align:top;">
                         <?=
                             $EE->nsm_site_generator_helper->checkbox(
                                 $input_prefix.'[channels]['.$channel['channel_id'].'][entries][]',

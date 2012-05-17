@@ -61,19 +61,18 @@
 				<td>
 				    <?= count($channel->entry); ?>
 				</td>
-				<td style="white-space:nowrap; vertical-align: top">
+				<td class="error" style="white-space:nowrap; vertical-align: top">
+					 <input 
+    					    style="float:right; margin-left:9px; margin-top:3px"
+    						type="checkbox" 
+    						class="NSM_MagicCheckboxesTrigger" 
+    						name="<?=$input_prefix?>[channels][]" 
+    						value="<?= $channel['channel_name'] ?>"
+    					/>
 					<?php if (in_array($channel['channel_name'], $existing_channels)) : ?>
-					<div class="error">This channel already exists.</div>
-					<?php else: ?>
-					<input 
-					    style="float:right"
-						type="checkbox" 
-						class="NSM_MagicCheckboxesTrigger" 
-						name="<?=$input_prefix?>[channels][]" 
-						value="<?= $channel['channel_name'] ?>"
-					/>
+					This channel already exists.
 					<?php endif; ?>
-				</td>
+                   				</td>
 			</tr>
 			<?php endforeach; ?>
 		</tbody>

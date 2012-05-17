@@ -1,6 +1,6 @@
 <div class="tg">
 	<h2>Site bundles</h2>
-	<div class="alert info">Choose a generator bundle from the options below. Each generator may require specific extensions, modules or plugins; be sure to check the specific requirements.</div>
+	<div class="alert info">Choose a site structure bundle from the options below. Each bundle may require specific extensions, modules or plugins post import; be sure to check the specific requirements.</div>
 	<table>
 		<thead>
 			<tr>
@@ -29,21 +29,22 @@
 						<?php 
 						    $authors = array(); 
 							foreach ($generator->authors->author as $author) {
-								$authors[] = ' <a href='. $author['url'] .'>'. $author['name'] .'</a>';
+								$authors[] = '<a href='. $author['url'] .'>'. $author['name'] .'</a>';
 							}
-							print(implode(", ",$authors));
+							print(implode("<br />",$authors));
 						?>
 					</td>
 					<td><a href="<?= $generator->download_url ?>">Documentation</a></td>
-                    <td style="white-space: nowrap">
-                        <?php if($required_addons = $generator->xpath("requirements/requirement[@type='addon']")) : ?>
-                        <?php foreach ($required_addons as $addon): ?>
-                            <a href="<?= $addon["download_url"] ?>"><?= $addon["title"]; ?> <?= $addon["version"]; ?></a><br />
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-
+                    <td>
+                        <?php 
+                            $addons = array();
+                            foreach ($generator->xpath("requirements/requirement[@type='addon']") as $required_addon) {
+                                $addons[] = '<a href="'. $required_addon["url"].'">'.$required_addon["name"].' '. $required_addon["version"].'</a>';
+                            }
+                            print(implode("<br />",$addons));
+                        ?>
                     </td>
-                    <td><a href="<?= $generator["generator_url"] ?>" class="btn">Configure</a></td>
+                    <td><a href="<?= $generator["generator_url"] ?>" class="btn">Configure Import</a></td>
 				</tr>
 				<?php endforeach; ?>
 			<?php endif; ?>
