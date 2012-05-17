@@ -10,9 +10,7 @@
 	<table class="data">
 		<tbody>
 			<tr>
-				<th scope="row" rowspan="2">
-					Truncte DB
-				</th>
+				<th scope="row">Truncte DB</th>
 				<td>
 					<?= Nsm_site_generator_helper::yesNoRadioGroup("{$input_prefix}[general][truncate_db]", FALSE); ?>
 				</td>
@@ -28,10 +26,11 @@
 		<thead>
 			<tr style="white-space:nowrap">
 				<th scope="col" style="width:100px;">Channel</th>
-				<th scope="col">Notes</th>
+				<th scope="col">Description</th>
 				<th scope="col">Field Group</th>
 				<th scope="col">Status Group</th>
-				<th scope="col">Category Group</th>
+				<th scope="col">Category Group(s)</th>
+				<th scope="col">Entries</th>
 				<th scope="col" style="width:100px;">
 					<input type="checkbox" class="NSM_MagicCheckboxesTrigger" style="float:right" /> Import
 				</th>
@@ -41,21 +40,26 @@
 			<?php foreach($channels as $count => $channel) : ?>
     			<tr <?php if (in_array($channel['channel_name'], $existing_channels)) : ?>class="alert error"<?php endif; ?>>
 				<th scope="row" style="width:auto; vertical-align: top"><?= $channel['channel_title'] ?></th>
-				<td><?= $channel->description[0] ?></td>
+				<td><?= $channel['channel_description'] ?></td>
 				<td style="white-space:nowrap; vertical-align: top">
-					<?php if($custom_field_group = $xml->xpath("custom_field_groups/group[@id='{$channel['field_group']}']")) : ?>
+					<?php if($custom_field_group = $xml->xpath("field_groups/group[@group_ref_id='{$channel['field_group']}']")) : ?>
 						<?= $custom_field_group[0]["group_name"] ?>
 					<?php endif; ?>
 				</td>
 				<td style="white-space:nowrap; vertical-align: top">
-					<?php if($status_group = $xml->xpath("status_groups/group[@id='{$channel['status_group']}']")) : ?>
+					<?php if($status_group = $xml->xpath("status_groups/group[@group_ref_id='{$channel['status_group']}']")) : ?>
 						<?= $status_group[0]["group_name"] ?>
 					<?php endif; ?>
 				</td>
 				<td style="white-space:nowrap; vertical-align: top">
-					<?php if($category_group = $xml->xpath("category_groups/group[@id='{$channel['cat_group']}']")) : ?>
-						<!--a href="#cat_group-<?= $category_group[0]['id'] ?>"--><?= $category_group[0]["group_name"] ?><!-- /a -->
-					<?php endif; ?>
+					<?php foreach(explode("|", $channel['cat_group']) as $category_group_id) : ?>
+					    <?php if($category_group = $xml->xpath("category_groups/group[@group_ref_id='{$category_group_id}']")) : ?>
+    					    <?= $category_group[0]['group_name']; ?><br />
+					    <?php endif; ?>
+					<?php endforeach; ?>
+				</td>
+				<td>
+				    <?= count($channel->entry); ?>
 				</td>
 				<td style="white-space:nowrap; vertical-align: top">
 					<?php if (in_array($channel['channel_name'], $existing_channels)) : ?>

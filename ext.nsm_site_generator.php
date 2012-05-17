@@ -64,7 +64,7 @@ class Nsm_site_generator_ext
 	}
 
 
-    function nsm_site_generator_process_field($field){
+    function nsm_site_generator_process_field($field) {
         return $field;
     }
 

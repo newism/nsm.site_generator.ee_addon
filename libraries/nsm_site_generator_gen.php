@@ -65,7 +65,7 @@ class Nsm_site_generator_gen
 	 * Required custom field groups fetched from @see Nsm_site_generator_gen::$config. selected channels' field_group attributes
 	 * @var array array(string => array(..)|string)
 	 */
-	protected $custom_field_groups = array();
+	protected $field_groups = array();
 
 	/**
 	* Nsm_site_generator_gen constructor
@@ -76,17 +76,17 @@ class Nsm_site_generator_gen
 	{
 		$this->EE =& get_instance(); 
 		$this->db =& $this->EE->db;
-		
+
 		$this->site_template = $site_template;
 		$this->config = $config;
-		
+
 		$this->EE->lang->loadfile('nsm_site_generator');
 	}
 
 	/**
 	* Go through the config XML and the user's input and figure out what needs to be created, using dependencies etc
 	* 
-	* Sets $this->channels, $this->template_groups, $this->category_groups and $this->custom_field_groups
+	* Sets $this->channels, $this->template_groups, $this->category_groups and $this->field_groups
 	* Uses $this->defaults()->channel(..) etc to set default values
 	*/
 	protected function parse_config()
@@ -101,12 +101,12 @@ class Nsm_site_generator_gen
 		$required_cat_groups = array();
 		$required_status_groups = array();
 
-
 		/* CHANNELS */
 		$this->_log("Parsing channels config");
 		// loop over each channel in the config
 		foreach ($this->config->xpath('//channels/channel') as $channel)
 		{
+
 			// create a temp key
 			$key = (string)$channel['channel_name'];
 
@@ -118,7 +118,11 @@ class Nsm_site_generator_gen
 
 				// set the cat, field, status dependencies
 				if (isset($channel['field_group'])){ $required_field_groups[] = (string)$channel['field_group']; }
-				if (isset($channel['cat_group'])){ $required_cat_groups[] = (string)$channel['cat_group']; }
+				if (isset($channel['cat_group'])){ 
+				    $cat_groups = (string)$channel['cat_group'];
+				    $cat_groups = explode("|", $cat_groups);
+				    $required_cat_groups = array_merge($required_cat_groups, $cat_groups);
+				}
 				if (isset($channel['status_group'])){ $required_status_groups[] = (string)$channel['status_group']; }
 
                 $this->channels[$key]['entries'] = array();
@@ -126,12 +130,13 @@ class Nsm_site_generator_gen
 					$this->channels[$key]['entries'][] = $entry;
 				}
 
+
 				// collate all our template globs
-				foreach ($channel->require as $dep) {
-					$a = $dep->attributes();
-					if ((string)$a->type == "template")
-						$required_templates[] = (string)$a->target;
-				}
+                // foreach ($channel->require as $dep) {
+                //  $a = $dep->attributes();
+                //  if ((string)$a->type == "template")
+                //      $required_templates[] = (string)$a->target;
+                // }
 			}
 		}
 
@@ -141,7 +146,7 @@ class Nsm_site_generator_gen
 		// Loop over all the category groups in the config
 		foreach ($this->config->xpath('//category_groups/group') as $cg)
 		{
-			$key = (string)$cg['id'];
+			$key = (string)$cg['group_ref_id'];
 			// if this config category group is in our required category groups
 			if(in_array($key, $required_cat_groups))
 			{
@@ -157,7 +162,7 @@ class Nsm_site_generator_gen
 		// Loop over all the status groups in the config
 		foreach ($this->config->xpath('//status_groups/group') as $sg)
 		{
-			$key = (string)$sg['id'];
+			$key = (string)$sg['group_ref_id'];
 			// if this config status group is in our required status groups
 			if(in_array($key, $required_status_groups))
 			{
@@ -171,25 +176,31 @@ class Nsm_site_generator_gen
 		}
 
 
-		/* CUSTOM FIELD GROUPS */
-		$this->_log("Parsing custom fields config");
+		/* FIELD GROUPS */
+		$this->_log("Parsing fields config");
 		// Loop over all the custom field groups in the config
-		foreach ($this->config->xpath('//custom_field_groups/group') as $cfg)
+		foreach ($this->config->xpath('//field_groups/group') as $cfg)
 		{
 			// get the custom field group
-			$key = (string)$cfg['id'];
+			$key = (string)$cfg['group_ref_id'];
 			// if this group is in the required groups
 			if(in_array($key, $required_field_groups))
 			{
-				$this->custom_field_groups[$key]['attrs'] = $this->defaults()->custom_field_group($this->xmlAttributes($cfg->attributes()));
-				$this->custom_field_groups[$key]['fields'] = array();
+				$this->field_groups[$key]['attrs'] = $this->defaults()->field_group($this->xmlAttributes($cfg->attributes()));
+				$this->field_groups[$key]['fields'] = array();
 				foreach ($cfg->field as $field)
 				{
 					$field_key = (string)$field['field_name'];
-					$this->custom_field_groups[$key]['fields'][$field_key] = $this->defaults()->custom_field($this->xmlAttributes($field->attributes()));
+					$this->field_groups[$key]['fields'][$field_key] = $this->defaults()->custom_field($this->xmlAttributes($field->attributes()));
 				}
 			}
 		}
+
+        // var_dump($this->channels);
+        // var_dump($this->category_groups);
+        // var_dump($this->status_groups);
+        // var_dump($this->field_groups);
+        // exit;
 
 		// /* TEMPLATES */
 		// 
@@ -323,6 +334,9 @@ class Nsm_site_generator_gen
 			$options
 		);
 
+        
+
+
 		// parse the config xml and decide what we need to generate based on $options
 		$this->parse_config();
 
@@ -336,13 +350,13 @@ class Nsm_site_generator_gen
             $this->_truncateDB();
         }
 
-
 		$this->generateCategories();
 		$this->generateStatuses();
 		$this->generateCustomFields();
 		$this->generateChannels();
 		$this->generateRelationships();
 		$this->generateEntries();
+
 		$this->generateAfter();
 	}
 
@@ -547,13 +561,13 @@ class Nsm_site_generator_gen
 	protected function generateCustomFieldsBefore() { return TRUE; }
 	protected function generateCustomFields()
 	{
-        $custom_field_groups_created = false;
+        $field_groups_created = false;
 		
 		$this->_logTitle("Generating custom fields");
 
 		if (!$this->generateCustomFieldsBefore()) return;
 
-		foreach ($this->custom_field_groups as $cfg_key => $cfg)
+		foreach ($this->field_groups as $cfg_key => $cfg)
 		{
 			// check if the group exists.
 			if ($cfg_id = $this->_checkExists(
@@ -571,14 +585,14 @@ class Nsm_site_generator_gen
 			else
 			{
 				// build and execute an insert into the db for the category group
-				$query = $this->db->insert('exp_field_groups',$this->custom_field_groups[$cfg_key]['attrs']);
+				$query = $this->db->insert('exp_field_groups',$this->field_groups[$cfg_key]['attrs']);
 				$cfg['attrs']['group_id'] = $cfg_id =  $this->db->insert_id();
 
 				$this->_logSuccess("log_ok_created_cfg", $cfg['attrs']);
 			}
 
 			// set the group_id so we can use it the templates
-			$this->custom_field_groups[$cfg_key]['attrs']['group_id'] = $cfg_id;
+			$this->field_groups[$cfg_key]['attrs']['group_id'] = $cfg_id;
 
 			if(is_array($cfg['fields']))
 			{
@@ -610,11 +624,7 @@ class Nsm_site_generator_gen
 						$f = $this->defaults()->custom_field($f);
 
 						// No settings
-						$settings = FALSE;
-
-						// Test the field settings, are they not an array
-						if(!is_array($f['field_settings']))
-							$settings = eval("return ".$f['field_settings'].";");
+						$settings = $f['field_settings'];
 
 						// One more check
 						if(!is_array($settings))
@@ -657,22 +667,22 @@ class Nsm_site_generator_gen
 						}
 
 						$this->_logSuccess("log_ok_created_field", array_merge(array("group_name" => $cfg['attrs']['group_name']), $f));
-                        $custom_field_groups_created = true;
+                        $field_groups_created = true;
 						$count++;
 					}
 
 					// set the group_id so we can use it the templates
 					// $this->custom_fields[$cfg_key]['fields'][$f_id] = $f;
 					// $this->custom_fields[$cfg_key]['fields'][$f_id]['status_id'] = $f;
-					$this->custom_field_groups[$cfg_key]['fields'][$f['field_name']] = $f;
-					$this->custom_field_groups[$cfg_key]['fields'][$f['field_name']]['field_id'] = $f_id;
-					$this->custom_field_groups[$cfg_key]['fields'][$f['field_name']]['group_id'] = $cfg_id;
+					$this->field_groups[$cfg_key]['fields'][$f['field_name']] = $f;
+					$this->field_groups[$cfg_key]['fields'][$f['field_name']]['field_id'] = $f_id;
+					$this->field_groups[$cfg_key]['fields'][$f['field_name']]['group_id'] = $cfg_id;
 				}
 			}
 		}
 
-		if(!$custom_field_groups_created) {
-			$this->_log("log_notice_no_custom_field_groups_created");
+		if(!$field_groups_created) {
+			$this->_log("log_notice_no_field_groups_created");
 		}
 
 		$this->generateCustomFieldsAfter();
@@ -712,14 +722,20 @@ class Nsm_site_generator_gen
 				// Set the field group
 				$channel['attrs']['field_group'] = (
 					isset($channel['attrs']['field_group'])
-					&& isset($this->custom_field_groups[ $channel['attrs']['field_group'] ]['attrs']['group_id'])
-				) ? $this->custom_field_groups[$channel['attrs']['field_group']]['attrs']['group_id'] : '';
+					&& isset($this->field_groups[ $channel['attrs']['field_group'] ]['attrs']['group_id'])
+				) ? $this->field_groups[$channel['attrs']['field_group']]['attrs']['group_id'] : '';
 
 				// Set the category group
-				$channel['attrs']['cat_group'] = (
-					isset($channel['attrs']['cat_group'])
-					&& isset($this->category_groups[$channel['attrs']['cat_group']]['attrs']['group_id'])
-				) ? $this->category_groups[$channel['attrs']['cat_group']]['attrs']['group_id'] : '';
+				if(isset($channel['attrs']['cat_group'])) {
+				    $cat_group_ref_ids = explode("|", $channel['attrs']['cat_group']);
+				    $tmp = array();
+				    foreach($cat_group_ref_ids as $id) {
+				        if(isset($this->category_groups[$id])) {
+				            $tmp[] = $this->category_groups[$id]['attrs']['group_id'];
+				        }
+				    }
+				    $channel['attrs']['cat_group'] = implode("|", $tmp);
+				}
 
 				// Set the status group
 				$channel['attrs']['status_group'] = (
@@ -767,9 +783,9 @@ class Nsm_site_generator_gen
         }
 
 		// for each of the required custom field groups
-		foreach ($this->custom_field_groups as $custom_field_group_name => $field_group)
+		foreach ($this->field_groups as $field_group_name => $field_group)
 		{
-			// check for group_id; might not be set if the custom_field_group didn't end up being saved
+			// check for group_id; might not be set if the field_group didn't end up being saved
 			if(!isset($field_group['attrs']['group_id']))
 				continue;
 
@@ -825,8 +841,7 @@ class Nsm_site_generator_gen
 	* Generate entries
 	*/
 	protected function generateEntriesBefore() { return TRUE; }
-	protected function generateEntries()
-	{
+	protected function generateEntries() {
 	    $entries_created = false;
 		$this->_logTitle("Generating channel entries");
 
@@ -843,7 +858,7 @@ class Nsm_site_generator_gen
 		$this->EE->api->instantiate('channel_fields');
 
 		foreach ($this->channels as $channel) {
-		    
+
 			$channel_id = $channel['attrs']['channel_id'];
 
 			$channel_field_query = $this->EE->db->query("SELECT f.field_name, f.field_id 
@@ -877,40 +892,23 @@ class Nsm_site_generator_gen
 			}
 
 			foreach($channel['entries'] as $entry) {
-			    $data = array();
+
+			    $data = $this->xmlAttributes($entry->attributes());
 
                 foreach ($entry->field as $field) {
+
+                    // if ($this->EE->extensions->active_hook('nsm_site_generator_process_field') === TRUE)
+                    //                     {
+                    //                         $field = $this->EE->extensions->universal_call('nsm_site_generator_process_field', $field);
+                    //                         if ($this->EE->extensions->end_script === TRUE) return;
+                    //                     }
+
 				    $field_attrs = $this->xmlAttributes($field->attributes());
 				    $field_data = (string)$field;
-				    $field_id = $field_attrs['id'];
-                    $data[$field_id] = $field_data;
-                }
+				    $field_id = $channel_fields[$field_attrs['field_name']];
+                    $data['field_id_'.$field_id] = $field_data;
 
-				foreach ($entry->custom_field as $field) {
-
-
-                    if ($this->EE->extensions->active_hook('channel_module_fetch_pagination_data') === TRUE)
-                    {
-                        $field = $this->EE->extensions->universal_call('channel_module_fetch_pagination_data', $field);
-                        if ($this->EE->extensions->end_script === TRUE) return;
-                    }
-
-				    $field_attrs = $this->xmlAttributes($field->attributes());
-				    $field_data = $field;
-
-				    if(false === isset($channel_fields[$field_attrs['id']])) {
-				        continue;
-				    }
-
-				    $field_id = $channel_fields[$field_attrs['id']];
-
-                    if(is_a($field_data, 'SimpleXMLElement')){
-                        $field_data = (string)$field_data;
-                    }
-
-					$data["field_id_".$field_id] = $field_data;
-
-					if(true === isset($field_attrs['formatting'])) {
+                    if(true === isset($field_attrs['formatting'])) {
     					$data["field_ft_".$field_id] = $field_attrs['formatting'];
 					}
 				}
@@ -928,6 +926,7 @@ class Nsm_site_generator_gen
                 }
 
 				$this->EE->api_channel_fields->setup_entry_settings($channel_id, $data);
+
 				if ($this->EE->api_channel_entries->submit_new_entry($channel_id, $data) === FALSE)
                 {
                     $this->_logError(lang("log_error_creating_entry"), array("entry_title" => $data["title"]));
@@ -1098,7 +1097,7 @@ class Nsm_site_generator_gen_defaults
 
 	public function category_group($data)
 	{
-		unset($data['id']);
+		unset($data['group_ref_id']);
 		return array_merge(array(
 			'site_id'				=> $this->site_id,
 			'sort_order'			=> 'a',
@@ -1119,7 +1118,7 @@ class Nsm_site_generator_gen_defaults
 
 	public function status_group($data)
 	{
-		unset($data['id']);
+		unset($data['group_ref_id']);
 		return array_merge(array(
 			'site_id'				=> $this->site_id
 		), $data);
@@ -1127,15 +1126,15 @@ class Nsm_site_generator_gen_defaults
 
 	public function status($data)
 	{
-		unset($data['id']);
+		unset($data['group_ref_id']);
 		return array_merge(array(
 			'site_id'				=> $this->site_id
 		), $data);
 	}
 
-	public function custom_field_group($data)
+	public function field_group($data)
 	{
-		unset($data['id']);
+		unset($data['group_ref_id']);
 		return array_merge(array(
 			'site_id'			=> $this->site_id
 		), $data);

@@ -5,9 +5,9 @@
 		<thead>
 			<tr>
 				<th scope="col">Bundle Title</th>
+				<th scope="col">Version</th>
 				<th scope="col">Description</th>
 				<th scope="col">Author</th>
-				<th scope="col">Version</th>
 				<th scope="col">Documentation</th>
                 <th scope="col">Required Addons</th>
                 <th scope="col"></th>
@@ -21,19 +21,20 @@
 				<?php foreach ($generators as $count => $generator) : ?>
 				<tr>
 					<th scope="row" style="width:auto">
-						<a href="<?= $generator["generator_url"] ?>"><?= $generator["title"] ?></a>
+						<a href="<?= $generator["generator_url"] ?>"><?= $generator->title ?></a>
 					</th>
+					<td style="white-space: nowrap"><?= $generator->version ?></td>
 					<td><?= $generator->description; ?></td>
-
 					<td style="white-space: nowrap">
-						<?php $authors = ''; 
-							foreach ($generator->authors->author as $author)
+						<?php 
+						    $authors = array(); 
+							foreach ($generator->authors->author as $author) {
 								$authors[] = ' <a href='. $author['url'] .'>'. $author['name'] .'</a>';
+							}
 							print(implode(", ",$authors));
 						?>
 					</td>
-					<td style="white-space: nowrap"><?= $generator["version"] ?></td>
-					<td><a href="<?= $generator["download_url"] ?>">Documentation</a></td>
+					<td><a href="<?= $generator->download_url ?>">Documentation</a></td>
                     <td style="white-space: nowrap">
                         <?php if($required_addons = $generator->xpath("requirements/requirement[@type='addon']")) : ?>
                         <?php foreach ($required_addons as $addon): ?>

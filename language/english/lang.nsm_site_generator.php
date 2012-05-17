@@ -18,13 +18,13 @@ $lang = array(
 	'nsm_site_generator_module_name' => 'NSM Site Generator',
 	'nsm_site_generator_module_description' => 'Generate scaffold templates, channels etc.',
 
-	'index_page_title' => 'NSM Site Generator: Dashboard',
-	'index_nav_title' => 'Dashboard',
+	'index_page_title' => 'NSM Site Generator: Import',
+	'index_nav_title' => 'Import',
 	
 	'configure_import_page_title' => '2. Configure Import',
 	'import_page_title' => '3. Import Complete',
 
-	'configure_export_page_title' => 'Export',
+	'configure_export_page_title' => 'NSM Site Generator: Export',
 	'configure_export_nav_title' => 'Export',
 	'export_page_title' => 'Export Complete',
 
