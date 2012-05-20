@@ -1041,7 +1041,6 @@ class Nsm_site_generator_gen
 		$sql[] = "TRUNCATE TABLE `exp_actions`";
 		$sql[] = "TRUNCATE TABLE exp_html_buttons;";
 
-
 		$query = $this->db->query("show columns from exp_channel_data");
 		$sql_parts = array();
 		if($query->num_rows > 0)

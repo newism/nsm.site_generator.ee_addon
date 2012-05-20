@@ -13,6 +13,7 @@
 				<th scope="row">Truncte DB</th>
 				<td>
 					<?= Nsm_site_generator_helper::yesNoRadioGroup("{$input_prefix}[general][truncate_db]", FALSE); ?>
+					<!-- <?= lang('alert.warning.truncate_db'); ?> -->
 				</td>
 			</tr>
 		</tbody>
@@ -21,7 +22,9 @@
 
 <div class="tg" id="channels">
 	<h2>Which channels would you like to import?</h2>
-	<div class="alert info">Check any of the options below to import the channel, it's related categories, statuses and custom fields as defined in the XML config.</div>
+	<div class="alert info">
+	    <p>Check any of the options below to import the channel, it's related fields, statuses and categories as defined in the XML config. <strong>Entries will be created even if a channel exists</strong>.</p>
+	</div>
 	<table class="data NSM_Stripeable NSM_MagicCheckboxes">
 		<thead>
 			<tr style="white-space:nowrap">

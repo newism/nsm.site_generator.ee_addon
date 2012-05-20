@@ -18,13 +18,13 @@ $lang = array(
 	'nsm_site_generator_module_name' => 'NSM Site Generator',
 	'nsm_site_generator_module_description' => 'Generate scaffold templates, channels etc.',
 
-	'index_page_title' => 'NSM Site Generator: Import Site Structure',
+	'index_page_title' => 'Site Structure: Import',
 	'index_nav_title' => 'Import',
 	
 	'configure_import_page_title' => '2. Configure Import',
 	'import_page_title' => '3. Import Complete',
 
-	'configure_export_page_title' => 'NSM Site Generator: Export Site Structure',
+	'configure_export_page_title' => 'Site Structure: Export',
 	'configure_export_nav_title' => 'Export',
 	'export_page_title' => 'Export Complete',
 
@@ -33,18 +33,8 @@ $lang = array(
 
 	/* Messages / Alerts */
 	'alert.warning.no_templates' => 'No site structure bundles were found. Templates must be placed in "%s". Please check the extension settings.',
-	'alert.warning.truncate_db' => '<p><strong>Caution:</strong> Checking this box will automatically remove all of the following in the database:</p>
-								<ul class="fiveCol">
-									<li>Channels</li>
-									<li>Channel entries</li>
-									<li>Template groups</li>
-									<li>Templates</li>
-									<li>Category groups</li>
-									<li>Categories</li>
-									<li>Custom field groups</li>
-									<li>Custom fields</li>
-									<li>Mailing lists</li>
-								</ul><br />',
+	'alert.warning.truncate_db' => '<br /><strong>Caution:</strong> Checking this box will automatically remove all of the following in the database: 
+	                                    channels, channel entries, template groups, templates, category groups, categories, custom field groups, custom fields, mailing lists.',
 
 	/** ----------------------------------------------------------------------
 	/** Log messages used by lib/Lg_site_generator
