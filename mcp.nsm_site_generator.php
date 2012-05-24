@@ -1,7 +1,8 @@
 <?php //if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 require PATH_THIRD.'nsm_site_generator/config.php';
-require 'libraries/nsm_site_generator_gen.php';
+require 'libraries/nsm_site_generator_transformer.php';
+require 'libraries/nsm_site_generator_generator.php';
 
 
 /**
@@ -43,7 +44,6 @@ class Nsm_site_generator_mcp{
         $this->template_dir = $this->ext->settings['bundle_server_path'];
     }
 
-
     /**
      * Displays the dashboard
      *
@@ -52,7 +52,7 @@ class Nsm_site_generator_mcp{
      */
     public function index()
     {
-        $view_data = array(
+        $viewData = array(
             "input_prefix" => __CLASS__,
             "error" => FALSE,
             "generators" => FALSE
@@ -75,17 +75,17 @@ class Nsm_site_generator_mcp{
                             $generator = $this->_loadXML($f);
                             $generator['folder'] = $f;
                             $generator["generator_url"] = BASE.AMP.$this->cp_url . "method=configure_import". AMP . "site_template=". $f;
-                            $view_data["generators"][] = $generator;
+                            $viewData["generators"][] = $generator;
                         }
                     }
                 }
             }
         }
 
-        if(!$view_data["generators"])
-            $view_data["error"] = sprintf(lang("alert.warning.no_templates"), $this->template_dir);
+        if(!$viewData["generators"])
+            $viewData["error"] = sprintf(lang("alert.warning.no_templates"), $this->template_dir);
 
-        $out = $this->EE->load->view("layouts/module/index", $view_data, TRUE);
+        $out = $this->EE->load->view("layouts/module/index", $viewData, TRUE);
         return $this->_renderLayout("index", $out);
     }
 
@@ -97,21 +97,30 @@ class Nsm_site_generator_mcp{
      */
     public function configure_import()
     {
-        $site_template = $this->EE->input->get('site_template');
-        $generator_xml = $this->_loadXML($site_template);
+        $siteTemplate = $this->EE->input->get('site_template');
+        $xmlConfig = $this->_loadXML($siteTemplate);
 
-        $view_data = array(
-            'input_prefix' => __CLASS__,
-            'channels' => $generator_xml->channels->channel,
-            'existing_channels' => array(),
-            'xml' => $generator_xml
+        $transformer = new NsmSiteGeneratorTransformer();
+        $transformer->parseXmlConfig($xmlConfig);
+        $config = $transformer->toArray();
+
+        $existingData = array(
+            'template_groups' => $this->getExistingTemplateGroups(),
+            'category_groups' => $this->getExistingCategoryGroups(),
+            'status_groups' => $this->getExistingStatusGroups(),
+            'field_groups' => $this->getExistingFieldGroups(),
+            'channels' => $this->getExistingChannels(),
         );
 
-        foreach ($this->EE->channel_model->get_channels()->result() as $channel)
-            $view_data['existing_channels'][] = $channel->channel_name;
+        $viewData = array(
+            'input_prefix' => __CLASS__,
+            'transformer' => $transformer,
+            'config' => $config,
+            'existing_data' => $existingData
+        );
 
-        $out = $this->EE->load->view("layouts/module/configure_import", $view_data, TRUE);
-        $out = form_open($this->cp_url . "method=import", FALSE, array("site_template" => $site_template)) . $out . "</form>";
+        $out = $this->EE->load->view("layouts/module/configure_import", $viewData, TRUE);
+        $out = form_open($this->cp_url . "method=import", FALSE, array("site_template" => $siteTemplate)) . $out . "</form>";
         return $this->_renderLayout("configure_import", $out);
     }
 
@@ -120,25 +129,35 @@ class Nsm_site_generator_mcp{
      */
     public function import()
     {
-        // What are we generating?
-        $site_template = $this->EE->input->post('site_template');
-        // Build the XML
-        $generator_xml = $this->_loadXML($site_template);
-        // Get the generator
-        $generator = $this->_getGenerator($site_template, $generator_xml);
-        // Generate
-        $generator->generate($this->EE->input->post(__CLASS__));
+        $siteTemplate = $this->EE->input->post('site_template');
+        $xmlConfig = $this->_loadXML($siteTemplate);
 
-        $post_import_instructions = $generator_xml->xpath("post_import_instructions");
-
-        $view_data = array(
-            "log" => $generator->getLog(),
-            "post_import_instructions" => (string)$post_import_instructions[0]
+        $transformer = new NsmSiteGeneratorTransformer();
+        $transformer->parseXmlConfig($xmlConfig);
+        $arrayConfig = $transformer->toArray();
+        
+        $exclude = array(
+            'template_groups' => $this->getExistingTemplateGroups(),
+            'category_groups' => $this->getExistingCategoryGroups(),
+            'status_groups' => $this->getExistingStatusGroups(),
+            'field_groups' => $this->getExistingFieldGroups(),
+            'channels' => $this->getExistingChannels(),
         );
 
-        $out = $this->EE->load->view("layouts/module/import", $view_data, TRUE);
+        $generator = new NsmSiteGeneratorGenerator($siteTemplate);
+        $generator->setConfig($arrayConfig);
+        $generator->setExcludeConfig($exclude);
+        $generator->generate();
+
+        $viewData = array(
+            "log" => $generator->getLog(),
+            "post_import_instructions" => (string)$xmlConfig->postImportInstructions
+        );
+
+        $out = $this->EE->load->view("layouts/module/import", $viewData, TRUE);
         return $this->_renderLayout("import", $out);
     }
+
 
     /**
      * Display configuration options for exporting XML
@@ -147,39 +166,114 @@ class Nsm_site_generator_mcp{
      * @return string The page layout
      */
     public function configure_export() {
-        $this->EE =& get_instance();
 
-        $this->EE->db->select('
-            channels.channel_id as channel_id,
-            channels.channel_title as channel_title,
-            channels.cat_group as cat_group,
-            status_groups.group_id as status_group_id,
-            status_groups.group_name as status_group_name,
-            field_groups.group_id as field_group_id,
-            field_groups.group_name as field_group_name
-        ');
+        $siteTemplate = $this->EE->input->get('site_template');
 
-        $this->EE->db->from('channels');
-        $this->EE->db->join('status_groups', 'channels.status_group = status_groups.group_id', 'left');
-        $this->EE->db->join('field_groups', 'channels.field_group = field_groups.group_id', 'left');
+        $channels = $this->hydrate($this->getExistingChannels(), 'channel_id');
+        foreach ($channels as $key => $channel) {
+            $channels[$key]['entries'] = $this->hydrate($channel['entries'], 'entry_id');
+        }
 
-        $channel_query = $this->EE->db->get();
-        $channels = $this->hydrate($channel_query->result_array(), 'channel_id');
+        $categoryGroups = $this->getExistingCategoryGroups();
+        $statusGroups = $this->getExistingStatusGroups();
+        $fieldGroups = $this->getExistingFieldGroups();
+        
+        $templateGroups = $this->getExistingTemplateGroups();
 
         // Are there settings posted from the form?
-        if($data = $this->EE->input->post(__CLASS__)) {
+        if($postData = $this->EE->input->post(__CLASS__)) {
 
-            foreach ($data['channels'] as &$channel) {
-                if(empty($channel['entries'])) {
-                    $channel['entries'] = array();
+            $arrayConfig = array(
+                'channels' => array(),
+                'template_groups' => array()
+            );
+
+            if(true === isset($postData['channels'])) {
+
+                $channelFields = array();
+                foreach ($fieldGroups as $fieldGroupId => $fieldGroupData) {
+                    $channelFields = array_merge($channelFields, $fieldGroupData['channel_fields']);
+                }
+                $channelFields = $this->hydrate($channelFields, 'field_id');
+
+                foreach ($postData['channels'] as $channelId => $channelOptions) {
+
+                    if(false == $channelOptions) {
+                        continue;
+                    }
+
+                    $arrayChannelConfig = array_merge($channels[$channelId], array('entries' => array()));
+
+                    if(true == isset($channelOptions['entries'])) {
+                        foreach($channelOptions['entries'] as $channelEntryId){
+                            $arrayChannelEntryConfig = $channels[$channelId]['entries'][$channelEntryId];
+                            $arrayChannelEntryConfig['channel_fields'] = array();
+                            foreach ($arrayChannelEntryConfig as $key => $data) {
+                                
+                                if(substr($key,0,6) == "field_") {
+
+                                    $field_id = substr($key,9);
+                                    $fieldAttribute = substr($key,6,2);
+                                    $channelField = $channelFields[$field_id];
+                                    $channelFieldName = $channelField['field_name'];
+
+                                    if($fieldAttribute == "id") {
+                                        $arrayChannelEntryConfig['channel_fields'][$channelFieldName]['name'] = $channelField['field_name'];
+                                        $arrayChannelEntryConfig['channel_fields'][$channelFieldName]['type'] = $channelField['field_type'];
+                                        $arrayChannelEntryConfig['channel_fields'][$channelFieldName]['data'] = $data;
+                                    } else {
+                                        $arrayChannelEntryConfig['channel_fields'][$channelFieldName][$fieldAttribute] = $data;
+                                    }
+                                    unset($arrayChannelEntryConfig[$key]);
+                                }
+                            }
+                            $arrayChannelConfig['entries'][$channelEntryId] = $arrayChannelEntryConfig;
+                        }
+                    }
+
+                    $arrayConfig['channels'][$channelId] = $arrayChannelConfig;
+
+                    // Add the channel status group
+                    if($statusGroupId = $arrayChannelConfig['status_group']) {
+                        $arrayConfig['status_groups'][$statusGroupId] = $statusGroups[$statusGroupId];
+                    }
+                    
+                    // Add the channel field group
+                    if($fieldGroupId = $arrayChannelConfig['field_group']) {
+                        $arrayConfig['field_groups'][$fieldGroupId] = $fieldGroups[$fieldGroupId];
+                    }
+
+                    // Add the channel category groups
+                    $categoryGroupIds = (empty($arrayChannelConfig['cat_group'])) ? array() : explode("|",$arrayChannelConfig['cat_group']);
+                    foreach ($categoryGroupIds as $categoryGroupId) {
+                        $arrayConfig['category_groups'][$categoryGroupId] = $categoryGroups[$categoryGroupId];
+                    }
                 }
             }
 
-            $xml = $this->create_xml($data);
-            $view_data = array(
-               'xml' => htmlentities($xml, ENT_QUOTES, false)
+            if(true === isset($postData['template_groups'])) {
+                foreach ($postData['template_groups'] as $templateGroupId => $templateGroupOptions) {
+                     $existingTemplateGroupData = $templateGroups[$templateGroupId];
+                     $xmlTemplateGroupConfig = array_merge($existingTemplateGroupData, array('templates' => array()));
+
+                     if(true == isset($templateGroupOptions['templates'])) {
+                         foreach($templateGroupOptions['templates'] as $templateId){
+                             $xmlTemplateGroupConfig['templates'][$templateId] = $existingTemplateGroupData['templates'][$templateId];
+                         }
+                     }
+
+                     $arrayConfig['template_groups'][$templateGroupId] = $xmlTemplateGroupConfig;
+                }
+            }
+
+            $transformer = new NsmSiteGeneratorTransformer();
+            $transformer->parseArrayConfig($arrayConfig);
+            $xmlConfig = $transformer->toXmlString();
+
+            $viewData = array(
+               'xml' => htmlentities($xmlConfig, ENT_QUOTES, false)
             );
-            $out = $this->EE->load->view("layouts/module/export", $view_data, TRUE);
+            $out = $this->EE->load->view("layouts/module/export", $viewData, TRUE);
             return $this->_renderLayout("configure_export", $out);
 
         } else {
@@ -190,443 +284,269 @@ class Nsm_site_generator_mcp{
                 'description' => false,
                 'download_url' => false,
                 'post_import_instructions' => false,
-                'channels' => array()
+                'channels' => array(),
+                'templates' => array()
             );
 
-            foreach ($channels as $channel) {
-                $data['channels'][$channel['channel_id']]['enabled'] = false;
-                $data['channels'][$channel['channel_id']]['entries'] = array();
+            foreach ($channels as $count => $channel) {
+                $data['channels'][$count]['enabled'] = false;
+                $data['channels'][$count]['entries'] = array();
+            }
+
+            foreach ($templateGroups as $count => $templateGroup) {
+                $data['template_groups'][$count]['templates'] = array();
             }
         }
 
-        $category_group_query = $this->EE->db->get('exp_category_groups');
-        $category_groups = $this->hydrate($category_group_query->result_array(), 'group_id');
-
-        $channel_entries_query = $this->EE->db->get('exp_channel_titles');
-        $channel_entries = $this->hydrate($channel_entries_query->result_array(), 'entry_id');
-
-        foreach ($channels as $channel_id => &$channel) {
-
-            if(empty($channel['cat_group'])) {
-                $channel['cat_group'] = array();
-            } else {
-                $channel_category_groups = explode("|", $channel['cat_group']);
-                $tmp = array();
-                foreach($channel_category_groups as $channel_category_group) {
-                    $group_id = $channel_category_group['group_id'];
-                    $tmp[$group_id] = $category_groups[$group_id];
-                }
-                $channel['cat_group'] = $tmp;
-            }
-
-            $channel['entries'] = array();
-            foreach ($channel_entries as $entry_id => $entry_data) {
-                if($entry_data['channel_id'] == $channel_id) {
-                    $channel['entries'][] = $entry_data;
-                }
-            }
-        }
-
-        $view_data = array(
+        $viewData = array(
             'input_prefix' => __CLASS__,
-            'channels' => $channels,
+            'channels' => $this->_mergeChannelData($channels, $categoryGroups, $statusGroups, $fieldGroups),
+            'template_groups' => $templateGroups,
             'data' => $data
         );
-
-        $out = $this->EE->load->view("layouts/module/configure_export", $view_data, TRUE);
+        
+        $out = $this->EE->load->view("layouts/module/configure_export", $viewData, TRUE);
         $out = form_open($this->cp_url . "method=configure_export", FALSE) . $out . "</form>";
         return $this->_renderLayout("configure_export", $out);
     }
 
-    public function create_xml($config) {
-        $bundle_info = array(
-            'title' => $config['title'],
-            'download_url' => $config['download_url'],
-            'version' => $config['version'],
-            'description' => $config['description'],
-            'post_import_instructions' => $config['post_import_instructions'],
-            'authors' => array(),
-            'requirements' => array()
-        );
+    private function getExistingChannels($getChannelEntries = true, $getEntryData = true) {
 
-        $required_channels = array();
-        $required_entries = array();
-        foreach ($config['channels'] as $channel_id => $channel_data) {
-            if(empty($channel_data['enabled'])) {
-                unset($config['channels'][$channel_id]);
+        $this->EE->db->from('channels');
+        $channelQuery = $this->EE->db->get();
+
+        if($channelQuery->num_rows == 0) {
+            return array();
+        }
+
+        $channels = $this->hydrate($channelQuery->result_array(), 'channel_id');
+
+        if(true === $getChannelEntries) {
+
+            $this->EE->db->from('channel_titles');
+            
+            if(true === $getEntryData) {
+                $this->EE->db->join('channel_data', 'channel_titles.entry_id = channel_data.entry_id');
             }
-            $required_channels[] = $channel_id;
-            $required_entries = array_merge($required_entries, $channel_data['entries']);
-        }
 
-        // Get the category groups
-        $category_group_query = $this->EE->db->get('category_groups');
-        $category_groups = $this->hydrate($category_group_query->result_array(), 'group_id');
+            $this->EE->db->where_in('channel_titles.channel_id', array_keys($channels));
+            $channelEntriesQuery = $this->EE->db->get();
+            $channelEntries = $this->hydrate($channelEntriesQuery->result_array(), 'entry_id');
 
-        foreach ($category_groups as $group_id => &$group) {
-            $group['group_ref_id'] = "category_group_" . $group_id;
-        }
-
-        // Get the categories
-        $category_query = $this->EE->db->get('categories');
-        $categories = $this->hydrate($category_query->result_array(), 'cat_id');
-
-        // Add categories to category group
-        foreach($category_groups as $group_id => &$group) {
-            $group['categories'] = array();
-            foreach ($categories as $category_id => $category) {
-                if($group_id == $category['group_id']) {
-                    $group['categories'][$category_id] = $category;
-                }
+            if(true == $getEntryData) {
+                $this->EE->db->select('field_id, group_id, field_name, field_type');
+                $this->EE->db->from('channel_fields');
+                $fieldQuery = $this->EE->db->get();
+                $fields = $this->hydrate($fieldQuery->result_array(), 'field_id');
             }
-            $nested = $this->_build_array_from_nodes($group['categories']);
-            $group['categories'] = $nested['categories'];
-        }
 
-        // Get the field groups
-        $field_group_query = $this->EE->db->get('field_groups');
-        $field_groups = $this->hydrate($field_group_query->result_array(), 'group_id');
+            // Add entries to channels
+            foreach ($channels as $channelId => &$channel) {
+                $channel['entries'] = array();
+                foreach ($channelEntries as $entryId => $entryData) {
+                    if($entryData['channel_id'] == $channelId) {
 
-        foreach ($field_groups as $group_id => &$group) {
-            $group['group_ref_id'] = "field_group_" . $group_id;
-        }
-
-        // Get the fields
-        $field_query = $this->EE->db->get('channel_fields');
-        $fields = $this->hydrate($field_query->result_array(), 'field_id');
-
-        // Add fields to field group
-        foreach($field_groups as $group_id => &$group) {
-            $group['fields'] = array();
-            foreach ($fields as $field_id => $field) {
-
-                // Modify the output of the field
-                if ($this->EE->extensions->active_hook('nsm_site_generator_export_field') === TRUE) {
-                    $field = $this->EE->extensions->universal_call('nsm_site_generator_export_field', $field);
-                    if ($this->EE->extensions->end_script === TRUE) return;
-                }
-
-                if($group_id == $field['group_id']) {
-                    $group['fields'][$field_id] = $field;
-                }
-            }
-        }
-
-        // Get the channels
-        $this->EE->db->where_in('channel_id', $required_channels);
-        $channel_query = $this->EE->db->get('channels');
-        $channels = $this->hydrate($channel_query->result_array(), 'channel_id');
-
-        // Get the entries
-        $entry_query =  $this->EE->db->from('channel_titles')
-                                    ->join('channel_data', 'channel_titles.entry_id = channel_data.entry_id')
-                                    ->where_in('channel_titles.entry_id', $required_entries)
-                                    ->get();
-
-        $entries = $this->hydrate($entry_query->result_array(), 'entry_id');
-
-        // For each of the entries build the custom fields
-        foreach ($entries as $entry_id => &$entry_data) {
-            $entry_data['fields'] = array();
-
-            foreach ($entry_data as $key => $value) {
-
-                // If $key is field_id_n or field_ft_n
-                if(substr($key,0, 6) == 'field_') {
-
-                    $field_id = substr($key,9);
-                    $custom_field = $fields[$field_id];
-                    $channel_field_group_id = $channels[$entry_data['channel_id']]['field_group'];
-
-                    if($custom_field['group_id'] == $channel_field_group_id) {
-                        $field_attr = (substr($key,6,2) == "id") ? "data" : "formatting";
-                        if($field_attr == "data") {
-
-                            $entry_data['fields'][$field_id]['field_name'] = $custom_field['field_name'];
-                            $entry_data['fields'][$field_id]['type'] = $custom_field['field_type'];
-
-                            // Modify the output of the field
-                            if ($this->EE->extensions->active_hook('nsm_site_generator_export_field_data') === TRUE) {
-                                $value = $this->EE->extensions->universal_call('nsm_site_generator_export_field_data', $value, $custom_field);
-                                if ($this->EE->extensions->end_script === TRUE) return;
+                        if(true == $getEntryData) {
+                            foreach ($entryData as $key => $value) {
+                                if(substr($key, 0,6) == "field_") {
+                                    $fieldId = substr($key,9);
+                                    if(false === isset($fields[$fieldId]) || $fields[$fieldId]['group_id'] != $channel['field_group']) {
+                                        unset($entryData[$key]);
+                                    }
+                                }
                             }
                         }
-                        $entry_data['fields'][$field_id][$field_attr] = $value;
+                        $channel['entries'][] = $entryData;
                     }
-
-                    unset($entry_data[$key]);
                 }
             }
         }
 
-        // Add entries to channel
-        foreach($channels as $channel_id => $channel) {
-            $channel['channel_entries'] = array();
-            foreach ($entries as $entry_id => $entry) {
-                if($channel_id == $entry['channel_id']) {
-                    $channel['channel_entries'][$entry_id] = $entry;
-                }
-            }
-            $channels[$channel_id]=$channel;
+        return $channels;
+    }
+
+    private function getExistingCategoryGroups($getCategories = true) {
+
+        // Get the category groups
+        $categoryGroupQuery = $this->EE->db->get('category_groups');
+
+        if($categoryGroupQuery->num_rows == 0) {
+            return array();
         }
+
+        $categoryGroups = $this->hydrate($categoryGroupQuery->result_array(), 'group_id');
+
+        foreach ($categoryGroups as $groupId => &$group) {
+            $group['group_ref_id'] = "category_group_" . $groupId;
+        }
+
+        if(true === $getCategories) {
+            // Get the categories
+            $this->EE->db->from('categories');
+            $this->EE->db->where_in('group_id', array_keys($categoryGroups));
+
+            $category_query = $this->EE->db->get();
+            $categories = $this->hydrate($category_query->result_array(), 'cat_id');
+
+            // Add categories to category group
+            foreach($categoryGroups as $groupId => &$group) {
+                $group['categories'] = array();
+                foreach ($categories as $category_id => $category) {
+                    if($groupId == $category['group_id']) {
+                        $group['categories'][$category_id] = $category;
+                    }
+                }
+                $nested = $this->_build_array_from_nodes($group['categories']);
+                $group['categories'] = $nested['categories'];
+            }
+        }
+
+        return $categoryGroups;
+    }
+
+    private function getExistingStatusGroups($getStatuses = true) {
 
         // Get status groups
         $status_group_query = $this->EE->db->get('status_groups');
-        $status_groups = $this->hydrate($status_group_query->result_array(), 'group_id');
-        foreach ($status_groups as $group_id => &$group) {
-            $group['group_ref_id'] = "status_group_" . $group_id;
+
+        if($status_group_query->num_rows == 0) {
+            return array();
         }
 
-        // Get the statuses
-        $status_query = $this->EE->db->get('statuses');
-        $statuses = $this->hydrate($status_query->result_array(), 'status_id');
+        $status_groups = $this->hydrate($status_group_query->result_array(), 'group_id');
+        foreach ($status_groups as $groupId => &$group) {
+            $group['group_ref_id'] = "status_group_" . $groupId;
+        }
 
-        // Add entries to channel
-        foreach($status_groups as $group_id => &$status_group) {
-            $status_group['statuses'] = array();
-            foreach ($statuses as $status_id => $status) {
-                if($group_id == $status['status_id']) {
-                    $status_group['statuses'][$status_id] = $status;
+        if(true === $getStatuses) {
+            // Get the statuses
+            $this->EE->db->from('statuses');
+            $this->EE->db->where_in('group_id', array_keys($status_groups));
+
+            $status_query = $this->EE->db->get();
+            $statuses = $this->hydrate($status_query->result_array(), 'status_id');
+
+            // Add entries to channel
+            foreach($status_groups as $groupId => &$status_group) {
+                $status_group['statuses'] = array();
+                foreach ($statuses as $status_id => $status) {
+                    if($groupId == $status['status_id']) {
+                        $status_group['statuses'][$status_id] = $status;
+                    }
                 }
             }
-            $channels[$channel_id]=$channel;
         }
 
-        // Loop over the channels
-        foreach ($channels as $channel_id => &$channel) {
-
-            // replace the cat_group with a ref_id
-           if(false === empty($channel['cat_group'])) {
-               $channel_cat_group_refs = array();
-               $channel_cat_groups = explode("|", $channel['cat_group']);
-               foreach ($channel_cat_groups as $group_id) {
-                   $channel_cat_group_refs[] = $category_groups[$group_id]['group_ref_id'];
-               }
-               $channel['cat_group'] = implode("|", $channel_cat_group_refs);
-           }
-
-           // replace the status_group with a ref_id
-           if(false === empty($channel['status_group'])) {
-               $channel['status_group'] = $status_groups[$channel['status_group']]['group_ref_id'];
-           }
-
-           // replace the field_group with a ref_id
-           if(false === empty($channel['field_group'])) {
-               $channel['field_group'] = $field_groups[$channel['field_group']]['group_ref_id'];
-           }
-        }
-
-        $xml = '<?xml version="1.0" encoding="UTF-8"?>';
-        $xml .= "\n<generator_bundle>";
-        $xml .= "\n".$this->renderBundleInfo($bundle_info);
-        $xml .= "\n".$this->renderCategoryGroups($category_groups);
-        $xml .= "\n".$this->renderFieldGroups($field_groups);
-        $xml .= "\n".$this->renderStatusGroups($status_groups);
-        $xml .= "\n".$this->renderChannels($channels);
-        $xml .= "\n</generator_bundle>";
-
-        return $xml;
+        return $status_groups;
     }
 
-    public function renderBundleInfo($bundle_info) {
-        $out = "";
-        foreach ($bundle_info as $key => $value) {
-            if(in_array($key, array('authors', 'requirements'))) {
-                continue;
-            }
-            $out .= "\n<{$key}><![CDATA[ {$value} ]]></{$key}>";
-        }
-        $out .= "\n".$this->renderBundleAuthors($bundle_info['authors']);
-        $out .= "\n".$this->renderBundleRequirements($bundle_info['requirements']);
-        return $out;
-    }
+    private function getExistingFieldGroups($getFields = true) {
 
-    public function renderBundleAuthors($authors, $tab_depth = 1) {
-        $tab = str_repeat($this->tab, $tab_depth);
-        $out = "<authors>";
-        foreach ($authors as $author) {
-            $out = "\n{$tab}<author ";
-            $out .= $this->renderAttributes($author);
-            $out .= "/>";
-        }
-        $out .= "</authors>";
-        return $out;
-    }
+        // Get field groups
+        $field_group_query = $this->EE->db->get('field_groups');
 
-    public function renderBundleRequirements($requirements) {
-        $out = "<requirements>";
-        foreach ($requirements as $requirement) {
-            $out = "<requirement ";
-            $out .= $this->renderAttributes($requirement);
-            $out .= "/>";
+        if($field_group_query->num_rows == 0) {
+            return array();
         }
-        $out .= "</requirements>";
-        return $out;
-    }
 
-    public function renderCategoryGroups($category_groups, $tab_depth = 1) {
-        $tab = str_repeat($this->tab, $tab_depth);
-        $out = "\n<category_groups>";
-        foreach ($category_groups as $category_group) {
-            $out .= "\n{$tab}<group ";
-            $out .= $this->renderAttributes($category_group, array('group_id','site_id','categories'));
-            $out .= ">";
-            $out .= $this->renderCategories($category_group["categories"], 2);
-            $out .= "\n{$tab}</group>";
+        $field_groups = $this->hydrate($field_group_query->result_array(), 'group_id');
+        foreach ($field_groups as $groupId => &$group) {
+            $group['group_ref_id'] = "field_group_" . $groupId;
         }
-        $out .= "\n</category_groups>";
-        return $out;
-    }
 
-    public function renderCategories($categories, $tab_depth = 1) {
-        $tab = str_repeat($this->tab, $tab_depth);
-        $out = "";
-        foreach($categories as $category) {
-            $out .= "\n".$tab."<category";
-            $out .= " " . $this->renderAttributes($category, array('cat_id','parent_id','group_id','site_id',"categories"));
-            if(false === empty($category['categories'])) {
-                $out .= " >";
-                $out .= " ".$this->renderCategories($category['categories'], $tab_depth+1);
-                $out .= "\n".$tab."</category>";
-            } else {
-                $out .= " />";
+        if(true === $getFields) {
+
+            // Get the fields
+            $this->EE->db->from('channel_fields');
+            $this->EE->db->where_in('group_id', array_keys($field_groups));
+
+            $channel_fields_query = $this->EE->db->get();
+            $channel_fields = $this->hydrate($channel_fields_query->result_array(), 'field_id');
+
+            // Add entries to channel
+            foreach($field_groups as $groupId => &$field_group) {
+                $field_group['channel_fields'] = array();
+                foreach ($channel_fields as $channel_field_id => $channel_field) {
+                    if($groupId == $channel_field['group_id']) {
+                        $field_group['channel_fields'][$channel_field_id] = $channel_field;
+                    }
+                }
             }
         }
-        return $out;
+
+        return $field_groups;
     }
 
-    public function renderFieldGroups($field_groups, $tab_depth = 1) {
-        $tab = str_repeat($this->tab, $tab_depth);
-        $out = "\n<field_groups>";
-        foreach ($field_groups as $field_group) {
-            $out .= "\n{$tab}<group ";
-            $out .= $this->renderAttributes($field_group, array('group_id','site_id','fields'));
-            $out .= ">";
-            $out .= $this->renderFields($field_group["fields"]);
-            $out .= "\n{$tab}</group>";
+    private function getExistingTemplateGroups($getTemplates = true) {
+        // Get template groups
+        $this->EE->db->order_by('group_order');
+        $templateGroup_query = $this->EE->db->get('template_groups');
+
+        if($templateGroup_query->num_rows == 0) {
+            return array();
         }
-        $out .= "\n</field_groups>";
-        return $out;
-    }
 
-    public function renderFields($fields, $tab_depth = 2) {
-        $tab = str_repeat($this->tab, $tab_depth);
-        $out = "";
-        foreach($fields as $field) {
-            $out .= "\n{$tab}<field";
-            $out .= " " . $this->renderAttributes($field, array('field_id','group_id','site_id'));
-            $out .= "/>";
+        $templateGroups = $this->hydrate($templateGroup_query->result_array(), 'group_id');
+
+        foreach ($templateGroups as $groupId => &$group) {
+            $group['group_ref_id'] = "template_group_" . $groupId;
         }
-        return $out;
-    }
 
-    public function renderStatusGroups($status_groups, $tab_depth = 1) {
-        $tab = str_repeat($this->tab, $tab_depth);
-        $out = "\n<status_groups>";
-        foreach ($status_groups as $status_group) {
-            $out .= "\n{$tab}<group ";
-            $out .= $this->renderAttributes($status_group, array('group_id','site_id', 'statuses'));
-            $out .= ">";
-            $out .= $this->renderStatuses($status_group["statuses"]);
-            $out .= "\n{$tab}</group>";
-        }
-        $out .= "\n</status_groups>";
-        return $out;
-    }
+        if(true === $getTemplates) {
 
-    public function renderStatuses($statuses, $tab_depth = 2) {
-        $tab = str_repeat($this->tab, $tab_depth);
-        $out = "";
-        foreach($statuses as $status) {
-            $out .= "\n{$tab}<status";
-            $out .= " " . $this->renderAttributes($status, array('status_id','status_order','group_id','site_id'));
-            $out .= " />";
-        }
-        return $out;
-    }
+            // Get the templates
+            $this->EE->db->from('templates');
+            $this->EE->db->where_in('group_id', array_keys($templateGroups));
+            $this->EE->db->order_by('template_name');
+            $templatesQuery  = $this->EE->db->get();
+            $templates = $this->hydrate($templatesQuery->result_array(), 'template_id');
 
-    public function renderChannels($channels, $tab_depth = 1) {
-        $tab = str_repeat($this->tab, $tab_depth);
-        $out = "\n<channels>";
-        foreach ($channels as $channel) {
-            $out .= "\n{$tab}<channel ";
-            $out .= $this->renderAttributes($channel, array(
-                                                        'channel_entries',
-                                                        'channel_id',
-                                                        'site_id',
-                                                        'total_entries',
-                                                        'total_comments',
-                                                        'last_entry_date',
-                                                        'last_comment_date',
-                                                        'channel_notify_emails'));
-            $out .= ">";
-            $out .= $this->renderChannelEntries($channel["channel_entries"]);
-            $out .= "\n{$tab}</channel>";
-        }
-        $out .= "\n</channels>";
-        return $out;
-    }
-
-    public function renderChannelEntries($entries, $tab_depth = 2) {
-        $tab = str_repeat($this->tab, $tab_depth);
-        $out = "";
-        foreach($entries as $entry) {
-            $out .= "\n{$tab}<entry";
-            $out .= " " . $this->renderAttributes($entry, array(
-                                                            'fields',
-                                                            'channel_id',
-                                                            'entry_id',
-                                                            'site_id',
-                                                            'pentry_id',
-                                                            'author_id',
-                                                            'forum_topic_id',
-                                                            'ip_address',
-                                                            'view_count_one',
-                                                            'view_count_two',
-                                                            'view_count_three',
-                                                            'view_count_four',
-                                                            'entry_date',
-                                                            'dst_enabled',
-                                                            'year',
-                                                            'month',
-                                                            'day',
-                                                            'expiration_date',
-                                                            'comment_expiration_date',
-                                                            'edit_date',
-                                                            'recent_comment_date',
-                                                            'comment_total'
-                                                            ));
-            $out .= ">";
-            $out .= $this->renderEntryFields($entry["fields"]);
-            $out .= "\n{$tab}</entry>";
-        }
-        return $out;
-    }
-
-    public function renderEntryFields($fields, $tab_depth = 3) {
-        $tab = str_repeat($this->tab, $tab_depth);
-        $out = "";
-        foreach($fields as $field) {
-            $out .= "\n{$tab}<field";
-            $out .= " " . $this->renderAttributes($field, array('data'));
-            $out .= ">";
-            if(false == empty($field['data'])) {
-                $out .= "<![CDATA[ " . $field['data'] . "]]>";
+            // Add entries to channel
+            foreach($templateGroups as $templateGroupId => &$templateGroup) {
+                $templateGroup['templates'] = array();
+                foreach ($templates as $templateId => $templateData) {
+                    if($templateGroupId == $templateData['group_id']) {
+                        $templateGroup['templates'][$templateId] = $templateData;
+                    }
+                }
             }
-            $out .= "</field>";
         }
-        return $out;
+        return $templateGroups;
     }
 
-    public function renderAttributes($data, $exclude = array()) {
-        $attributes = array();
-        foreach ($data as $key => $value) {
-            if(in_array($key, $exclude)) {
-                continue;
+    private function _mergeChannelData(array $channels, $categoryGroups = array(), $statusGroups = array(), $fieldGroups = array()) {
+
+        foreach ($channels as $channelId => &$channel) {
+
+            // Merge category groups
+            $cat_group = $channel['cat_group'];
+            $channel['cat_group'] = array();
+            if(false != $cat_group) {
+                $cat_group_ids = explode("|", $cat_group);
+                foreach ($cat_group_ids as $groupId) {
+                    if(array_key_exists($groupId, $categoryGroups)) {
+                        $channel['cat_group'][$groupId] = $categoryGroups[$groupId];
+                    }
+                }
             }
-            $attributes[] = $key.'="'.$value.'"';
+
+            // Merge status group
+             $channel['status_group'] = (array_key_exists($channel['status_group'], $statusGroups)) 
+                                            ? $statusGroups[$channel['status_group']]
+                                            : false;
+
+            // Merge field group
+            $channel['field_group'] = (array_key_exists($channel['field_group'], $fieldGroups))
+                                            ? $fieldGroups[$channel['field_group']]
+                                            : false;
+
+            // Set an empty array for entries
+            if(false == isset($channel['entries'])) {
+                $channel['entries'] = array();
+            }
         }
-        return implode(" ", $attributes);
+
+        return $channels;
     }
 
     /**
@@ -719,19 +639,21 @@ class Nsm_site_generator_mcp{
     * @param SimpleXMLElement $params parsed configuration XML of template. @see Lg_site_generator_CP::_loadXML()
     * @return Lg_site_generator
     */
-    private function _getGenerator($site_template, $params)
+    private function _getGenerator($site_template)
     {
         $filename = $this->template_dir . $site_template . "/generator.php";
         $classname = ucfirst($site_template . '_generator');
 
         // try to include the file if it's there
-        if (file_exists($filename))
+        if (file_exists($filename)) {
             include_once($filename);
+        }
 
         // default to the base class if we can't find the subclass
-        if (!class_exists($classname))
+        if (!class_exists($classname)) {
             $classname = "Nsm_site_generator_gen";
+        }
 
-        return new $classname($site_template, $params);
+        return new $classname($site_template);
     }
 }

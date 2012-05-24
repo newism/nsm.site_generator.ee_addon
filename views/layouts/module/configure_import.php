@@ -1,10 +1,4 @@
-<!-- <ul class='menu tabs'>
-	<li><a href='#channels'><?= lang("IA + Templates") ?></a></li>
-	<li><a href='#design_theme'><?= lang("Theme") ?></a></li>
-	<li><a href='#module_list'><?= lang("Addons") ?></a></li>
-	<li><a href='#options'><?= lang("Other Options") ?></a></li>
-	<li><a href='#show_all'><?= lang("Show all") ?></a></li>
-</ul> -->
+<?php /* ?>
 <div id="import-options" class="tg">
 	<h2>Import Options</h2>
 	<table class="data">
@@ -19,67 +13,140 @@
 		</tbody>
 	</table>
 </div>
+<?php */ ?>
 
-<div class="tg" id="channels">
-	<h2>Which channels would you like to import?</h2>
-	<div class="alert info">
-	    <p>Check any of the options below to import the channel, it's related fields, statuses and categories as defined in the XML config. <strong>Entries will be created even if a channel exists</strong>.</p>
-	</div>
-	<table class="data NSM_Stripeable NSM_MagicCheckboxes">
-		<thead>
-			<tr style="white-space:nowrap">
-				<th scope="col" style="width:100px;">Channel</th>
-				<th scope="col">Description</th>
-				<th scope="col">Field Group</th>
-				<th scope="col">Status Group</th>
-				<th scope="col">Category Group(s)</th>
-				<th scope="col">Entries</th>
-				<th scope="col" style="width:100px;">
-					<input type="checkbox" class="NSM_MagicCheckboxesTrigger" style="float:right" /> Import
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach($channels as $count => $channel) : ?>
-    			<tr <?php if (in_array($channel['channel_name'], $existing_channels)) : ?>class="alert error"<?php endif; ?>>
-				<th scope="row" style="width:auto; vertical-align: top"><?= $channel['channel_title'] ?></th>
-				<td><?= $channel['channel_description'] ?></td>
-				<td style="white-space:nowrap; vertical-align: top">
-					<?php if($custom_field_group = $xml->xpath("field_groups/group[@group_ref_id='{$channel['field_group']}']")) : ?>
-						<?= $custom_field_group[0]["group_name"] ?>
-					<?php endif; ?>
-				</td>
-				<td style="white-space:nowrap; vertical-align: top">
-					<?php if($status_group = $xml->xpath("status_groups/group[@group_ref_id='{$channel['status_group']}']")) : ?>
-						<?= $status_group[0]["group_name"] ?>
-					<?php endif; ?>
-				</td>
-				<td style="white-space:nowrap; vertical-align: top">
-					<?php foreach(explode("|", $channel['cat_group']) as $category_group_id) : ?>
-					    <?php if($category_group = $xml->xpath("category_groups/group[@group_ref_id='{$category_group_id}']")) : ?>
-    					    <?= $category_group[0]['group_name']; ?><br />
-					    <?php endif; ?>
-					<?php endforeach; ?>
-				</td>
-				<td>
-				    <?= count($channel->entry); ?>
-				</td>
-				<td class="error" style="white-space:nowrap; vertical-align: top">
-					 <input 
-    					    style="float:right; margin-left:9px; margin-top:3px"
-    						type="checkbox" 
-    						class="NSM_MagicCheckboxesTrigger" 
-    						name="<?=$input_prefix?>[channels][]" 
-    						value="<?= $channel['channel_name'] ?>"
-    					/>
-					<?php if (in_array($channel['channel_name'], $existing_channels)) : ?>
-					This channel already exists.
-					<?php endif; ?>
-                   				</td>
-			</tr>
-			<?php endforeach; ?>
-		</tbody>
-	</table>
+<div class="tg">
+    
+    <h3>Site Structure</h3>
+    <div class="alert info">
+        The following channels, categories, statuses, fields and entries will be imported. Your existing structure will not be modified, new elements will be added.
+    </div>
+
+    <ul class='menu tabs'>
+    <?php foreach($config['channels'] as $channel) : ?>
+        <li><a href='#channel-<?= $channel['channel_name'] ?>'><?= $channel['channel_title']; ?></a></li>
+    <?php endforeach; ?>
+    <li><a href="#channel-show_all"><?= lang("Show all"); ?></a></li>
+    </ul>
+
+    <?php foreach($config['channels'] as $channel_name => $channel) : ?>
+    <div id="channel-<?= $channel_name ?>">
+        <h4 style="background:#fff; border-top:3px double #849099; margin-top:-1px"><?= $channel['channel_title'] ?> <code>[<?= $channel['channel_name']; ?>]</code></h4>
+        <table class="data">
+            <tbody>
+                <tr>
+                    <th scope="row">Field Group</th>
+                    <td>
+                        <?php if(isset($config['field_groups'][$channel['field_group']])) : ?>
+                        <?= $config['field_groups'][$channel['field_group']]['group_name'] ?>
+                        <?php else: ?>
+                            &mdash;
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Status Group</th>
+                    <td>
+                        <?php if(isset($config['status_groups'][$channel['status_group']])) : ?>
+                        <?= $config['status_groups'][$channel['status_group']]['group_name'] ?>
+                        <?php else: ?>
+                            &mdash;
+                        <?php endif; ?>
+                    </td>
+                </tr>
+
+                <?php
+                    $category_count = 0;
+                    $categories = array();
+                    if(false === empty($channel['cat_group'])) {
+                        $categories = explode("|", $channel['cat_group']);
+                        $category_count = count($categories);
+                    }
+                ?>
+                <tr>
+                    <th scope="row" rowspan="<?= $category_count ?>">Category Group(s)</th>
+                <?php if($category_count == 0) : ?>
+                    <td>&mdash;</td>
+                </tr>
+                <?php else : ?>
+                    <?php foreach($categories as $count => $category_group_id) : ?>
+                        <?php if($count > 1) : ?>
+                            <tr>
+                        <?php endif; ?>
+                                <td><?= $config['category_groups'][$category_group_id]['group_name'] ?></td>
+                            </tr>
+                    <?php endforeach; ?>
+    			<?php endif; ?>
+
+                <?php
+                    $entry_count = count($channel['entries']);
+                ?>
+                <tr>
+                    <th scope="row" rowspan="<?= $entry_count ?>">Entries</th>
+                    <?php if($entry_count == 0) : ?>
+                        <td></td>
+                    </tr>
+                    <?php else : ?>
+                        <?php foreach($channel['entries'] as $count => $entry): ?>
+                            <?php if($count > 1) : ?>
+                                <tr>
+                            <?php endif; ?>
+                                <td><?= $entry['title']; ?></td>
+                                </tr>
+                        <?php endforeach; ?>
+    			    <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+<?php endforeach; ?>
+</div>
+
+<div class="tg">
+
+    <h3>Templates</h3>
+    
+    <?php if(empty($config["template_groups"])) : ?>
+        <div class="alert error">
+            No templates were found in the theme.
+        </div>
+    <?php else: ?>
+
+        <div class="alert info">
+            Your exising templates will be backed up then removed. The following templates will then be imported. A backup of your existing templates can be found in …
+        </div>
+
+        <ul class='menu tabs'>
+        <?php $i=0; foreach($config['template_groups'] as $templateGroup) : $i++; ?>
+            <li><a href='#template-<?= $i ?>'><?= $templateGroup['group_name']; ?></a></li>
+        <?php endforeach; ?>
+        <li><a href="#template-show_all"><?= lang("Show all"); ?></a></li>
+        </ul>
+
+        <?php $i=0; foreach($config['template_groups'] as $templateGroup) : $i++; ?>
+        <div id="template-<?= $i; ?>">
+            <h4 style="background:#fff; border-top:3px double #849099; margin-top:-1px"><?= $templateGroup['group_name']; ?></h4>
+            <table class="data">
+                <thead>
+                     <tr>
+                         <th scope="col">Title</th>
+                         <th scope="col">Type</th>
+                         <th scope="col">Notes</th>
+                     </tr>
+                 </thead>
+                <tbody>
+                    <?php foreach($templateGroup['templates'] as $template) : ?>
+                    <tr>
+                        <th scope="row"><?= $template['template_name']; ?></th>
+                        <td><?= $template['template_type']; ?></td>
+                        <td><?= $template['template_notes'] ?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    
 </div>
 
 <div class="action" style="text-align:right">

@@ -1,16 +1,16 @@
 <div class="tg">
-	<h2>Site bundles</h2>
-	<div class="alert info">Choose a site structure bundle from the options below. Each bundle may require specific extensions, modules or plugins post import; be sure to check the specific requirements.</div>
+	<h2>Themes</h2>
+	<div class="alert info">Choose a theme from the options below. Each theme may require specific extensions, modules or plugins post import; be sure to check the specific requirements.</div>
 	<table>
 		<thead>
 			<tr>
-				<th scope="col">Bundle Title</th>
+				<th scope="col">Title</th>
 				<th scope="col">Version</th>
 				<th scope="col">Description</th>
-				<th scope="col">Author</th>
-				<th scope="col">Documentation</th>
-                <th scope="col">Required Addons</th>
-                <th scope="col"></th>
+				<th scope="col" style="min-width:100px;">Author</th>
+				<th scope="col" style="min-width:100px;">Documentation</th>
+                <th scope="col" style="min-width:150px;">Required Addons</th>
+                <th scope="col" style="min-width:120px;"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -34,7 +34,7 @@
 							print(implode("<br />",$authors));
 						?>
 					</td>
-					<td><a href="<?= $generator->download_url ?>">Documentation</a></td>
+					<td><a href="<?= $generator->downloadUrl ?>">Documentation</a></td>
                     <td>
                         <?php 
                             $addons = array();
