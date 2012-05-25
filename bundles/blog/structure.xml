@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE xml>
 <generator_template>
-<title><![CDATA[ Newism Default Blog ]]></title>
-<version><![CDATA[ 0.0.1 ]]></version>
-<description><![CDATA[ This is the default schema Newism uses for it's sites. ]]></description>
-<downloadUrl>http://ee-garage.com</downloadUrl>
+<title><![CDATA[  ]]></title>
+<version><![CDATA[  ]]></version>
+<description><![CDATA[  ]]></description>
+<postImportInstructions><![CDATA[  ]]></postImportInstructions>
+<downloadUrl></downloadUrl>
 <authors></authors>
 <requirements></requirements>
-
 <category_groups>
   <category_group group_name="News" sort_order="a" field_html_formatting="all" can_edit_categories="" can_delete_categories="" exclude_group="0" group_ref_id="cat_group_2">
   </category_group>
@@ -16,7 +16,6 @@
   <category_group group_name="Events" sort_order="a" field_html_formatting="all" can_edit_categories="" can_delete_categories="" exclude_group="0" group_ref_id="cat_group_6">
   </category_group>
 </category_groups>
-
 <status_groups>
   <status_group group_name="Workflow" group_ref_id="status_group_2">
   </status_group>
@@ -30,7 +29,6 @@
     <status status="Pending" status_order="3" highlight="" />
   </status_group>
 </status_groups>
-
 <field_groups>
   <field_group group_name="Pages" group_ref_id="field_group_4">
     <channel_field field_name="page_content" field_label="Content" field_instructions="" field_type="wygwam" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="4" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="128" field_required="n" field_text_direction="ltr" field_search="y" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="1" field_content_type="any" field_settings="YTo4OntzOjY6ImNvbmZpZyI7czoxOiIxIjtzOjU6ImRlZmVyIjtzOjE6Im4iO3M6MTg6ImZpZWxkX3Nob3dfc21pbGV5cyI7czoxOiJuIjtzOjE5OiJmaWVsZF9zaG93X2dsb3NzYXJ5IjtzOjE6Im4iO3M6MjE6ImZpZWxkX3Nob3dfc3BlbGxjaGVjayI7czoxOiJuIjtzOjI2OiJmaWVsZF9zaG93X2Zvcm1hdHRpbmdfYnRucyI7czoxOiJuIjtzOjI0OiJmaWVsZF9zaG93X2ZpbGVfc2VsZWN0b3IiO3M6MToibiI7czoyMDoiZmllbGRfc2hvd193cml0ZW1vZGUiO3M6MToibiI7fQ=="/>
@@ -68,12 +66,1474 @@ To create an excerpt, place your mouse curse where you wish to include a 'Read M
     <channel_field field_name="events_content" field_label="Content" field_instructions="" field_type="wygwam" field_list_items="" field_pre_populate="0" field_pre_channel_id="0" field_pre_field_id="0" field_related_to="channel" field_related_id="9" field_related_orderby="title" field_related_sort="desc" field_related_max="0" field_ta_rows="6" field_maxl="128" field_required="n" field_text_direction="ltr" field_search="n" field_is_hidden="n" field_fmt="none" field_show_fmt="n" field_order="3" field_content_type="any" field_settings="YTo4OntzOjY6ImNvbmZpZyI7czoxOiIxIjtzOjU6ImRlZmVyIjtzOjE6Im4iO3M6MTg6ImZpZWxkX3Nob3dfc21pbGV5cyI7czoxOiJuIjtzOjE5OiJmaWVsZF9zaG93X2dsb3NzYXJ5IjtzOjE6Im4iO3M6MjE6ImZpZWxkX3Nob3dfc3BlbGxjaGVjayI7czoxOiJuIjtzOjI2OiJmaWVsZF9zaG93X2Zvcm1hdHRpbmdfYnRucyI7czoxOiJuIjtzOjI0OiJmaWVsZF9zaG93X2ZpbGVfc2VsZWN0b3IiO3M6MToibiI7czoyMDoiZmllbGRfc2hvd193cml0ZW1vZGUiO3M6MToibiI7fQ=="/>
   </field_group>
 </field_groups>
-
-
+<channels>
+  <channel channel_name="pages" channel_title="Pages" channel_url="http://local.ee2.tmpl/" channel_description="" channel_lang="en" cat_group="" status_group="status_group_2" deft_status="open" field_group="field_group_4" search_excerpt="" deft_category="" deft_comments="y" channel_require_membership="y" channel_max_chars="" channel_html_formatting="all" channel_allow_img_urls="y" channel_auto_link_urls="y" channel_notify="n" comment_url="" comment_system_enabled="y" comment_require_membership="n" comment_use_captcha="n" comment_moderate="n" comment_max_chars="5000" comment_timelock="0" comment_require_email="y" comment_text_formatting="xhtml" comment_html_formatting="safe" comment_allow_img_urls="n" comment_auto_link_urls="y" comment_notify="n" comment_notify_authors="n" comment_notify_emails="" comment_expiration="0" search_results_url="" ping_return_url="" show_button_cluster="y" rss_url="" enable_versioning="n" max_revisions="10" default_entry_title="" url_title_prefix="" live_look_template="0" group_ref_id="channel_1">
+    <entry title="Account - Create" url_title="account-create" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Update" url_title="account-update" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Home" url_title="home" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec sed odio dui.</p>
+<p>
+	Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas faucibus mollis interdum.</p>
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla. Sed posuere consectetur est at lobortis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+<p>
+	Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vestibulum id ligula porta felis euismod semper. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+<p>
+	Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper. Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+]]></field>
+    </entry>
+    <entry title="Account - Login" url_title="account-login" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Forgot Password" url_title="account-forgot-password" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="News" url_title="news" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	News page content</p>
+]]></field>
+    </entry>
+    <entry title="Search" url_title="search" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Search page contents</p>
+]]></field>
+    </entry>
+    <entry title="Contact" url_title="contact" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+<p>
+	Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+]]></field>
+    </entry>
+    <entry title="Account" url_title="account1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	The Account page content&nbsp;Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+]]></field>
+    </entry>
+    <entry title="Login" url_title="login" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	This is the login page</p>
+<p>
+	&nbsp;</p>
+]]></field>
+    </entry>
+    <entry title="Forgot Username" url_title="forgot-username" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Forgot Username page content</p>
+]]></field>
+    </entry>
+    <entry title="Forgot Password" url_title="forgot-password" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Forgt Password page content</p>
+]]></field>
+    </entry>
+    <entry title="Update Account" url_title="update-account" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	The Account Update page content</p>
+]]></field>
+    </entry>
+    <entry title="Account Create" url_title="account-create1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	the account create page content</p>
+]]></field>
+    </entry>
+    <entry title="four04" url_title="four04" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	The 404 page</p>
+]]></field>
+    </entry>
+    <entry title="Navigation" url_title="navigation" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+<p>
+	Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+<p>
+	Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+]]></field>
+    </entry>
+    <entry title="Content" url_title="content" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor.</p>
+<p>
+	Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec sed odio dui. Maecenas faucibus mollis interdum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.</p>
+<p>
+	Donec sed odio dui. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+]]></field>
+    </entry>
+    <entry title="Testimonials" url_title="testimonials" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Page Content for testimonials</p>
+]]></field>
+    </entry>
+    <entry title="People" url_title="people" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	People &nbsp;page content</p>
+]]></field>
+    </entry>
+    <entry title="Thanks for contacting us" url_title="thanks-for-contacting-us" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+]]></field>
+    </entry>
+    <entry title="Galleries" url_title="galleries" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Galleries page content</p>
+]]></field>
+    </entry>
+    <entry title="Events" url_title="events" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Events page content</p>
+]]></field>
+    </entry>
+    <entry title="Account - Create" url_title="account-create2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Update" url_title="account-update1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Home" url_title="home1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Login" url_title="account-login1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Forgot Password" url_title="account-forgot-password1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="News" url_title="news1" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Search" url_title="search1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Contact" url_title="contact1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account11" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Login" url_title="login1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Username" url_title="forgot-username1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Password" url_title="forgot-password1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Update Account" url_title="update-account1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account Create" url_title="account-create11" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="four04" url_title="four041" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Navigation" url_title="navigation1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Content" url_title="content1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Testimonials" url_title="testimonials1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="People" url_title="people1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Thanks for contacting us" url_title="thanks-for-contacting-us1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Galleries" url_title="galleries1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Events" url_title="events1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Create" url_title="account-create12" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Update" url_title="account-update2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Home" url_title="home2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Login" url_title="account-login2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Forgot Password" url_title="account-forgot-password2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account12" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="News" url_title="news2" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Search" url_title="search2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Contact" url_title="contact2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account13" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Login" url_title="login2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Username" url_title="forgot-username2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Password" url_title="forgot-password2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Update Account" url_title="update-account2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account Create" url_title="account-create13" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="four04" url_title="four042" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Navigation" url_title="navigation2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Content" url_title="content2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Testimonials" url_title="testimonials2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="People" url_title="people2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Thanks for contacting us" url_title="thanks-for-contacting-us2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Galleries" url_title="galleries2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Events" url_title="events2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Create" url_title="account-create14" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Update" url_title="account-update3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Home" url_title="home3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Login" url_title="account-login3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Forgot Password" url_title="account-forgot-password3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account14" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="News" url_title="news3" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Search" url_title="search3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Contact" url_title="contact3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account15" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Login" url_title="login3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Username" url_title="forgot-username3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Password" url_title="forgot-password3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Update Account" url_title="update-account3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account Create" url_title="account-create15" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="four04" url_title="four043" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Navigation" url_title="navigation3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Content" url_title="content3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Testimonials" url_title="testimonials3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="People" url_title="people3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Thanks for contacting us" url_title="thanks-for-contacting-us3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Galleries" url_title="galleries3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Events" url_title="events3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Create" url_title="account-create16" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Update" url_title="account-update4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Home" url_title="home4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Login" url_title="account-login4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Forgot Password" url_title="account-forgot-password4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account16" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="News" url_title="news4" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Search" url_title="search4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Contact" url_title="contact4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account17" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Login" url_title="login4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Username" url_title="forgot-username4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Password" url_title="forgot-password4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Update Account" url_title="update-account4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account Create" url_title="account-create17" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="four04" url_title="four044" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Navigation" url_title="navigation4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Content" url_title="content4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Testimonials" url_title="testimonials4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="People" url_title="people4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Thanks for contacting us" url_title="thanks-for-contacting-us4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Galleries" url_title="galleries4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Events" url_title="events4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Create" url_title="account-create18" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Update" url_title="account-update5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Home" url_title="home5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Login" url_title="account-login5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Forgot Password" url_title="account-forgot-password5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account18" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="News" url_title="news5" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Search" url_title="search5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Contact" url_title="contact5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account19" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Login" url_title="login5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Username" url_title="forgot-username5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Password" url_title="forgot-password5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Update Account" url_title="update-account5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account Create" url_title="account-create19" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="four04" url_title="four045" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Navigation" url_title="navigation5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Content" url_title="content5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Testimonials" url_title="testimonials5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="People" url_title="people5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Thanks for contacting us" url_title="thanks-for-contacting-us5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Galleries" url_title="galleries5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Events" url_title="events5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Create" url_title="account-create20" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Update" url_title="account-update6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Home" url_title="home6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Login" url_title="account-login6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Forgot Password" url_title="account-forgot-password6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account20" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="News" url_title="news6" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Search" url_title="search6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Contact" url_title="contact6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account110" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Login" url_title="login6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Username" url_title="forgot-username6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Password" url_title="forgot-password6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Update Account" url_title="update-account6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account Create" url_title="account-create110" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="four04" url_title="four046" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Navigation" url_title="navigation6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Content" url_title="content6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Testimonials" url_title="testimonials6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="People" url_title="people6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Thanks for contacting us" url_title="thanks-for-contacting-us6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Galleries" url_title="galleries6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Events" url_title="events6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Create" url_title="account-create111" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Update" url_title="account-update7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Home" url_title="home7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Login" url_title="account-login7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Forgot Password" url_title="account-forgot-password7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account111" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="News" url_title="news7" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Search" url_title="search7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Contact" url_title="contact7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account112" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Login" url_title="login7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Username" url_title="forgot-username7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Password" url_title="forgot-password7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Update Account" url_title="update-account7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account Create" url_title="account-create112" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="four04" url_title="four047" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Navigation" url_title="navigation7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Content" url_title="content7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Testimonials" url_title="testimonials7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="People" url_title="people7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Thanks for contacting us" url_title="thanks-for-contacting-us7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Galleries" url_title="galleries7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Events" url_title="events7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Create" url_title="account-create113" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Update" url_title="account-update8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Home" url_title="home8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Login" url_title="account-login8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Forgot Password" url_title="account-forgot-password8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account113" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="News" url_title="news8" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Search" url_title="search8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Contact" url_title="contact8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account114" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Login" url_title="login8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Username" url_title="forgot-username8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Password" url_title="forgot-password8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Update Account" url_title="update-account8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account Create" url_title="account-create114" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="four04" url_title="four048" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Navigation" url_title="navigation8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Content" url_title="content8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Testimonials" url_title="testimonials8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="People" url_title="people8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Thanks for contacting us" url_title="thanks-for-contacting-us8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Galleries" url_title="galleries8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Events" url_title="events8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Create" url_title="account-create115" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Update" url_title="account-update9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Home" url_title="home9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Login" url_title="account-login9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Forgot Password" url_title="account-forgot-password9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account115" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="News" url_title="news9" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Search" url_title="search9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Contact" url_title="contact9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account116" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Login" url_title="login9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Username" url_title="forgot-username9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Password" url_title="forgot-password9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Update Account" url_title="update-account9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account Create" url_title="account-create116" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="four04" url_title="four049" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Navigation" url_title="navigation9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Content" url_title="content9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Testimonials" url_title="testimonials9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="People" url_title="people9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Thanks for contacting us" url_title="thanks-for-contacting-us9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Galleries" url_title="galleries9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Events" url_title="events9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Create" url_title="account-create117" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Update" url_title="account-update10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Home" url_title="home10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Login" url_title="account-login10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account - Forgot Password" url_title="account-forgot-password10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account117" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="News" url_title="news10" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Search" url_title="search10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Contact" url_title="contact10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account" url_title="account118" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Login" url_title="login10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Username" url_title="forgot-username10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Forgot Password" url_title="forgot-password10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Update Account" url_title="update-account10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Account Create" url_title="account-create118" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="four04" url_title="four0410" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Navigation" url_title="navigation10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Content" url_title="content10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Testimonials" url_title="testimonials10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="People" url_title="people10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Thanks for contacting us" url_title="thanks-for-contacting-us10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Galleries" url_title="galleries10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Events" url_title="events10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="page_content" type="wygwam" ft="none"></field>
+    </entry>
+  </channel>
+  <channel channel_name="news" channel_title="News" channel_url="/news/details" channel_description="" channel_lang="en" cat_group="cat_group_2" status_group="status_group_4" deft_status="open" field_group="field_group_5" search_excerpt="7" deft_category="" deft_comments="y" channel_require_membership="y" channel_max_chars="" channel_html_formatting="all" channel_allow_img_urls="y" channel_auto_link_urls="n" channel_notify="n" comment_url="/news/details" comment_system_enabled="y" comment_require_membership="n" comment_use_captcha="y" comment_moderate="n" comment_max_chars="5000" comment_timelock="0" comment_require_email="y" comment_text_formatting="xhtml" comment_html_formatting="safe" comment_allow_img_urls="n" comment_auto_link_urls="n" comment_notify="n" comment_notify_authors="n" comment_notify_emails="" comment_expiration="0" search_results_url="/news/details" ping_return_url="" show_button_cluster="y" rss_url="" enable_versioning="n" max_revisions="10" default_entry_title="" url_title_prefix="" live_look_template="0" group_ref_id="channel_4">
+    <entry title="Post One" url_title="post-one" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Sed posuere consectetur est at lobortis. Vestibulum id ligula porta felis euismod semper. Aenean lacinia bibendum nulla sed consectetur. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper.</p>
+<!--read_more-->
+<p>
+	&nbsp;</p>
+<p>
+	Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vestibulum id ligula porta felis euismod semper.</p>
+<p>
+	&nbsp;</p>
+]]></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Two" url_title="post-two" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Donec sed odio dui. Donec sed odio dui. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis.</p>
+<p>
+	Nullam id dolor id nibh ultricies vehicula ut id elit. Donec ullamcorper nulla non metus auctor fringilla. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+<!--read_more-->
+<p>
+	Nullam quis risus eget urna mollis ornare vel eu leo. Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla.</p>
+<p>
+	&nbsp;</p>
+]]></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Three" url_title="post-three" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+<p>
+	Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Cras mattis consectetur purus sit amet fermentum. Donec ullamcorper nulla non metus auctor fringilla. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+]]></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Four" url_title="post-four" status="Featured" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Vestibulum id ligula porta felis euismod semper. Etiam porta sem malesuada magna mollis euismod.</p>
+<!--read_more-->
+<p>
+	Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+<p>
+	Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+<p>
+	Donec id elit non mi porta gravida at eget metus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui.</p>
+]]></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Five" url_title="post-five" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Six" url_title="post-six" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+<p>
+	Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Cras mattis consectetur purus sit amet fermentum. Donec ullamcorper nulla non metus auctor fringilla. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+]]></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post One" url_title="post-one1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Two" url_title="post-two1" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Three" url_title="post-three1" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Four" url_title="post-four1" status="Featured" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Five" url_title="post-five1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Six" url_title="post-six1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post One" url_title="post-one2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Two" url_title="post-two2" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Three" url_title="post-three2" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Four" url_title="post-four2" status="Featured" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Five" url_title="post-five2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Six" url_title="post-six2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post One" url_title="post-one3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Two" url_title="post-two3" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Three" url_title="post-three3" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Four" url_title="post-four3" status="Featured" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Five" url_title="post-five3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Six" url_title="post-six3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post One" url_title="post-one4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Two" url_title="post-two4" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Three" url_title="post-three4" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Four" url_title="post-four4" status="Featured" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Five" url_title="post-five4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Six" url_title="post-six4" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post One" url_title="post-one5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Two" url_title="post-two5" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Three" url_title="post-three5" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Four" url_title="post-four5" status="Featured" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Five" url_title="post-five5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Six" url_title="post-six5" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post One" url_title="post-one6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Two" url_title="post-two6" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Three" url_title="post-three6" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Four" url_title="post-four6" status="Featured" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Five" url_title="post-five6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Six" url_title="post-six6" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post One" url_title="post-one7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Two" url_title="post-two7" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Three" url_title="post-three7" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Four" url_title="post-four7" status="Featured" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Five" url_title="post-five7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Six" url_title="post-six7" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post One" url_title="post-one8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Two" url_title="post-two8" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Three" url_title="post-three8" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Four" url_title="post-four8" status="Featured" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Five" url_title="post-five8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Six" url_title="post-six8" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post One" url_title="post-one9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Two" url_title="post-two9" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Three" url_title="post-three9" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Four" url_title="post-four9" status="Featured" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Five" url_title="post-five9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Six" url_title="post-six9" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post One" url_title="post-one10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Two" url_title="post-two10" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Three" url_title="post-three10" status="open" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Four" url_title="post-four10" status="Featured" versioning_enabled="y" allow_comments="n" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Five" url_title="post-five10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+    <entry title="Post Six" url_title="post-six10" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="news_content" type="wygwam" ft="none"></field>
+      <field name="news_gallery" type="playa" ft="none"></field>
+    </entry>
+  </channel>
+  <channel channel_name="testimonials" channel_title="Testimonials" channel_url="/testimonials/details" channel_description="" channel_lang="en" cat_group="" status_group="status_group_6" deft_status="open" field_group="field_group_7" search_excerpt="15" deft_category="" deft_comments="y" channel_require_membership="y" channel_max_chars="" channel_html_formatting="all" channel_allow_img_urls="y" channel_auto_link_urls="n" channel_notify="n" comment_url="/testimonials/details" comment_system_enabled="y" comment_require_membership="n" comment_use_captcha="n" comment_moderate="n" comment_max_chars="5000" comment_timelock="0" comment_require_email="y" comment_text_formatting="xhtml" comment_html_formatting="safe" comment_allow_img_urls="n" comment_auto_link_urls="n" comment_notify="n" comment_notify_authors="n" comment_notify_emails="" comment_expiration="0" search_results_url="/testimonials/details" ping_return_url="/testimonials/details" show_button_cluster="y" rss_url="" enable_versioning="n" max_revisions="10" default_entry_title="" url_title_prefix="" live_look_template="0" group_ref_id="channel_6">
+    <entry title="Testimonial 1" url_title="testimonial-1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="testimonial_content" type="wygwam" ft="none"><![CDATA[ <p>
+	This is the testimonial excerpt. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+<!--read_more-->
+<p>
+	Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+<p>
+	Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Donec sed odio dui.</p>
+]]></field>
+      <field name="testimonial_testifier" type="text" ft="none"><![CDATA[ Name of testifier]]></field>
+      <field name="testimonial_role" type="text" ft="none"><![CDATA[ Role]]></field>
+      <field name="testimonial_company" type="text" ft="none"><![CDATA[ Company]]></field>
+      <field name="testimonial_company_url" type="text" ft="none"></field>
+    </entry>
+    <entry title="Testimonial 2" url_title="testimonial-2" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="testimonial_content" type="wygwam" ft="none"><![CDATA[ <p>
+	This is the testimonial excerpt. Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+<!--read_more-->
+<p>
+	Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+<p>
+	Donec ullamcorper nulla non metus auctor fringilla. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor.</p>
+<p>
+	Aenean lacinia bibendum nulla sed consectetur. Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+]]></field>
+      <field name="testimonial_testifier" type="text" ft="none"><![CDATA[ Name of testifier]]></field>
+      <field name="testimonial_role" type="text" ft="none"><![CDATA[ Role]]></field>
+      <field name="testimonial_company" type="text" ft="none"><![CDATA[ Company]]></field>
+      <field name="testimonial_company_url" type="text" ft="none"><![CDATA[ website.com]]></field>
+    </entry>
+    <entry title="Testimonial 3" url_title="testimonial-3" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="testimonial_content" type="wygwam" ft="none"><![CDATA[ <p>
+	This is the testimonial excerpt. Maecenas sed diam eget risus varius blandit sit amet non magna. Cras mattis consectetur purus sit amet fermentum. Aenean eu leo quam.&nbsp;</p>
+<!--read_more-->
+<p>
+	Sed posuere consectetur est at lobortis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+<p>
+	Nulla vitae elit libero, a pharetra augue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+<p>
+	Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec ullamcorper nulla non metus auctor fringilla. Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum.</p>
+]]></field>
+      <field name="testimonial_testifier" type="text" ft="none"><![CDATA[ Name of testifier]]></field>
+      <field name="testimonial_role" type="text" ft="none"><![CDATA[ Role]]></field>
+      <field name="testimonial_company" type="text" ft="none"><![CDATA[ Company]]></field>
+      <field name="testimonial_company_url" type="text" ft="none"><![CDATA[ website.com]]></field>
+    </entry>
+  </channel>
+  <channel channel_name="people" channel_title="People" channel_url="/people" channel_description="" channel_lang="en" cat_group="" status_group="" deft_status="open" field_group="field_group_8" search_excerpt="20" deft_category="" deft_comments="y" channel_require_membership="y" channel_max_chars="" channel_html_formatting="all" channel_allow_img_urls="y" channel_auto_link_urls="n" channel_notify="n" comment_url="/people/details" comment_system_enabled="y" comment_require_membership="n" comment_use_captcha="n" comment_moderate="n" comment_max_chars="5000" comment_timelock="0" comment_require_email="y" comment_text_formatting="xhtml" comment_html_formatting="safe" comment_allow_img_urls="n" comment_auto_link_urls="n" comment_notify="n" comment_notify_authors="n" comment_notify_emails="" comment_expiration="0" search_results_url="/people/details" ping_return_url="/people/details" show_button_cluster="y" rss_url="" enable_versioning="n" max_revisions="10" default_entry_title="" url_title_prefix="" live_look_template="0" group_ref_id="channel_7">
+    <entry title="Toby Flenderson" url_title="toby-flenderson" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="people_alphabetise" type="pt_dropdown" ft="xhtml"><![CDATA[ f]]></field>
+      <field name="people_role" type="text" ft="none"><![CDATA[ Deputy of Accounts]]></field>
+      <field name="people_qualifications" type="text" ft="none"><![CDATA[ School Certificate]]></field>
+      <field name="people_phone" type="text" ft="none"><![CDATA[ 02 1234 5678]]></field>
+      <field name="people_email" type="text" ft="none"><![CDATA[ test@test.com]]></field>
+      <field name="people_photo" type="file" ft="none"><![CDATA[ {filedir_4}toby.png]]></field>
+      <field name="people_bio" type="wygwam" ft="none"><![CDATA[ <p>
+	Maecenas sed diam eget risus varius blandit sit amet non magna. Cras mattis consectetur purus sit amet fermentum. Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+<!--read_more-->
+<p>
+	Maecenas faucibus mollis interdum. Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+<p>
+	Maecenas sed diam eget risus varius blandit sit amet non magna. Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+]]></field>
+    </entry>
+    <entry title="Phil McDonald" url_title="phil-mcdonald" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="people_alphabetise" type="pt_dropdown" ft="xhtml"><![CDATA[ m]]></field>
+      <field name="people_role" type="text" ft="none"><![CDATA[ Assistant to the Regional Manager]]></field>
+      <field name="people_qualifications" type="text" ft="none"><![CDATA[ GCE]]></field>
+      <field name="people_phone" type="text" ft="none"><![CDATA[ 02 1234 5678]]></field>
+      <field name="people_email" type="text" ft="none"><![CDATA[ test@test.com]]></field>
+      <field name="people_photo" type="file" ft="none"><![CDATA[ {filedir_4}phil.png]]></field>
+      <field name="people_bio" type="wygwam" ft="none"><![CDATA[ <p>
+	Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla. Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum.</p>
+<!--read_more-->
+<p>
+	Donec sed odio dui. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.</p>
+<p>
+	Nullam quis risus eget urna mollis ornare vel eu leo. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+]]></field>
+    </entry>
+    <entry title="Barry Bullwinkle" url_title="barry-bullwinkle" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="people_alphabetise" type="pt_dropdown" ft="xhtml"><![CDATA[ b]]></field>
+      <field name="people_role" type="text" ft="none"><![CDATA[ General Manager]]></field>
+      <field name="people_qualifications" type="text" ft="none"></field>
+      <field name="people_phone" type="text" ft="none"><![CDATA[ 02 1234 5678]]></field>
+      <field name="people_email" type="text" ft="none"><![CDATA[ test@test.com]]></field>
+      <field name="people_photo" type="file" ft="none"><![CDATA[ {filedir_4}filbert.png]]></field>
+      <field name="people_bio" type="wygwam" ft="none"><![CDATA[ <p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+<p>
+	Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+]]></field>
+    </entry>
+    <entry title="Steve Stiltz" url_title="steve-stiltz" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="people_alphabetise" type="pt_dropdown" ft="xhtml"><![CDATA[ s]]></field>
+      <field name="people_role" type="text" ft="none"></field>
+      <field name="people_qualifications" type="text" ft="none"></field>
+      <field name="people_phone" type="text" ft="none"><![CDATA[ 02 1234 5678]]></field>
+      <field name="people_email" type="text" ft="none"></field>
+      <field name="people_photo" type="file" ft="none"><![CDATA[ {filedir_4}jerry.png]]></field>
+      <field name="people_bio" type="wygwam" ft="none"><![CDATA[ <p>
+	Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+<!--read_more-->
+<p>
+	Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla sed consectetur. Sed posuere consectetur est at lobortis.</p>
+]]></field>
+    </entry>
+    <entry title="Chris Buttery" url_title="chris-buttery" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="people_alphabetise" type="pt_dropdown" ft="xhtml"><![CDATA[ b]]></field>
+      <field name="people_role" type="text" ft="none"><![CDATA[ Web Designer]]></field>
+      <field name="people_qualifications" type="text" ft="none"></field>
+      <field name="people_phone" type="text" ft="none"></field>
+      <field name="people_email" type="text" ft="none"><![CDATA[ chris.buttery@newism.com.au]]></field>
+      <field name="people_photo" type="file" ft="none"><![CDATA[ {filedir_4}profile1_saturated.png]]></field>
+      <field name="people_bio" type="wygwam" ft="none"><![CDATA[ <p>
+	Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+<p>
+	Cras justo odio, dapibus ac facilisis in, egestas eget quam. Curabitur blandit tempus porttitor. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+<p>
+	Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+<p>
+	Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec id elit non mi porta gravida at eget metus. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla.</p>
+]]></field>
+    </entry>
+  </channel>
+  <channel channel_name="galleries" channel_title="Galleries" channel_url="/galleries" channel_description="" channel_lang="en" cat_group="cat_group_4" status_group="" deft_status="open" field_group="field_group_9" search_excerpt="28" deft_category="" deft_comments="y" channel_require_membership="y" channel_max_chars="" channel_html_formatting="all" channel_allow_img_urls="y" channel_auto_link_urls="n" channel_notify="n" comment_url="/galleries/view" comment_system_enabled="y" comment_require_membership="n" comment_use_captcha="n" comment_moderate="n" comment_max_chars="5000" comment_timelock="0" comment_require_email="y" comment_text_formatting="xhtml" comment_html_formatting="safe" comment_allow_img_urls="n" comment_auto_link_urls="n" comment_notify="n" comment_notify_authors="n" comment_notify_emails="" comment_expiration="0" search_results_url="/galleries/view" ping_return_url="/galleries/view" show_button_cluster="y" rss_url="" enable_versioning="n" max_revisions="10" default_entry_title="" url_title_prefix="" live_look_template="0" group_ref_id="channel_8">
+    <entry title="Gallery 1" url_title="gallery-1" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"><![CDATA[ 1]]></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"><![CDATA[ {filedir_5}Gallery1/ben.png]]></field>
+      <field name="galleries_content" type="wygwam" ft="none"><![CDATA[ <p>
+	About this gallery&nbsp;Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ullamcorper nulla non metus auctor fringilla. Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean lacinia bibendum nulla sed consectetur.</p>
+]]></field>
+    </entry>
+    <entry title="Gallery 2" url_title="gallery-2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"><![CDATA[ 1]]></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"><![CDATA[ {filedir_5}Gallery2/wayde.png]]></field>
+      <field name="galleries_content" type="wygwam" ft="none"><![CDATA[ <p>
+	About this gallery.<br />
+	Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis euismod.</p>
+<p>
+	Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Donec ullamcorper nulla non metus auctor fringilla.</p>
+]]></field>
+    </entry>
+    <entry title="Gallery 3" url_title="gallery-3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"><![CDATA[ 1]]></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"><![CDATA[ {filedir_5}Gallery3/ant.png]]></field>
+      <field name="galleries_content" type="wygwam" ft="none"><![CDATA[ <p>
+	About this gallery.<br />
+	Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+]]></field>
+    </entry>
+    <entry title="Gallery 1" url_title="gallery-11" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 2" url_title="gallery-21" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 3" url_title="gallery-31" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 1" url_title="gallery-12" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 2" url_title="gallery-22" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 3" url_title="gallery-32" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 1" url_title="gallery-13" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 2" url_title="gallery-23" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 3" url_title="gallery-33" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 1" url_title="gallery-14" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 2" url_title="gallery-24" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 3" url_title="gallery-34" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 1" url_title="gallery-15" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 2" url_title="gallery-25" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 3" url_title="gallery-35" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 1" url_title="gallery-16" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 2" url_title="gallery-26" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 3" url_title="gallery-36" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 1" url_title="gallery-17" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 2" url_title="gallery-27" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 3" url_title="gallery-37" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 1" url_title="gallery-18" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 2" url_title="gallery-28" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 3" url_title="gallery-38" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 1" url_title="gallery-19" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 2" url_title="gallery-29" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+    <entry title="Gallery 3" url_title="gallery-39" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="galleries_gallery" type="matrix" ft="none"></field>
+      <field name="galleries_thumbnail" type="assets" ft="none"></field>
+      <field name="galleries_content" type="wygwam" ft="none"></field>
+    </entry>
+  </channel>
+  <channel channel_name="events" channel_title="Events" channel_url="/events/details" channel_description="" channel_lang="en" cat_group="cat_group_6" status_group="status_group_5" deft_status="open" field_group="field_group_10" search_excerpt="32" deft_category="" deft_comments="y" channel_require_membership="y" channel_max_chars="" channel_html_formatting="all" channel_allow_img_urls="y" channel_auto_link_urls="y" channel_notify="n" comment_url="/events/details" comment_system_enabled="y" comment_require_membership="n" comment_use_captcha="n" comment_moderate="n" comment_max_chars="5000" comment_timelock="0" comment_require_email="y" comment_text_formatting="xhtml" comment_html_formatting="safe" comment_allow_img_urls="n" comment_auto_link_urls="y" comment_notify="n" comment_notify_authors="n" comment_notify_emails="" comment_expiration="0" search_results_url="/events/details" ping_return_url="" show_button_cluster="y" rss_url="" enable_versioning="n" max_revisions="10" default_entry_title="" url_title_prefix="" live_look_template="0" group_ref_id="channel_9">
+    <entry title="Event 3" url_title="event-3" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="events_start_date" type="date" dt="UP10" ft="none"><![CDATA[ 1337149230]]></field>
+      <field name="events_end_date" type="date" dt="UP10" ft="none"><![CDATA[ 1340950830]]></field>
+      <field name="events_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+<!--read_more-->
+<p>
+	&nbsp;</p>
+<p>
+	Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+<p>
+	Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras mattis consectetur purus sit amet fermentum. Maecenas faucibus mollis interdum. Curabitur blandit tempus porttitor.</p>
+<p>
+	Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+]]></field>
+    </entry>
+    <entry title="Event 2" url_title="event-2" status="open" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="events_start_date" type="date" dt="UP10" ft="none"><![CDATA[ 1334297979]]></field>
+      <field name="events_end_date" type="date" dt="UP10" ft="none"><![CDATA[ 1335766779]]></field>
+      <field name="events_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec ullamcorper nulla non metus auctor fringilla.</p>
+<!--read_more-->
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+<p>
+	Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+<p>
+	Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras mattis consectetur purus sit amet fermentum. Maecenas faucibus mollis interdum. Curabitur blandit tempus porttitor.</p>
+<p>
+	Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+]]></field>
+    </entry>
+    <entry title="Event 1" url_title="event-1" status="Featured" versioning_enabled="y" allow_comments="y" sticky="n">
+      <field name="events_start_date" type="date" dt="UP10" ft="none"><![CDATA[ 1333174749]]></field>
+      <field name="events_end_date" type="date" dt="UP10" ft="none"><![CDATA[ 1335507549]]></field>
+      <field name="events_content" type="wygwam" ft="none"><![CDATA[ <p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+<!--read_more-->
+<p>
+	Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+<p>
+	Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+<p>
+	Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras mattis consectetur purus sit amet fermentum. Maecenas faucibus mollis interdum. Curabitur blandit tempus porttitor.</p>
+<p>
+	Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+]]></field>
+    </entry>
+  </channel>
+</channels>
 <template_groups>
   <template_group group_name="site" group_order="0" is_site_default="y" group_ref_id="template_group_1">
-    <template template_name="four04" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ 404 ]]></template>
-    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333326618" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!-- 
+    <template template_name="four04" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  404  ]]></template>
+    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333326618" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!-- 
 
 Site Index (template) -  site/index
 ============
@@ -133,10 +1593,10 @@ Create a 'home' page in the CP and enter the entry_id for it below (this_page_id
 		</aside>
 	</section>
 {embed="_partials/.footer"}
- ]]></template>
+  ]]></template>
   </template_group>
   <template_group group_name="news" group_order="2" is_site_default="n" group_ref_id="template_group_8">
-    <template template_name=".archive-category" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332996822" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+    <template template_name=".archive-category" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332996822" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Archive Category (template) -  news/.archive-category
 ================================
@@ -275,17 +1735,17 @@ Archive Category (template) -  news/.archive-category
 		{/if}
 	</section>
 	{embed="_partials/.footer"}
-{/exp:nsm_categories:archive} ]]></template>
-    <template template_name=".archive-date" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
-    <template template_name="archive" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!-- 
+{/exp:nsm_categories:archive}  ]]></template>
+    <template template_name=".archive-date" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
+    <template template_name="archive" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!-- 
 	The URL is going to look something like: 
 	* news/archive/fishing -> display the .archive-category.html
 	* news/archive -> display the .archive-date.html
 --}
 
 {if segment_3 == ''} {embed='news/.archive-date'} {/if}
-{if segment_3 != ''} {embed='news/.archive-category'} {/if} ]]></template>
-    <template template_name="details" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333070388" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+{if segment_3 != ''} {embed='news/.archive-category'} {/if}  ]]></template>
+    <template template_name="details" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333070388" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Details (template) -  news/details
 ================================
@@ -309,8 +1769,8 @@ Details (template) -  news/details
 }
 {!-- Crumb navigation --}
 {embed="_partials/_nav-breadcrumb"}ssssssssssssssssssssssssss
-{/exp:channel:entries} ]]></template>
-    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="y" php_parse_location="i" hits="0"><![CDATA[ {preload_replace:this_page_channel="pages"}
+{/exp:channel:entries}  ]]></template>
+    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="y" php_parse_location="i" hits="0"><![CDATA[  {preload_replace:this_page_channel="pages"}
 {preload_replace:this_page_entry_id=""}
 
 {preload_replace:this_index_channel="news"}
@@ -348,8 +1808,8 @@ Details (template) -  news/details
 
 	</div>
 {embed="_partials/.footer"}
- ]]></template>
-    <template template_name="results" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+  ]]></template>
+    <template template_name="results" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Search results (embed) - {embed="search/_search/results"}
 ======================
@@ -368,13 +1828,13 @@ Display entries based on submitted search.
 	  {if count == total_results}</ol>{/if}
 	  {if no_results}No search results{/if}
 	{/exp:low_search:results}
-</div> ]]></template>
-    <template template_name="xml-sitemap" save_template_file="y" template_type="xml" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {exp:nsm_better_meta:entries_xml
+</div>  ]]></template>
+    <template template_name="xml-sitemap" save_template_file="y" template_type="xml" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {exp:nsm_better_meta:entries_xml
 	channel="blog"
 	dyanmic="no"
 	use_page_url="yes"
-} ]]></template>
-    <template template_name="_module-latest-entries" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+}  ]]></template>
+    <template template_name="_module-latest-entries" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Module Latest Entries (embed) -  {embed='news/_module-latest-entries'}
 ================================
@@ -464,16 +1924,16 @@ Module Latest Entries (embed) -  {embed='news/_module-latest-entries'}
 		</footer>
 	</article>
 {/exp:channel:entries}
-</section> ]]></template>
-    <template template_name="_panel-categories" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332993245" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ <div class="category-index">
+</section>  ]]></template>
+    <template template_name="_panel-categories" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332993245" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  <div class="category-index">
 	<h3>Blog Categories</h3>
 	<ol class="blog-entries entry-index">
 	{exp:channel:categories channel="blog" style="linear"}
 		<li><a href="{path=blog/archive}" title="{category_name}">{category_name}</a></li>
 	{/exp:channel:categories}
 	</ul>
-</div> ]]></template>
-    <template template_name="_panel-latest-news" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333329230" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+</div>  ]]></template>
+    <template template_name="_panel-latest-news" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333329230" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Panel Latest Entries (embed) -  {embed='news/_panel-latest-entries'}
 ================================
@@ -570,13 +2030,13 @@ Panel Latest Entries (embed) -  {embed='news/_panel-latest-entries'}
 		</div>
 	{/exp:channel:entries}
 	</div>
-</div> ]]></template>
-    <template template_name="_widget-featured-entries" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
-    <template template_name="_widget-latest-entries" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
+</div>  ]]></template>
+    <template template_name="_widget-featured-entries" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
+    <template template_name="_widget-latest-entries" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
   </template_group>
   <template_group group_name="newsletter" group_order="3" is_site_default="n" group_ref_id="template_group_9">
-    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
-    <template template_name="_form-subscribe" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!-- Set 'global:cm_subscriber_list_slug' in config_bootstrap.php --}
+    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
+    <template template_name="_form-subscribe" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!-- Set 'global:cm_subscriber_list_slug' in config_bootstrap.php --}
 
 <form action="http://newism.createsend.com/t/y/s/{global:cm_subscriber_list_slug}/" method="post" class='form-mailing-list-subscribe'>
 
@@ -603,17 +2063,17 @@ Panel Latest Entries (embed) -  {embed='news/_panel-latest-entries'}
         <input type="submit" value="Subscribe" />
     </div>
 
-</form> ]]></template>
+</form>  ]]></template>
   </template_group>
   <template_group group_name="xml-sitemaps" group_order="5" is_site_default="n" group_ref_id="template_group_16">
-    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ <?xml version="1.0" encoding="UTF-8"?>
+    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     {embed="blog/xml-sitemap"}
-</urlset> ]]></template>
+</urlset>  ]]></template>
   </template_group>
   <template_group group_name="comments" group_order="6" is_site_default="n" group_ref_id="template_group_5">
-    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
-    <template template_name="_comments-index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
+    <template template_name="_comments-index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Comments index (embed) - {embed='comments/_comments-index'}
 ================================
@@ -691,12 +2151,12 @@ Comments index (embed) - {embed='comments/_comments-index'}
 				
 	{/exp:comment:entries}
 </sections>
-{/if} ]]></template>
-    <template template_name="_form-create" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
+{/if}  ]]></template>
+    <template template_name="_form-create" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
   </template_group>
   <template_group group_name="_partials" group_order="8" is_site_default="n" group_ref_id="template_group_3">
-    <template template_name=".analytics" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
-    <template template_name=".footer" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ 	</div> {!-- closes #body --}
+    <template template_name=".analytics" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
+    <template template_name=".footer" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  	</div> {!-- closes #body --}
 
 	{!-- #id has been added to simplfy CSS, speed up rendering and keep HTML4 happy --}
     <footer id="footer">
@@ -725,8 +2185,8 @@ Comments index (embed) - {embed='comments/_comments-index'}
     --}
 
 </body>
-</html> ]]></template>
-    <template template_name=".header" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ <!doctype html>  
+</html>  ]]></template>
+    <template template_name=".header" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  <!doctype html>  
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
@@ -889,23 +2349,23 @@ Comments index (embed) - {embed='comments/_comments-index'}
 		</p>
 
     </header>
-	<div id="body"> ]]></template>
-    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
-    <template template_name="_nav-breadcrumb" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332994238" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ <ul class="nav-breadcrumb">
+	<div id="body">  ]]></template>
+    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
+    <template template_name="_nav-breadcrumb" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332994238" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  <ul class="nav-breadcrumb">
 {exp:structure:breadcrumb
 	here_as_title="yes"
 	wrap_each="li"
 }
-</ul> ]]></template>
-    <template template_name="_panel-categories" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332994229" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ <div class="panel panel-categories">
+</ul>  ]]></template>
+    <template template_name="_panel-categories" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332994229" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  <div class="panel panel-categories">
 	<h3 class="panel-title">{if embed:title}{embed:title}{if:else}Categories{/if}</h3>
 	<ul class="entry-index">
 	{exp:channel:categories channel="{embed:channel}" style="linear"}
 		<li><a href="{path=news/archive}" title="{category_name}">{category_name}</a></li>
 	{/exp:channel:categories}
 	</ul>
-</div> ]]></template>
-    <template template_name="_panel-pagination" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333069903" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!-- 
+</div>  ]]></template>
+    <template template_name="_panel-pagination" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333069903" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!-- 
 	Note: The {pagination_links} tag pair will display the 2 available 'surrounding' pages on either side of the current page. 
 	So if you have 5 pages and Pg3 was the current page, it would show '1 2 X 4 5'.
 	If Pg4 was the current page, it would display '2 3 X 5'. 
@@ -931,17 +2391,17 @@ Comments index (embed) - {embed='comments/_comments-index'}
 	{/pagination_links}
 </div>
 {/paginate}
- ]]></template>
+  ]]></template>
   </template_group>
   <template_group group_name="_layouts" group_order="9" is_site_default="n" group_ref_id="template_group_2">
-    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
-    <template template_name="_1col" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ # change ]]></template>
-    <template template_name="_2col" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
-    <template template_name="_3col" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
-    <template template_name="_naked" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
+    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
+    <template template_name="_1col" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  # change  ]]></template>
+    <template template_name="_2col" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
+    <template template_name="_3col" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
+    <template template_name="_naked" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
   </template_group>
   <template_group group_name="_scaffold" group_order="10" is_site_default="n" group_ref_id="template_group_17">
-    <template template_name=".channel-index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {exp:channel:entries
+    <template template_name=".channel-index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {exp:channel:entries
     limit="100"
     entry_id="{embed:page_entry_id}"
     channel="{embed:page_channel}"
@@ -964,8 +2424,8 @@ Comments index (embed) - {embed='comments/_comments-index'}
 	</div>{!-- .content .container --}
 
 {embed="_partials/.footer"}
- ]]></template>
-    <template template_name=".entry-details" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+  ]]></template>
+    <template template_name=".entry-details" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Scaffold entry details (embed)
 ==============================
@@ -1010,8 +2470,8 @@ Displays a single entry details page
 
 {embed="_partials/.footer"}
 {/exp:channel:entries}
- ]]></template>
-    <template template_name=".entry-list" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ <ol>
+  ]]></template>
+    <template template_name=".entry-list" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  <ol>
 {exp:channel:entries
     dynamic="no"
     limit="100"
@@ -1024,11 +2484,11 @@ Displays a single entry details page
 	    <p>Created at: {entry_date format="{global:date_full}"} by {author}.</p>
 	</li>
 {/exp:channel:entries}
-</ol> ]]></template>
-    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
+</ol>  ]]></template>
+    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
   </template_group>
   <template_group group_name="account" group_order="13" is_site_default="n" group_ref_id="template_group_22">
-    <template template_name=".form-edit" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+    <template template_name=".form-edit" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Account Edit form (embed) - {embed='account/_form-edit'}
 ==========================
@@ -1133,8 +2593,8 @@ This form submits back to /account/edit/success.
 		<button type="submit">Update</button>
 	</div>
 
-{/exp:user:edit} ]]></template>
-    <template template_name=".form-login" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+{/exp:user:edit}  ]]></template>
+    <template template_name=".form-login" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 	
 Login Form (embed) -  {embed='account/.login-form'}
 ================================
@@ -1187,8 +2647,8 @@ Login Form (embed) -  {embed='account/.login-form'}
 		<button type="submit" name="submit">Login</button>
 		<p id="register-cta">-or- <a href="{path=account/create}" class='btn'>Create a new account</a></p>
 	</div>
-{/exp:member:login_form} ]]></template>
-    <template template_name="create" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {preload_replace:this_page_channel="pages"}
+{/exp:member:login_form}  ]]></template>
+    <template template_name="create" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {preload_replace:this_page_channel="pages"}
 {preload_replace:this_page_entry_id="2"}
 
 {exp:channel:entries
@@ -1206,8 +2666,8 @@ Login Form (embed) -  {embed='account/.login-form'}
 	</div>
 	{embed="_partials/.footer"}
 {/exp:channel:entries}
- ]]></template>
-    <template template_name="forgot-password" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {preload_replace:this_page_channel="pages"}
+  ]]></template>
+    <template template_name="forgot-password" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {preload_replace:this_page_channel="pages"}
 {preload_replace:this_page_entry_id="7"}
 
 {exp:channel:entries
@@ -1225,8 +2685,8 @@ Login Form (embed) -  {embed='account/.login-form'}
 	</div>
 	{embed="_partials/.footer"}
 {/exp:channel:entries}
- ]]></template>
-    <template template_name="forgot-username" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {if logged_out}{redirect="account/login"}{/if}
+  ]]></template>
+    <template template_name="forgot-username" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {if logged_out}{redirect="account/login"}{/if}
 {embed="_partials/.header" entry_id="{entry_id}"}
 <div id="content" role="main">
 	<article class="entry page-entry">
@@ -1236,8 +2696,8 @@ Login Form (embed) -  {embed='account/.login-form'}
 	</article>
 </div>
 {embed="_partials/.footer"}
- ]]></template>
-    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {preload_replace:this_page_channel="pages"}
+  ]]></template>
+    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {preload_replace:this_page_channel="pages"}
 {preload_replace:this_page_entry_id="8"}
 
 {exp:channel:entries
@@ -1263,8 +2723,8 @@ Login Form (embed) -  {embed='account/.login-form'}
 		{/exp:zoo_visitor:details}
 	</div>
 	{embed="_partials/.footer"}
-{/exp:channel:entries} ]]></template>
-    <template template_name="login" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {preload_replace:this_page_channel="pages"}
+{/exp:channel:entries}  ]]></template>
+    <template template_name="login" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {preload_replace:this_page_channel="pages"}
 {preload_replace:this_page_entry_id="6"}
 
 {exp:channel:entries
@@ -1281,8 +2741,8 @@ Login Form (embed) -  {embed='account/.login-form'}
 		{embed="account/_form-login"}
 	</div>
 	{embed="_partials/.footer"}
-{/exp:channel:entries} ]]></template>
-    <template template_name="update" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {preload_replace:this_page_channel="pages"}
+{/exp:channel:entries}  ]]></template>
+    <template template_name="update" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {preload_replace:this_page_channel="pages"}
 {preload_replace:this_page_entry_id="4"}
 
 {exp:channel:entries
@@ -1300,8 +2760,8 @@ Login Form (embed) -  {embed='account/.login-form'}
 	</div>
 	{embed="_partials/.footer"}
 {/exp:channel:entries}
- ]]></template>
-    <template template_name="_form-create" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+  ]]></template>
+    <template template_name="_form-create" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Create member form (embed) - {embed="account/_form-create" form_return=''}
 ==========================
@@ -1421,8 +2881,8 @@ Create a new member. Returns to the success page
 
 {/if}
 
-</div> ]]></template>
-    <template template_name="_form-edit" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {preload_replace:form_slug="form-account-edit"}
+</div>  ]]></template>
+    <template template_name="_form-edit" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {preload_replace:form_slug="form-account-edit"}
 
 {!--
 	This form submits back to /account/edit/success.
@@ -1526,8 +2986,8 @@ Create a new member. Returns to the success page
 		<button type="submit">4. Update my account</button>
 	</div>
 
-{/exp:user:edit} ]]></template>
-    <template template_name="_form-forgot-password" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+{/exp:user:edit}  ]]></template>
+    <template template_name="_form-forgot-password" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Member forgot password form (embed) - {embed="account/_form-forgot_password" form_return=''}
 ==========================
@@ -1578,8 +3038,8 @@ Send the member their password. Returns to the success page
 	{/exp:zoo_visitor:forgot_password}
 {/if}
 
-</div> ]]></template>
-    <template template_name="_form-forgot-username" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+</div>  ]]></template>
+    <template template_name="_form-forgot-username" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 	
 Forgot Password Form (embed) -  {embed='account/_form-forgot'}
 ================================
@@ -1612,8 +3072,8 @@ Forgot Password Form (embed) -  {embed='account/_form-forgot'}
 		</p>
 		<button type="submit" name="submit">Submit</button>
 	</div>
-{/exp:user:forgot_username} ]]></template>
-    <template template_name="_form-login" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+{/exp:user:forgot_username}  ]]></template>
+    <template template_name="_form-login" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Login member form (embed) - {embed="account/_form-login" form_return=''}
 ==========================
@@ -1679,8 +3139,8 @@ Logs in a member. Returns to the account page
 	{/exp:member:login_form}
 {/if}
 
-</div> ]]></template>
-    <template template_name="_form-update" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329268008" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+</div>  ]]></template>
+    <template template_name="_form-update" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329268008" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Update member form (embed) - {embed="account/_form-update" form_return=''}
 ==========================
@@ -1787,8 +3247,8 @@ Updates a members profile. Returns to the success page
 	{/exp:zoo_visitor:update_form}
 {/if}
 
-</div> ]]></template>
-    <template template_name="_nav" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329268008" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ <div class="nav-account">
+</div>  ]]></template>
+    <template template_name="_nav" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329268008" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  <div class="nav-account">
 	{if logged_in}
 	<p>Welcome back {screen_name}.</p>
 	<ul>
@@ -1803,9 +3263,9 @@ Updates a members profile. Returns to the success page
 		<li><a href="{path=account/forgot-password}">Forgot your password</a></li>
 	</ul>
 	{/if}
-</div> ]]></template>
-    <template template_name="_nav-account" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333069650" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
-    <template template_name="_nav-account-login" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333069650" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+</div>  ]]></template>
+    <template template_name="_nav-account" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333069650" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
+    <template template_name="_nav-account-login" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333069650" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Account Login Nav (embed) -  {embed='account/_nav-account-login'}
 ================================
@@ -1818,21 +3278,21 @@ Account Login Nav (embed) -  {embed='account/_nav-account-login'}
 		<li><a href="{path=account/forgot-username}" title="Forgot your password?">Forgot your username?</a></li>
 		<li><a href="{path=account/create}" class='btn'>Create a new account</a></li>
 	</ul>
-</nav> ]]></template>
+</nav>  ]]></template>
   </template_group>
   <template_group group_name="live-chat" group_order="13" is_site_default="n" group_ref_id="template_group_20">
-    <template template_name="chat" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
-    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
-    <template template_name="xml-sitemap" save_template_file="y" template_type="xml" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {exp:nsm_better_meta:entries_xml
+    <template template_name="chat" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
+    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
+    <template template_name="xml-sitemap" save_template_file="y" template_type="xml" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {exp:nsm_better_meta:entries_xml
 	channel="live_chat"
 	dyanmic="no"
 	use_page_url="yes"
-} ]]></template>
-    <template template_name="_widget-chat" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
-    <template template_name="_widget-chat-index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
+}  ]]></template>
+    <template template_name="_widget-chat" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
+    <template template_name="_widget-chat-index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
   </template_group>
   <template_group group_name="search" group_order="13" is_site_default="n" group_ref_id="template_group_21">
-    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329356855" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!-- 
+    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329356855" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!-- 
 
 Search index
 ============
@@ -1902,14 +3362,14 @@ This is because the URL will change once the search has been submitted and we ne
 </div>
 {embed="_partials/.footer"}
 {/exp:channel:entries}
- ]]></template>
-    <template template_name="results" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {exp:low_search:results query="{segment_3}" limit="10"}
+  ]]></template>
+    <template template_name="results" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {exp:low_search:results query="{segment_3}" limit="10"}
 	{if count ==  1}<ol>{/if}
 	<li><a href="{comment_url_title_auto_path}">{title}</a></li>
 	{if count == total_results}</ol>{/if}
 	{if no_results}No search results{/if}
-{/exp:low_search:results} ]]></template>
-    <template template_name="_form-search" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+{/exp:low_search:results}  ]]></template>
+    <template template_name="_form-search" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Search form (embed) - {embed="search/_form-search"}
 ===================
@@ -1987,8 +3447,8 @@ Filter products by keyword, category, status etc.
 	</fieldset>
 	{/exp:low_search:form}	
 </form>
- ]]></template>
-    <template template_name="_form-search-simple" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+  ]]></template>
+    <template template_name="_form-search-simple" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Simple search form (embed) - {embed='search/_form-search-simple'}
 ==========================
@@ -2019,8 +3479,8 @@ Filter entries by keyword.
 		<button type="submit">Search</button>
 	</div>
 </div>
-{/exp:low_search:form} ]]></template>
-    <template template_name="_search-results" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+{/exp:low_search:form}  ]]></template>
+    <template template_name="_search-results" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Search results (embed) - {embed="search/_search/results"}
 ======================
@@ -2065,10 +3525,10 @@ Display entries based on submitted search.
 	{/paginate}
 
 	{/exp:low_search:results}
-</div> ]]></template>
+</div>  ]]></template>
   </template_group>
   <template_group group_name="testimonials" group_order="15" is_site_default="n" group_ref_id="template_group_24">
-    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {exp:channel:entries
+    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {exp:channel:entries
 	channel="testimonials"
 	entry_id="57"
 	limit="1"
@@ -2105,8 +3565,8 @@ Display entries based on submitted search.
 		{/exp:channel:entries}
 	</div>
 {embed="_partials/.footer"}
- ]]></template>
-    <template template_name="_module-testimonials" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+  ]]></template>
+    <template template_name="_module-testimonials" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Testimonial Module (embed) - {embed="testimonials/_module-testimonials"}
 ==========================
@@ -2137,8 +3597,8 @@ If a cite has been included, include a cite attribute on the blockquote and wrap
 	{if testimonial_cite}<a href="{testimonial_cite}" title="View the testimonial source">{/if}{testimonial_testifier}{if testimonial_cite}</a>{/if}
 	</footer>
 </blockquote>
-{/exp:channel:entries} ]]></template>
-    <template template_name="_panel-testimonials" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332982472" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+{/exp:channel:entries}  ]]></template>
+    <template template_name="_panel-testimonials" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332982472" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Testimonial Panel (embed) - {embed="testimonials/_panel-testimonials"}
 ==========================
@@ -2182,10 +3642,10 @@ If a cite has been included, include a cite attribute on the blockquote and wrap
 	{/exp:channel:entries}
 	</div>
 </div>
- ]]></template>
+  ]]></template>
   </template_group>
   <template_group group_name="contact" group_order="16" is_site_default="n" group_ref_id="template_group_28">
-    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333076439" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333076439" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 	
 Contact Index (template) -  contact/index
 ================================
@@ -2233,8 +3693,8 @@ Contact Index (template) -  contact/index
 </section>
 {embed="_partials/.footer"}
 {/exp:channel:entries}
- ]]></template>
-    <template template_name="_form-create" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333079721" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="y" php_parse_location="i" hits="0"><![CDATA[ {!--
+  ]]></template>
+    <template template_name="_form-create" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333079721" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="y" php_parse_location="i" hits="0"><![CDATA[  {!--
 	
 Form Create (embed) -  embed="contact/_form-create"
 ================================
@@ -2348,14 +3808,14 @@ NOTE:
 		<button type="submit">Submit</button>
 	</div>
 {/exp:freeform:form}
-</div> ]]></template>
+</div>  ]]></template>
   </template_group>
   <template_group group_name="galleries" group_order="17" is_site_default="n" group_ref_id="template_group_29">
-    <template template_name=".archive-category" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329869690" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ CAT INDEX ]]></template>
-    <template template_name=".archive-date" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329869686" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ DATE INDEX ]]></template>
-    <template template_name="archive" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329863093" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
-    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329359774" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
-    <template template_name="view" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329432158" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="y" php_parse_location="o" hits="0"><![CDATA[ {!--
+    <template template_name=".archive-category" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329869690" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  CAT INDEX  ]]></template>
+    <template template_name=".archive-date" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329869686" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  DATE INDEX  ]]></template>
+    <template template_name="archive" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329863093" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
+    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329359774" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
+    <template template_name="view" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329432158" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="y" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Galleries Details (template) -  galleries/details
 ================================
@@ -2406,9 +3866,9 @@ dynamically constructed. see web/content/themes/site_themes/src/default_site/js/
 		</article>
 	</section>
 {/exp:channel:entries}
-{embed="_partials/.footer"} ]]></template>
-    <template template_name="_gallery-category-nav" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329862948" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ Gallery Nav ]]></template>
-    <template template_name="_gallery-embed" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329435568" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ test
+{embed="_partials/.footer"}  ]]></template>
+    <template template_name="_gallery-category-nav" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329862948" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  Gallery Nav  ]]></template>
+    <template template_name="_gallery-embed" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329435568" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  test
 <ul>
 	{galleries_gallery}
 	<li>
@@ -2425,8 +3885,8 @@ dynamically constructed. see web/content/themes/site_themes/src/default_site/js/
 		</div>
 	</li>
 	{/galleries_gallery}
-</ul> ]]></template>
-    <template template_name="_module-category-archive-nav" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329870184" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+</ul>  ]]></template>
+    <template template_name="_module-category-archive-nav" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329870184" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Gallery Archive Category (template) -  gallery/.archive-category
 ================================
@@ -2447,8 +3907,8 @@ Gallery Archive Category (template) -  gallery/.archive-category
 		<li><a href="{path={this_index_channel}/archive/{category_url_title}} " title="Browse {category_name}">{category_name}</a></li>
 	{/exp:nsm_categories:archive}
 	</ul>
-</nav> ]]></template>
-    <template template_name="_module-date-archive-nav" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329870184" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+</nav>  ]]></template>
+    <template template_name="_module-date-archive-nav" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329870184" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Gallery Archive Category (template) -  gallery/.archive-category
 ================================
@@ -2469,10 +3929,10 @@ Gallery Archive Category (template) -  gallery/.archive-category
 		<li><a href="{path={this_index_channel}/archive/{category_url_title}} " title="Browse {category_name}">{category_name}</a></li>
 	{/exp:nsm_categories:archive}
 	</ul>
-</nav> ]]></template>
+</nav>  ]]></template>
   </template_group>
   <template_group group_name="people" group_order="17" is_site_default="n" group_ref_id="template_group_26">
-    <template template_name="details" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+    <template template_name="details" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 	
 Contact Index (template) -  contact/index
 ================================
@@ -2523,8 +3983,8 @@ Contact Index (template) -  contact/index
 		</article>
 	</section>
 {embed="_partials/.footer"}
-{/exp:channel:entries} ]]></template>
-    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+{/exp:channel:entries}  ]]></template>
+    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1329344680" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 	
 Contact Index (template) -  contact/index
 ================================
@@ -2580,10 +4040,10 @@ Contact Index (template) -  contact/index
 		</div>
 	</section>
 {embed="_partials/.footer"}
- ]]></template>
+  ]]></template>
   </template_group>
   <template_group group_name="events" group_order="18" is_site_default="n" group_ref_id="template_group_30">
-    <template template_name=".archive-category" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332820657" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+    <template template_name=".archive-category" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332820657" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Archive Category (template) -  events/.archive-category
 ================================
@@ -2721,8 +4181,8 @@ Archive Category (template) -  events/.archive-category
 		{/if}
 	</section>
 	{embed="_partials/.footer"}
-{/exp:nsm_categories:archive} ]]></template>
-    <template template_name=".archive-date" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333069658" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+{/exp:nsm_categories:archive}  ]]></template>
+    <template template_name=".archive-date" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333069658" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Archive Date (template) -  events/.archive-date
 ================================
@@ -2853,16 +4313,16 @@ Archive Date (template) -  events/.archive-date
 			}
 		</aside>
 	</section>
-{embed="_partials/.footer"} ]]></template>
-    <template template_name="archive" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332820610" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!-- 
+{embed="_partials/.footer"}  ]]></template>
+    <template template_name="archive" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332820610" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!-- 
 	The URL is going to look something like: 
 	* events/archive/fishing -> display the .archive-category.html
 --}
 
-{embed='events/.archive-category'} ]]></template>
-    <template template_name="details" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332803294" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
-    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332803298" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  ]]></template>
-    <template template_name="_panel-latest-events" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333327951" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[ {!--
+{embed='events/.archive-category'}  ]]></template>
+    <template template_name="details" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332803294" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
+    <template template_name="index" save_template_file="y" template_type="webpage" template_notes="" edit_date="1332803298" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[    ]]></template>
+    <template template_name="_panel-latest-events" save_template_file="y" template_type="webpage" template_notes="" edit_date="1333327951" last_author_id="1" cache="n" refresh="0" no_auth_bounce="" enable_http_auth="n" allow_php="n" php_parse_location="o" hits="0"><![CDATA[  {!--
 
 Panel Latest Events Entries (embed) -  {embed='events/_panel-latest-events'}
 ================================
@@ -2976,7 +4436,7 @@ Panel Latest Events Entries (embed) -  {embed='events/_panel-latest-events'}
 		</footer>
 	</article>
 	{/exp:channel:entries}
-</section> ]]></template>
+</section>  ]]></template>
   </template_group>
 </template_groups>
 </generator_template>
