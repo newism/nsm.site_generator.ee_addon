@@ -18,87 +18,97 @@
 <div class="tg">
     
     <h3>Site Structure</h3>
-    <div class="alert info">
-        The following channels, categories, statuses, fields and entries will be imported. Your existing structure will not be modified, new elements will be added.
-    </div>
 
-    <ul class='menu tabs'>
-    <?php foreach($config['channels'] as $channel) : ?>
-        <li><a href='#channel-<?= $channel['channel_name'] ?>'><?= $channel['channel_title']; ?></a></li>
-    <?php endforeach; ?>
-    <li><a href="#channel-show_all"><?= lang("Show all"); ?></a></li>
-    </ul>
+    <?php if(empty($config['channels'])) : ?>
+        
+        <div class="error alert">There are no channels defined in your bundle structure.xml</div>
+        
+    <?php else: ?>
+        
+        <div class="alert info">
+            The following channels, categories, statuses, fields and entries will be imported. Your existing structure will not be modified, new elements will be added.
+        </div>
+            <ul class='menu tabs'>
+            <?php foreach($config['channels'] as $channel) : ?>
+                <li><a href='#channel-<?= $channel['channel_name'] ?>'><?= $channel['channel_title']; ?></a></li>
+            <?php endforeach; ?>
+            <li><a href="#channel-show_all"><?= lang("Show all"); ?></a></li>
+            </ul>
 
-    <?php foreach($config['channels'] as $channel_name => $channel) : ?>
-    <div id="channel-<?= $channel_name ?>">
-        <h4 style="background:#fff; border-top:3px double #849099; margin-top:-1px"><?= $channel['channel_title'] ?> <code>[<?= $channel['channel_name']; ?>]</code></h4>
-        <table class="data">
-            <tbody>
-                <tr>
-                    <th scope="row">Field Group</th>
-                    <td>
-                        <?php if(isset($config['field_groups'][$channel['field_group']])) : ?>
-                        <?= $config['field_groups'][$channel['field_group']]['group_name'] ?>
-                        <?php else: ?>
-                            &mdash;
-                        <?php endif; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Status Group</th>
-                    <td>
-                        <?php if(isset($config['status_groups'][$channel['status_group']])) : ?>
-                        <?= $config['status_groups'][$channel['status_group']]['group_name'] ?>
-                        <?php else: ?>
-                            &mdash;
-                        <?php endif; ?>
-                    </td>
-                </tr>
+            <?php foreach($config['channels'] as $channel_name => $channel) : ?>
+            <div id="channel-<?= $channel_name ?>">
+                <h4 style="background:#fff; border-top:3px double #849099; margin-top:-1px"><?= $channel['channel_title'] ?> <code>[<?= $channel['channel_name']; ?>]</code></h4>
+                <table class="data">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Field Group</th>
+                            <td>
+                                <?php if(isset($config['field_groups'][$channel['field_group']])) : ?>
+                                <?= $config['field_groups'][$channel['field_group']]['group_name'] ?>
+                                <?php else: ?>
+                                    &mdash;
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Status Group</th>
+                            <td>
+                                <?php if(isset($config['status_groups'][$channel['status_group']])) : ?>
+                                <?= $config['status_groups'][$channel['status_group']]['group_name'] ?>
+                                <?php else: ?>
+                                    &mdash;
+                                <?php endif; ?>
+                            </td>
+                        </tr>
 
-                <?php
-                    $category_count = 0;
-                    $categories = array();
-                    if(false === empty($channel['cat_group'])) {
-                        $categories = explode("|", $channel['cat_group']);
-                        $category_count = count($categories);
-                    }
-                ?>
-                <tr>
-                    <th scope="row" rowspan="<?= $category_count ?>">Category Group(s)</th>
-                <?php if($category_count == 0) : ?>
-                    <td>&mdash;</td>
-                </tr>
-                <?php else : ?>
-                    <?php foreach($categories as $count => $category_group_id) : ?>
-                        <?php if($count > 1) : ?>
-                            <tr>
-                        <?php endif; ?>
-                                <td><?= $config['category_groups'][$category_group_id]['group_name'] ?></td>
+                        <?php
+                            $category_count = 0;
+                            $categories = array();
+                            if(false === empty($channel['cat_group'])) {
+                                $categories = explode("|", $channel['cat_group']);
+                                $category_count = count($categories);
+                            }
+                        ?>
+                        <tr>
+                            <th scope="row" rowspan="<?= $category_count ?>">Category Group(s)</th>
+                        <?php if($category_count == 0) : ?>
+                            <td>&mdash;</td>
+                        </tr>
+                        <?php else : ?>
+                            <?php foreach($categories as $count => $category_group_id) : ?>
+                                <?php if($count > 1) : ?>
+                                    <tr>
+                                <?php endif; ?>
+                                        <td><?= $config['category_groups'][$category_group_id]['group_name'] ?></td>
+                                    </tr>
+                            <?php endforeach; ?>
+            			<?php endif; ?>
+
+                        <?php
+                            $entry_count = count($channel['entries']);
+                        ?>
+                        <tr>
+                            <th scope="row" rowspan="<?= $entry_count ?>">Entries</th>
+                            <?php if($entry_count == 0) : ?>
+                                <td></td>
                             </tr>
-                    <?php endforeach; ?>
-    			<?php endif; ?>
+                            <?php else : ?>
+                                <?php foreach($channel['entries'] as $count => $entry): ?>
+                                    <?php if($count > 1) : ?>
+                                        <tr>
+                                    <?php endif; ?>
+                                        <td><?= $entry['title']; ?></td>
+                                        </tr>
+                                <?php endforeach; ?>
+            			    <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php endforeach; ?>
+        
+    <?php endif; ?>
 
-                <?php
-                    $entry_count = count($channel['entries']);
-                ?>
-                <tr>
-                    <th scope="row" rowspan="<?= $entry_count ?>">Entries</th>
-                    <?php if($entry_count == 0) : ?>
-                        <td></td>
-                    </tr>
-                    <?php else : ?>
-                        <?php foreach($channel['entries'] as $count => $entry): ?>
-                            <?php if($count > 1) : ?>
-                                <tr>
-                            <?php endif; ?>
-                                <td><?= $entry['title']; ?></td>
-                                </tr>
-                        <?php endforeach; ?>
-    			    <?php endif; ?>
-            </tbody>
-        </table>
-    </div>
-<?php endforeach; ?>
+
 </div>
 
 <div class="tg">
