@@ -621,8 +621,8 @@ class Nsm_site_generator_mcp{
     */
     private function _loadXML($site_template)
     {
-        return simplexml_load_file("{$this->template_dir}/{$site_template}/config.xml", 'SimpleXMLElement',  LIBXML_NOCDATA);
-        // var_dump(simplexml_load_file("{$this->template_dir}/{$site_template}/config.xml", 'SimpleXMLElement',  LIBXML_NOCDATA));
+        return simplexml_load_file("{$this->template_dir}/{$site_template}/structure.xml", 'SimpleXMLElement',  LIBXML_NOCDATA);
+        // var_dump(simplexml_load_file("{$this->template_dir}/{$site_template}/structure.xml", 'SimpleXMLElement',  LIBXML_NOCDATA));
         // exit;
     }
 
