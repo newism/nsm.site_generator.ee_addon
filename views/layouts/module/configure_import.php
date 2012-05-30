@@ -1,23 +1,6 @@
-<?php /* ?>
-<div id="import-options" class="tg">
-	<h2>Import Options</h2>
-	<table class="data">
-		<tbody>
-			<tr>
-				<th scope="row">Truncte DB</th>
-				<td>
-					<?= Nsm_site_generator_helper::yesNoRadioGroup("{$input_prefix}[general][truncate_db]", FALSE); ?>
-					<!-- <?= lang('alert.warning.truncate_db'); ?> -->
-				</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
-<?php */ ?>
-
 <div class="tg">
     
-    <h3>Site Structure</h3>
+    <h3>Structure</h3>
 
     <?php if(empty($config['channels'])) : ?>
         
@@ -157,6 +140,52 @@
         <?php endforeach; ?>
     <?php endif; ?>
     
+</div>
+
+<div class="tg">
+    <h3>Global Variables</h3>
+    <?php if(empty($config['global_variables'])) : ?>
+    <div class="error alert">There are no global variables defined in your theme structure.xml</div>
+    <?php else: ?>
+    <table class="data">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($config['global_variables'] as $variable)?>
+            <tr>
+                <th scope="row"><?= $variable['variable_name']; ?></th>
+                <td><?= htmlentities($variable['variable_data']); ?></td>
+            </tr>
+        </tbody>
+    </table>
+    <?php endif; ?>
+</div>
+
+<div class="tg">
+    <h3>Snippets</h3>
+    <?php if(empty($config['snippets'])) : ?>
+    <div class="error alert">There are no snippets defined in your theme structure.xml</div>
+    <?php else: ?>
+    <table class="data">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($config['snippets'] as $snippet)?>
+            <tr>
+                <th scope="row"><?= $snippet['snippet_name']; ?></th>
+                <td><?= htmlentities($snippet['snippet_contents']); ?></td>
+            </tr>
+        </tbody>
+    </table>
+    <?php endif; ?>
 </div>
 
 <div class="action" style="text-align:right">

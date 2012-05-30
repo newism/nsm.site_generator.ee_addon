@@ -1,5 +1,24 @@
-<div class="alert info">Export complete. Here's the XML:</div>
-<pre class="prettyprint lang-xml candy"><?= $xml ?></pre>
+<div class="alert success">Export complete.</div>
+
+<div class="tg">
+    <ul class="menu tabs">
+       <li><a href="#log">Export Log</a></li>
+       <li><a href="#xml">structure.xml </a></li>
+    </ul>
+    <div id="log">
+        <?php foreach($log as $log_item): ?>
+        	<?php if($log_item['type'] == "title") : ?>
+        	<h2><?= $log_item["text"]; ?></h2>
+        	<?php else : ?>
+        	<div class="alert <?= $log_item['type']; ?>" style="padding-left:27px"><?= $log_item["text"]; ?></div>
+        	<?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+    <div id="xml">
+        <pre class="prettyprint lang-xml candy"><?= $xml ?></pre>
+    </div>
+</div>
+
 <style type="text/css" media="screen">
     .com { color: #93a1a1; }
     .lit { color: #195f91; }
@@ -17,6 +36,7 @@
       overflow:auto;
       line-height: 18px;
       text-shadow: 0 1px 0 #fff;
+      margin:0;
     }
 </style>
 

@@ -3,7 +3,7 @@
 ?>
 
 <div class="tg" id="channels">
-    <h2>Bundle Details</h2>
+    <h2>Descibe the theme</h2>
     <table class="data">
         <tr>
             <th scope="row">Title</th>
@@ -65,7 +65,7 @@
         <thead>
             <tr>
                 <th scope="col">Attribute</th>
-                <th scope="col" style="width:20px">ID</th>
+                <th scope="col" style="width:30px">ID</th>
                 <th scope="col">Title</th>
                 <th scope="col" style="width:40px; text-align:right">Export</th>
             </tr>
@@ -81,7 +81,7 @@
                     $rowspan = ($cat_count) ? $cat_count : 1; 
                     $rowspan += 3;
                 ?>
-                <td rowspan="<?= $rowspan ?>" style="text-align:right; vertical-align:top;">
+                <td rowspan="<?= $rowspan ?>" style="text-align:right;">
                     <?=
                         $EE->nsm_site_generator_helper->checkbox(
                             $input_prefix.'[channels]['.$channel['channel_id'].'][enabled]',
@@ -149,7 +149,7 @@
                     <?php endif; ?>
                     <td style="text-align:right"><?= $entry['entry_id']; ?></td>
                     <td><?= $entry['title']; ?> (<?= $entry['url_title']; ?>)</td>
-                    <td style="text-align:right; vertical-align:top;">
+                    <td style="text-align:right;">
                         <?=
                             $EE->nsm_site_generator_helper->checkbox(
                                 $input_prefix.'[channels]['.$channel['channel_id'].'][entries][]',
@@ -187,7 +187,7 @@
         <table>
             <thead>
                 <tr>
-                    <th scope="col" style="width:20px">ID</th>
+                    <th scope="col" style="width:30px">ID</th>
                     <th scope="col">Title</th>
                     <th scope="col">Type</th>
                     <th scope="col">Notes</th>
@@ -200,14 +200,14 @@
             <tbody>
                     <?php foreach($templateGroup['templates'] as $template) : ?>
                         <tr>
-                            <td><?= $template['template_id']; ?></td>
+                            <td style="text-align:right"><?= $template['template_id']; ?></td>
                             <th scope="row"><?= $template['template_name']; ?></th>
                             <td><?= $template['template_type']; ?></td>
                             <td><?= $template['template_notes'] ?></td>
-                            <td style="text-align:right; vertical-align:top;">
+                            <td style="text-align:right;">
                                 <?=
                                     $EE->nsm_site_generator_helper->checkbox(
-                                        $input_prefix.'[template_groups]['.$count.'][templates]['.$template['template_id'].']',
+                                        $input_prefix.'[template_groups]['.$count.'][templates][]',
                                         $template['template_id'],
                                         in_array($template['template_id'], $data['template_groups'][$count]['templates'])
                                     );
@@ -221,6 +221,84 @@
     </div>
     <?php endforeach; ?>
 </div>
+
+<div class="tg" id="global-variables">
+    <h2>Which global variables would you like to export?</h2>
+    <?php if(empty($global_variables)) : ?>
+    <div class="alert error">No global variables</div>
+<?php else: ?>
+    <table class="data">
+        <thead>
+            <tr>
+                <th scope="col" style="width:30px">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Data</th>
+                <th scope="col" style="width:70px;">
+                    <input type="checkbox" style="float:right" />
+                    Export
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+    <?php foreach ($global_variables as $global_variable) : ?>
+        <tr>
+            <td style="text-align:right"><?= $global_variable['variable_id']; ?></td>
+            <th scope="row"><?= $global_variable['variable_name']; ?></th>
+            <td><?= htmlentities($global_variable['variable_data']); ?></td>
+            <td style="text-align:right;">
+                <?=
+                    $EE->nsm_site_generator_helper->checkbox(
+                        $input_prefix.'[global_variables][]',
+                        $global_variable['variable_id'],
+                        in_array($global_variable['variable_id'], $data['global_variables'])
+                    );
+                ?>
+            </td>
+        </tr>
+    <?php endforeach ; ?>
+        </tbody>
+    </table>
+<?php endif; ?>
+</div>
+<div class="tg" id="snippets">
+    <h2>Which snippets would you like to export?</h2>
+    <?php if(empty($snippets)) : ?>
+    <div class="alert error">No snippets</div>
+    <?php else: ?>
+        <table class="data">
+            <thead>
+                <tr>
+                    <th scope="col" style="width:30px">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Data</th>
+                    <th scope="col" style="width:70px;">
+                        <input type="checkbox" style="float:right" />
+                        Export
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+        <?php foreach ($snippets as $snippet) : ?>
+            <tr>
+                <td style="text-align:right"><?= $snippet['snippet_id']; ?></td>
+                <th scope="row"><?= $snippet['snippet_name']; ?></th>
+                <td><?= htmlentities($snippet['snippet_contents']); ?></td>
+                <td style="text-align:right;">
+                    <?=
+                    $EE->nsm_site_generator_helper->checkbox(
+                        $input_prefix.'[snippets][]',
+                        $snippet['snippet_id'],
+                        in_array($snippet['snippet_id'], $data['snippets'])
+                    );
+                    ?>
+                </td>
+            </tr>
+        <?php endforeach ; ?>
+            </tbody>
+        </table>
+    <?php endif; ?>
+</div>
+
 <div class="action" style="text-align:right">
     <input type="submit" class="submit" value="Begin Export" />
 </div>

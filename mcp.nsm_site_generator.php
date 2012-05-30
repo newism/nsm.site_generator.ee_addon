@@ -1,7 +1,6 @@
 <?php //if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 require PATH_THIRD.'nsm_site_generator/config.php';
-require 'libraries/nsm_site_generator_transformer.php';
 require 'libraries/nsm_site_generator_generator.php';
 
 
@@ -41,7 +40,7 @@ class Nsm_site_generator_mcp{
             include(PATH_THIRD. 'nsm_site_generator/ext.nsm_site_generator.php');
 
         $this->ext = new Nsm_site_generator_ext;
-        $this->template_dir = $this->ext->settings['bundle_server_path'];
+        $this->themesDirectory = $this->ext->settings['bundle_server_path'];
     }
 
     /**
@@ -52,38 +51,31 @@ class Nsm_site_generator_mcp{
      */
     public function index()
     {
+        $this->EE->load->helper('directory');
+
         $viewData = array(
             "input_prefix" => __CLASS__,
             "error" => FALSE,
-            "generators" => FALSE
+            "themes" => FALSE
         );
 
-        $generators = FALSE;
-
-        if(is_dir($this->template_dir))
+        if(is_dir($this->themesDirectory))
         {
-            $dir_handle = opendir($this->template_dir);
-            if($dir_handle)
-            {
-                /* This is the correct way to loop over the directory. */
-                while (false !== ($f = readdir($dir_handle)))
-                {
-                    if ($f != "." && $f != ".." && $f != "Thumb.db" && substr($f, 0, 1) != '-')
-                    {
-                        if(is_dir("{$this->template_dir}/{$f}"))
-                        {
-                            $generator = $this->_loadXML($f);
-                            $generator['folder'] = $f;
-                            $generator["generator_url"] = BASE.AMP.$this->cp_url . "method=configure_import". AMP . "site_template=". $f;
-                            $viewData["generators"][] = $generator;
-                        }
-                    }
+            $map = directory_map($this->themesDirectory, 2);
+            
+            foreach ($map as $key => $values) {
+                if(is_array($values) && in_array("structure.xml", $values) && "~" != substr($key, 0, 1)) {
+                    $theme = $this->_loadXML($key);
+                    $theme['folder'] = $key;
+                    $theme["theme_url"] = BASE.AMP.$this->cp_url . "method=configure_import". AMP . "theme=". $key;
+                    $viewData['themes'][] = $theme;
                 }
             }
         }
 
-        if(!$viewData["generators"])
-            $viewData["error"] = sprintf(lang("alert.warning.no_templates"), $this->template_dir);
+        if(true === empty($viewData['themes'])) {
+            $viewData["error"] = sprintf(lang("alert.warning.no_templates"), $this->themesDirectory);
+        }
 
         $out = $this->EE->load->view("layouts/module/index", $viewData, TRUE);
         return $this->_renderLayout("index", $out);
@@ -97,30 +89,21 @@ class Nsm_site_generator_mcp{
      */
     public function configure_import()
     {
-        $siteTemplate = $this->EE->input->get('site_template');
-        $xmlConfig = $this->_loadXML($siteTemplate);
+        $theme = $this->EE->input->get('theme');
+        $xmlConfig = $this->_loadXML($theme);
 
-        $transformer = new NsmSiteGeneratorTransformer();
-        $transformer->parseXmlConfig($xmlConfig);
-        $config = $transformer->toArray();
-
-        $existingData = array(
-            'template_groups' => $this->getExistingTemplateGroups(),
-            'category_groups' => $this->getExistingCategoryGroups(),
-            'status_groups' => $this->getExistingStatusGroups(),
-            'field_groups' => $this->getExistingFieldGroups(),
-            'channels' => $this->getExistingChannels(),
-        );
+        $generator = new NsmSiteGeneratorGenerator();
+        $generator->importDirectory = $this->themesDirectory . "/" . $theme;
+        $generator->parseXmlConfig($xmlConfig);
 
         $viewData = array(
             'input_prefix' => __CLASS__,
-            'transformer' => $transformer,
-            'config' => $config,
-            'existing_data' => $existingData
+            'generator' => $generator,
+            'config' => $generator->toArray(),
         );
 
         $out = $this->EE->load->view("layouts/module/configure_import", $viewData, TRUE);
-        $out = form_open($this->cp_url . "method=import", FALSE, array("site_template" => $siteTemplate)) . $out . "</form>";
+        $out = form_open($this->cp_url . "method=import", FALSE, array("theme" => $theme)) . $out . "</form>";
         return $this->_renderLayout("configure_import", $out);
     }
 
@@ -129,25 +112,13 @@ class Nsm_site_generator_mcp{
      */
     public function import()
     {
-        $siteTemplate = $this->EE->input->post('site_template');
-        $xmlConfig = $this->_loadXML($siteTemplate);
+        $theme = $this->EE->input->post('theme');
+        $xmlConfig = $this->_loadXML($theme);
 
-        $transformer = new NsmSiteGeneratorTransformer();
-        $transformer->parseXmlConfig($xmlConfig);
-        $arrayConfig = $transformer->toArray();
-        
-        $exclude = array(
-            'template_groups' => $this->getExistingTemplateGroups(),
-            'category_groups' => $this->getExistingCategoryGroups(),
-            'status_groups' => $this->getExistingStatusGroups(),
-            'field_groups' => $this->getExistingFieldGroups(),
-            'channels' => $this->getExistingChannels(),
-        );
-
-        $generator = new NsmSiteGeneratorGenerator($siteTemplate);
-        $generator->setConfig($arrayConfig);
-        $generator->setExcludeConfig($exclude);
-        $generator->generate();
+        $generator = new NsmSiteGeneratorGenerator();
+        $generator->importDirectory = $this->themesDirectory . "/" . $theme;
+        $generator->parseXmlConfig($xmlConfig);
+        $generator->import();
 
         $viewData = array(
             "log" => $generator->getLog(),
@@ -158,7 +129,6 @@ class Nsm_site_generator_mcp{
         return $this->_renderLayout("import", $out);
     }
 
-
     /**
      * Display configuration options for exporting XML
      *
@@ -167,7 +137,7 @@ class Nsm_site_generator_mcp{
      */
     public function configure_export() {
 
-        $siteTemplate = $this->EE->input->get('site_template');
+        $theme = $this->EE->input->get('theme');
 
         $channels = $this->hydrate($this->getExistingChannels(), 'channel_id');
         foreach ($channels as $key => $channel) {
@@ -177,15 +147,22 @@ class Nsm_site_generator_mcp{
         $categoryGroups = $this->getExistingCategoryGroups();
         $statusGroups = $this->getExistingStatusGroups();
         $fieldGroups = $this->getExistingFieldGroups();
-        
         $templateGroups = $this->getExistingTemplateGroups();
+        $globalVariables = $this->getExistingGlobalVariables();
+        $snippets = $this->getExistingSnippets();
 
         // Are there settings posted from the form?
         if($postData = $this->EE->input->post(__CLASS__)) {
 
+
             $arrayConfig = array(
                 'channels' => array(),
-                'template_groups' => array()
+                'template_groups' => array(),
+                'title' => $postData['title'],
+                'description' => $postData['description'],
+                'version' => $postData['version'],
+                'downloadUrl' => $postData['download_url'],
+                'postImportInstructions' => $postData['post_import_instructions'],
             );
 
             if(true === isset($postData['channels'])) {
@@ -266,12 +243,31 @@ class Nsm_site_generator_mcp{
                 }
             }
 
-            $transformer = new NsmSiteGeneratorTransformer();
-            $transformer->parseArrayConfig($arrayConfig);
-            $xmlConfig = $transformer->toXmlString();
+            if(true === isset($postData['global_variables'])) {
+                $globalVariables = $this->hydrate($globalVariables, 'variable_id');
+                foreach ($postData['global_variables'] as $variableId) {
+                     $existingVariableData = $globalVariables[$variableId];
+                     $arrayConfig['global_variables'][$existingVariableData['variable_name']] = $existingVariableData;
+                }
+            }
+
+            if(true === isset($postData['snippets'])) {
+                $snippets = $this->hydrate($snippets, 'snippet_id');
+                foreach ($postData['snippets'] as $snippetId) {
+                     $existingSnippetData = $snippets[$snippetId];
+                     $arrayConfig['snippets'][$existingSnippetData['snippet_name']] = $existingSnippetData;
+                }
+            }
+
+            $generator = new NsmSiteGeneratorGenerator();
+            $generator->outputTemplateData = false;
+            $generator->exportDirectory = $this->themesDirectory;
+            $generator->parseArrayConfig($arrayConfig);
+            $generator->export();
 
             $viewData = array(
-               'xml' => htmlentities($xmlConfig, ENT_QUOTES, false)
+               'xml' => htmlentities($generator->toXmlString(), ENT_QUOTES, false),
+               "log" => $generator->getLog(),
             );
             $out = $this->EE->load->view("layouts/module/export", $viewData, TRUE);
             return $this->_renderLayout("configure_export", $out);
@@ -285,7 +281,9 @@ class Nsm_site_generator_mcp{
                 'download_url' => false,
                 'post_import_instructions' => false,
                 'channels' => array(),
-                'templates' => array()
+                'templates' => array(),
+                'snippets' => array(),
+                'global_variables' => array()
             );
 
             foreach ($channels as $count => $channel) {
@@ -302,6 +300,8 @@ class Nsm_site_generator_mcp{
             'input_prefix' => __CLASS__,
             'channels' => $this->_mergeChannelData($channels, $categoryGroups, $statusGroups, $fieldGroups),
             'template_groups' => $templateGroups,
+            'global_variables' => $globalVariables,
+            'snippets' => $snippets,
             'data' => $data
         );
         
@@ -480,13 +480,13 @@ class Nsm_site_generator_mcp{
     private function getExistingTemplateGroups($getTemplates = true) {
         // Get template groups
         $this->EE->db->order_by('group_order');
-        $templateGroup_query = $this->EE->db->get('template_groups');
+        $templateGroupQuery = $this->EE->db->get('template_groups');
 
-        if($templateGroup_query->num_rows == 0) {
+        if($templateGroupQuery->num_rows == 0) {
             return array();
         }
 
-        $templateGroups = $this->hydrate($templateGroup_query->result_array(), 'group_id');
+        $templateGroups = $this->hydrate($templateGroupQuery->result_array(), 'group_id');
 
         foreach ($templateGroups as $groupId => &$group) {
             $group['group_ref_id'] = "template_group_" . $groupId;
@@ -512,6 +512,32 @@ class Nsm_site_generator_mcp{
             }
         }
         return $templateGroups;
+    }
+
+    private function getExistingSnippets() {
+
+        $snippetsQuery = $this->EE->db->get('snippets');
+
+        if($snippetsQuery->num_rows == 0) {
+            return array();
+        }
+
+        $snippets = $this->hydrate($snippetsQuery->result_array(), 'snippet_id');
+
+        return $snippets;
+    }
+
+    private function getExistingGlobalVariables() {
+
+        $globalVariablesQuery = $this->EE->db->get('global_variables');
+
+        if($globalVariablesQuery->num_rows == 0) {
+            return array();
+        }
+
+        $globalVariables = $this->hydrate($globalVariablesQuery->result_array(), 'variable_id');
+
+        return $globalVariables;
     }
 
     private function _mergeChannelData(array $channels, $categoryGroups = array(), $statusGroups = array(), $fieldGroups = array()) {
@@ -616,13 +642,13 @@ class Nsm_site_generator_mcp{
     /**
     * Load the xml configuration
     * 
-    * @param    string  $site_template  The site template name based on the folder
+    * @param    string  $theme  The site template name based on the folder
     * @return   Object                  A SimpleXML object
     */
-    private function _loadXML($site_template)
+    private function _loadXML($theme)
     {
-        return simplexml_load_file("{$this->template_dir}/{$site_template}/structure.xml", 'SimpleXMLElement',  LIBXML_NOCDATA);
-        // var_dump(simplexml_load_file("{$this->template_dir}/{$site_template}/structure.xml", 'SimpleXMLElement',  LIBXML_NOCDATA));
+        return simplexml_load_file("{$this->themesDirectory}/{$theme}/structure.xml", 'SimpleXMLElement',  LIBXML_NOCDATA);
+        // var_dump(simplexml_load_file("{$this->themesDirectory}/{$theme}/structure.xml", 'SimpleXMLElement',  LIBXML_NOCDATA));
         // exit;
     }
 
@@ -639,10 +665,10 @@ class Nsm_site_generator_mcp{
     * @param SimpleXMLElement $params parsed configuration XML of template. @see Lg_site_generator_CP::_loadXML()
     * @return Lg_site_generator
     */
-    private function _getGenerator($site_template)
+    private function _getGenerator($theme)
     {
-        $filename = $this->template_dir . $site_template . "/generator.php";
-        $classname = ucfirst($site_template . '_generator');
+        $filename = $this->themesDirectory . $theme . "/generator.php";
+        $classname = ucfirst($theme . '_generator');
 
         // try to include the file if it's there
         if (file_exists($filename)) {
@@ -654,6 +680,6 @@ class Nsm_site_generator_mcp{
             $classname = "Nsm_site_generator_gen";
         }
 
-        return new $classname($site_template);
+        return new $classname($theme);
     }
 }
