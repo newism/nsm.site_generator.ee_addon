@@ -154,6 +154,9 @@ class Nsm_site_generator_mcp{
         // Are there settings posted from the form?
         if($postData = $this->EE->input->post(__CLASS__)) {
 
+            if(true == empty($postData['title'])) {
+                die('Add a title…');
+            }
 
             $arrayConfig = array(
                 'channels' => array(),
@@ -430,7 +433,7 @@ class Nsm_site_generator_mcp{
             foreach($status_groups as $groupId => &$status_group) {
                 $status_group['statuses'] = array();
                 foreach ($statuses as $status_id => $status) {
-                    if($groupId == $status['status_id']) {
+                    if($groupId == $status['group_id']) {
                         $status_group['statuses'][$status_id] = $status;
                     }
                 }

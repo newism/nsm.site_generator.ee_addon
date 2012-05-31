@@ -158,7 +158,7 @@
             <?php foreach($config['global_variables'] as $variable)?>
             <tr>
                 <th scope="row"><?= $variable['variable_name']; ?></th>
-                <td><?= htmlentities($variable['variable_data']); ?></td>
+                <td><pre style="white-space:pre-wrap; font-family:inherit;"><?= htmlentities($variable['variable_data']); ?></pre></td>
             </tr>
         </tbody>
     </table>
@@ -181,7 +181,7 @@
             <?php foreach($config['snippets'] as $snippet)?>
             <tr>
                 <th scope="row"><?= $snippet['snippet_name']; ?></th>
-                <td><?= htmlentities($snippet['snippet_contents']); ?></td>
+                <td><pre style="white-space:pre-wrap; font-family:inherit;"><?= htmlentities($snippet['snippet_contents']); ?></pre></td>
             </tr>
         </tbody>
     </table>

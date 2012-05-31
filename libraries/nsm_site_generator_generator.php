@@ -92,12 +92,7 @@ class NsmSiteGeneratorGenerator
 
                 $categoryGroupConfig = array_merge($categoryGroup, array(
                     'categories' => array(),
-                    'group_ref_id' => 'cat_group_' . $categoryGroup['group_id'],
-                    'site_id'               => $this->siteId,
-                    'sort_order'            => 'a',
-                    'field_html_formatting' => 'all',
-                    'can_edit_categories'   => FALSE,
-                    'can_delete_categories' => FALSE
+                    'group_ref_id' => 'cat_group_' . $categoryGroup['group_id']
                 ));
 
                 // recursively build this category groups category config in a single depth array
@@ -126,14 +121,12 @@ class NsmSiteGeneratorGenerator
                 $key = 'status_group_' . $sg['group_id'];
 
                 $statusGroupConfig = array_merge($sg, array(
-                    'site_id' => $this->siteId,
                     'statuses' => array(),
                     'group_ref_id' => $key
                 ));
 
                 foreach ($sg["statuses"] as $statusData) {
                     $statusGroupConfig['statuses'][$statusData['status']] = array_merge(array(
-                        'site_id' => $this->siteId
                     ), $statusData);;
                 }
                 
@@ -154,32 +147,11 @@ class NsmSiteGeneratorGenerator
 
                 $fieldGroupConfig = array_merge($fg, array(
                     'channel_fields' => array(),
-                    'group_ref_id' => $key,
-                    'site_id' => $this->siteId
+                    'group_ref_id' => $key
                 ));
 
                 foreach ($fg['channel_fields'] as $fieldKey => $fieldData) {
                     $fieldGroupConfig['channel_fields'][$fieldData['field_name']] = array_merge(array(
-                        'field_instructions'        => '',
-                        'field_pre_channel_id'      => 0,
-                        'field_pre_field_id'        => 0,
-                        'field_pre_populate'        => 'n',
-                        'field_related_to'          => 'channel',
-                        'field_maxl'                => 128,
-                        'field_ta_rows'             => 6,
-                        'field_related_id'          => '',
-                        'field_related_orderby'     => 'title',
-                        'field_related_sort'        => 'desc',
-                        'field_related_max'         => '0',
-                        'field_fmt'                 => 'none',
-                        'field_show_fmt'            => 'n',
-                        'field_text_direction'      => 'ltr',
-                        'field_type'                => 'text',
-                        'field_required'            => 'n',
-                        'field_search'              => 'n',
-                        'field_is_hidden'           => 'n',
-                        'site_id'                   => $this->siteId,
-                        'field_settings'            => array()
                     ), $fieldData);
                 }
 
@@ -201,10 +173,7 @@ class NsmSiteGeneratorGenerator
 
                 $channelConfig = array_merge($channel, array(
                     'entries' => array(),
-                    'total_entries' => 0,
                     'group_ref_id' => $key,
-                    'site_id'               => $this->siteId,
-                    'channel_lang'          => $this->EE->config->item('xml_lang')
                 ));
 
                 foreach ($channel['entries'] as $entry) {
@@ -242,23 +211,11 @@ class NsmSiteGeneratorGenerator
 
                 $templateGroupConfig = array_merge($tg, array(
                     'templates' => array(),
-                    'group_ref_id' => 'template_group_' . $tg['group_id'],
-                    'site_id'           => $this->siteId,
-                    'is_site_default'   => 'n',
-                    'is_user_blog'      => 'n'
+                    'group_ref_id' => 'template_group_' . $tg['group_id']
                 ));
 
                 foreach ($tg['templates'] as $templateKey => $templateData) {
                     $templateGroupConfig['templates'][$templateData['template_name']] = array_merge(array(
-                        'site_id'               => $this->siteId,
-                        'template_name'         => 'index',
-                        'save_template_file'    => 'y',
-                        'template_type'         => 'webpage',
-                        'edit_date'             => 0,
-                        'cache'                 => 'n',
-                        'enable_http_auth'      => 'n',
-                        'allow_php'             => 'n',
-                        'php_parse_location'    => 'o'
                     ), $templateData);
                 }
 
@@ -470,10 +427,20 @@ class NsmSiteGeneratorGenerator
                 $this->logWarning('log_warning_category_group_exist', $categoryGroupData);
                 $categoryGroupData = array_merge($categoryGroupData, $existingCategoryGroups[$categoryGroupData['group_name']]);
             } else {
+
+                $categoryGroupData = array_merge(array(
+                    'site_id'               => $this->siteId,
+                    'sort_order'            => 'a',
+                    'field_html_formatting' => 'all',
+                    'can_edit_categories'   => FALSE,
+                    'can_delete_categories' => FALSE
+                ), $categoryGroupData);
+
                 $this->EE->category_model->insert_category_group(array_intersect_key(
                     $categoryGroupData,
                     $categoryGroupFields
                 ));
+
                 $categoryGroupData['group_id'] = $this->EE->db->insert_id();
                 $this->logSuccess("log_ok_category_group_imported", $categoryGroupData);
                 $categoryGroupsCreated = true;
@@ -509,6 +476,11 @@ class NsmSiteGeneratorGenerator
                 $statusGroupData = array_merge($statusGroupData, $existingStatusGroups[$statusGroupData['group_name']]);
                 $this->logWarning('log_warning_status_group_exist', $statusGroupData);
             } else {
+                
+                $statusGroupData = array_merge(array(
+                    'site_id' => $this->siteId,
+                ), $statusGroupData);
+                
                 $this->EE->db->insert('status_groups', array_intersect_key(
                     $statusGroupData,
                     $statusGroupFields
@@ -518,10 +490,10 @@ class NsmSiteGeneratorGenerator
                 $statusGroupsCreated = true;
             }
 
+            $statusesCreated = false;
+
             // Generate Statuses
             foreach ($statusGroupData['statuses'] as $statusKey => $statusData) {
-
-                $statusesCreated = false;
 
                 $existingStatuses = $this->hydrate($this->EE->status_model->get_statuses($statusGroupData['group_id'])->result_array(), 'status');
                 $statusData['group_id'] = $statusGroupData['group_id'];
@@ -530,18 +502,23 @@ class NsmSiteGeneratorGenerator
                     $statusData = array_merge($statusData, $existingStatuses[$statusData['status']]);
                     $this->logWarning("log_error_status_exist", array_merge($statusData, array("group_name" => $statusGroupData['group_name'])));
                 } else {
+
+                    $statusData = array_merge(array(
+                        'site_id' => $this->siteId
+                    ), $statusData);
+
                     $this->EE->db->insert('statuses', $statusData);
                     $statusData['status_id'] = $this->EE->db->insert_id();
-                    $statusGroupData['count']++;
-                    $this->logSuccess("log_ok_status_imported", $statusData);
+                    $this->logSuccess("log_ok_status_imported", array_merge($statusData, array("group_name" => $statusGroupData['group_name'])));
                     $statusesCreated = true;
                 }
 
                 $statusGroupData['statuses'][$statusKey] = $statusData;
 
-                if(false == $statusesCreated) {
-                    $this->log("No statuses created");
-                }
+            }
+
+            if(false == $statusesCreated) {
+                $this->log("No statuses created");
             }
 
             // Reassign back into the generator
@@ -574,10 +551,16 @@ class NsmSiteGeneratorGenerator
                 $fieldGroupData = array_merge($fieldGroupData, $existingFieldGroups[$fieldGroupData['group_name']]);
                 $this->logWarning('log_warning_field_group_exist', $fieldGroupData);
             } else {
+                
+                $fieldGroupData = array_merge(array(
+                    'site_id' => $this->siteId
+                ), $fieldGroupData);
+
                 $this->EE->db->insert('field_groups', array_intersect_key(
                     $fieldGroupData,
                     $fieldGroupFields
                 ));
+
                 $fieldGroupData['group_id'] = $this->EE->db->insert_id();
                 $this->logSuccess("log_ok_field_group_imported", $fieldGroupData);
                 $fieldGroupsCreated = true;
@@ -610,8 +593,10 @@ class NsmSiteGeneratorGenerator
                 $dateOrRel = in_array($fieldData['field_type'], array('date', 'rel'));
 
                 if(array_key_exists($fieldData['field_name'], $existingFields)) {
+
                     $fieldData = array_merge($fieldData, $existingFields[$fieldData['field_name']]);
                     $this->logWarning("log_error_field_exist", array_merge($fieldData, array("group_name" => $fieldGroupData["group_name"])));
+
                 } else {
 
                     // Tweak the field related ID
@@ -620,14 +605,40 @@ class NsmSiteGeneratorGenerator
                         && isset($this->channels[ $fieldData['field_related_id'] ]['channel_id'])
                     ) ? $this->channels[ $fieldData['field_related_id'] ]['channel_id'] : '';
 
+                    $fieldData = array_merge(array(
+                        'field_instructions'        => '',
+                        'field_pre_channel_id'      => 0,
+                        'field_pre_field_id'        => 0,
+                        'field_pre_populate'        => 'n',
+                        'field_related_to'          => 'channel',
+                        'field_maxl'                => 128,
+                        'field_ta_rows'             => 6,
+                        'field_related_id'          => '',
+                        'field_related_orderby'     => 'title',
+                        'field_related_sort'        => 'desc',
+                        'field_related_max'         => '0',
+                        'field_fmt'                 => 'none',
+                        'field_show_fmt'            => 'n',
+                        'field_text_direction'      => 'ltr',
+                        'field_type'                => 'text',
+                        'field_required'            => 'n',
+                        'field_search'              => 'n',
+                        'field_is_hidden'           => 'n',
+                        'site_id'                   => $this->siteId,
+                        'field_settings'            => array()
+                    ), $fieldData);
+
+
                     // API Fuck Yeah.
                     $fieldData['field_id'] = $this->EE->api_channel_fields->update_field($fieldData);
 
                     if(false == $fieldData['field_id']) {
-                        $this->logSuccess("log_error_field_create", array_merge($fieldData, array("group_name" => $fieldGroupData["group_name"])));
-                        $fieldsCreated = true;
+                        foreach($this->EE->api_channel_fields->errors as $error) {
+                            $this->logError("There was an error creating: {$fieldData['field_name']}. Here's the cryptic EE error: ".lang($error), $fieldData);
+                        }
                     } else {
-                        $this->logError("log_ok_field_imported", array_merge($fieldData, array("group_name" => $fieldGroupData["group_name"])));
+                        $this->logSuccess("log_ok_field_imported", array_merge($fieldData, array("group_name" => $fieldGroupData["group_name"])));
+                        $fieldsCreated = true;
                     }
                 }
 
@@ -681,15 +692,21 @@ class NsmSiteGeneratorGenerator
                     $channelData['cat_group'] = implode("|", $tmp);
                 }
 
-                if(empty($channelData['cat_group'])) {
-                    unset($channelData['cat_group']);
-                }
-
                 // Set the status group
                 $channelData['status_group'] = (
                     isset($channelData['status_group'])
                     && isset($this->statusGroups[$channelData['status_group']]['group_id'])
                 ) ? $this->statusGroups[$channelData['status_group']]['group_id'] : '';
+
+                $channelData = array_merge(array(
+                    'total_entries'         => count($channelData['entries']),
+                    'site_id'               => $this->siteId,
+                    'channel_lang'          => $this->EE->config->item('xml_lang')
+                ), $channelData);
+
+                if(empty($channelData['cat_group'])) {
+                    unset($channelData['cat_group']);
+                }
 
                 if($channelData['channel_id'] = $this->EE->api_channel_structure->create_channel($channelData)) {
                     $this->logSuccess("log_ok_channel_imported", $channelData);
@@ -740,6 +757,14 @@ class NsmSiteGeneratorGenerator
 
             foreach ($channelData['entries'] as $channelEntryKey => $channelEntryData) {
 
+                $this->EE->db->where('url_title', $channelEntryData['url_title']);
+                $this->EE->db->from('channel_titles');
+
+                if($this->EE->db->count_all_results() > 0) {
+                    $this->logWarning("Entry: <strong>{$channelEntryData['title']}</strong> already exists", $channelEntryData);
+                    continue;
+                }
+
                 if(false === isset($channelEntryData['entry_date'])) {
                     $channelEntryData['entry_date'] = time();
                 }
@@ -789,7 +814,7 @@ class NsmSiteGeneratorGenerator
                     $channelEntriesCreated = true;
                 } else {
                     foreach($this->EE->api_channel_entries->errors as $error) {
-                        $this->logError("There was an error creating: {$channelEntryData['title']}. Here's the cryptic EE error: {$error}", $channelEntryData);
+                        $this->logError("There was an error creating: {$channelEntryData['title']}. Here's the cryptic EE error: ".lang($error), $channelEntryData);
                     }
                 }
             }
@@ -823,8 +848,15 @@ class NsmSiteGeneratorGenerator
                 $this->logWarning('log_warning_template_group_exist', $templateGroupData);
             } else {
 
-                if($templateGroupData['group_id'] = @$this->EE->api_template_structure->create_template_group($templateGroupData)) {
-                    $this->logSuccess("log_ok_template_imported_group", $templateGroupData);
+                $templateGroupData = array_merge(array(
+                    'site_id'           => $this->siteId,
+                    'is_site_default'   => 'n',
+                    'is_user_blog'      => 'n',
+                    'duplicate_group'   => false,
+                ), $templateGroupData);
+
+                if($templateGroupData['group_id'] = $this->EE->api_template_structure->create_template_group($templateGroupData)) {
+                    $this->logSuccess("log_ok_template_group_imported", $templateGroupData);
                     $templateGroupsCreated = true;
                 } else {
                     foreach($this->EE->api_template_structure->errors as $error) {
@@ -841,7 +873,18 @@ class NsmSiteGeneratorGenerator
                 $existingTemplateQuery = $this->EE->db->get_where('templates', array('group_id' => $templateGroupData['group_id']));
                 $existingTemplatees = $this->hydrate($existingTemplateQuery->result_array(), 'template_name');
 
-                $templateData['group_id'] = $templateGroupData['group_id'];
+                $templateData = array_merge(array(
+                    'group_id'              => $templateGroupData['group_id'],
+                    'site_id'               => $this->siteId,
+                    'template_name'         => 'index',
+                    'save_template_file'    => 'y',
+                    'template_type'         => 'webpage',
+                    'edit_date'             => 0,
+                    'cache'                 => 'n',
+                    'enable_http_auth'      => 'n',
+                    'allow_php'             => 'n',
+                    'php_parse_location'    => 'o',
+                ), $templateData);
 
                 if(array_key_exists($templateData['template_name'], $existingTemplatees)) {
                     $templateData = array_merge($templateData, $existingTemplatees[$templateData['template_name']]);
@@ -849,9 +892,8 @@ class NsmSiteGeneratorGenerator
                 } else {
                     $this->EE->db->insert('templates', $templateData);
                     $templateData['template_id'] = $this->EE->db->insert_id();
-                    $this->logSuccess("log_ok_template_imported", $templateData);
+                    $this->logSuccess("log_ok_template_imported", array_merge($templateData, array("group_name" => $templateGroupData['group_name'])));
                     $templatesCreated = true;
-                    
                 }
 
                 $templateGroupData['templates'][$templateKey] = $templateData;
@@ -890,6 +932,7 @@ class NsmSiteGeneratorGenerator
                 ));
                 $globalVariableData['variable_id'] = $this->EE->db->insert_id();
                 $this->logSuccess("log_ok_global_variable_imported", $globalVariableData);
+                $globalVariablesCreated = true;
             }
 
             // Re-assign back to the generator
@@ -905,7 +948,7 @@ class NsmSiteGeneratorGenerator
     protected function importSnippets()
     {
         $snippetsCreated = false;
-        $this->logTitle("Generating snippetss");
+        $this->logTitle("Generating snippets");
 
         $snippetFields = array_flip(explode(' ', 'site_id snippet_name snippet_contents'));
         $existingSnippets = $this->hydrate(
@@ -924,6 +967,7 @@ class NsmSiteGeneratorGenerator
                 ));
                 $snippetData['variable_id'] = $this->EE->db->insert_id();
                 $this->logSuccess("log_ok_snippet_imported", $snippetData);
+                $snippetsCreated = true;
             }
 
             // Re-assign back to the generator
@@ -972,7 +1016,7 @@ class NsmSiteGeneratorGenerator
              foreach ($templateGroup['templates'] as $template) {
                  $ext = $this->EE->api_template_structure->file_extensions($template['template_type']);
                  write_file("{$templateGroupPath}/{$template['template_name']}.{$ext}", trim($template['template_data']));
-                 $this->logSuccess("Exported template: <strong><code>{$template['template_name']}{$ext}</code></strong>");
+                 $this->logSuccess("Exported template: <strong><code>{$templateGroup['group_name']}/{$template['template_name']}{$ext}</code></strong>");
              }
          }
 
@@ -1023,7 +1067,7 @@ class NsmSiteGeneratorGenerator
     {
         $xmlConfig = '<?xml version="1.0" encoding="utf-8"?>';
         $xmlConfig .= "\n".'<!DOCTYPE xml>';
-        $xmlConfig .= "\n<generator_template>";
+        $xmlConfig .= "\n\n<generator_template>\n";
         $xmlConfig .=   $this->themeInfoToXmlString() .
                         $this->categoryGroupsToXmlString() .
                         $this->statusGroupsToXmlString() .
@@ -1032,7 +1076,7 @@ class NsmSiteGeneratorGenerator
                         $this->templateGroupsToXmlString() .
                         $this->globalVariablesToXmlString() .
                         $this->snippetsToXmlString();
-        $xmlConfig .= "\n</generator_template>";
+        $xmlConfig .= "\n\n</generator_template>";
         return $xmlConfig;
     }
 
@@ -1041,7 +1085,7 @@ class NsmSiteGeneratorGenerator
         $themeInfoKeys = array("title", "version", "description", "postImportInstructions");
         $out = "";
         foreach ($themeInfoKeys as $key) {
-            $out .= "\n<{$key}><![CDATA[ {$this->$key} ]]></{$key}>";
+            $out .= "\n<{$key}><![CDATA[{$this->$key}]]></{$key}>";
         }
         $out .= "\n<downloadUrl>{$this->downloadUrl}</downloadUrl>";
         $out .= $this->authorsToXmlString();
@@ -1230,10 +1274,10 @@ class NsmSiteGeneratorGenerator
         $out = "";
         foreach($fields as $field) {
             $out .= "\n{$tab}<field";
-            $out .= " " . $this->renderAttributes($field, array('data'));
+            $out .= " " . $this->renderAttributes($field, array('site_id, data'));
             $out .= ">";
             if(false == empty($field['data'])) {
-                $out .= "<![CDATA[ " . $field['data'] . "]]>";
+                $out .= "<![CDATA[" . $field['data'] . "]]>";
             }
             $out .= "</field>";
         }
@@ -1264,7 +1308,7 @@ class NsmSiteGeneratorGenerator
             $out .= " " . $this->renderAttributes($template, array('template_id','group_id','site_id', 'template_data'));
             $out .= ">";
             if(true == $this->outputTemplateData) {
-                $out .= "<![CDATA[ {$template['template_data']} ]]>";
+                $out .= "<![CDATA[{$template['template_data']}]]>";
             }
             $out .= "</template>";
         }
@@ -1277,7 +1321,7 @@ class NsmSiteGeneratorGenerator
         $out = "\n\n<global_variables>";
         foreach ($this->globalVariables as $variable) {
             $out .= "\n{$tab}<variable ";
-            $out .= $this->renderAttributes($variable, array('variable_data'));
+            $out .= $this->renderAttributes($variable, array('site_id', 'variable_id', 'variable_data'));
             $out .= "/>";
         }
         $out .= "\n</global_variables>";
@@ -1290,7 +1334,7 @@ class NsmSiteGeneratorGenerator
         $out = "\n\n<snippets>";
         foreach ($this->snippets as $snippet) {
             $out .= "\n{$tab}<snippet ";
-            $out .= $this->renderAttributes($snippet, array('snippet_contents'));
+            $out .= $this->renderAttributes($snippet, array('site_id', 'snippet_id', 'snippet_contents'));
             $out .= "/>";
         }
         $out .= "\n</snippets>";

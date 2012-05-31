@@ -244,7 +244,7 @@
         <tr>
             <td style="text-align:right"><?= $global_variable['variable_id']; ?></td>
             <th scope="row"><?= $global_variable['variable_name']; ?></th>
-            <td><?= htmlentities($global_variable['variable_data']); ?></td>
+            <td><pre style="white-space:pre-wrap; font-family:inherit;"><?= htmlentities($global_variable['variable_data']); ?><pre></td>
             <td style="text-align:right;">
                 <?=
                     $EE->nsm_site_generator_helper->checkbox(
@@ -282,7 +282,7 @@
             <tr>
                 <td style="text-align:right"><?= $snippet['snippet_id']; ?></td>
                 <th scope="row"><?= $snippet['snippet_name']; ?></th>
-                <td><?= htmlentities($snippet['snippet_contents']); ?></td>
+                <td><pre style="white-space:pre-wrap; font-family:inherit;"><?= htmlentities($snippet['snippet_contents']); ?><pre></td>
                 <td style="text-align:right;">
                     <?=
                     $EE->nsm_site_generator_helper->checkbox(
