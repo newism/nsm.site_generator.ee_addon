@@ -8,3 +8,9 @@ Many years in the making it's finally starting to take shape.
 * Checkout the module CP
 * Generate a new News site
 * Boom…
+
+## Todo:
+
+* Backup existing templates on export
+* Implement third party custom field hooks for import / export
+* Create bootstrap theme
