@@ -15,4 +15,6 @@ Many years in the making it's finally starting to take shape.
 * Backup existing templates on export
 * Implement third party custom field dependency checking
 * Implement third party custom field hooks for import / export
+* Implement pages module for import / export
 * Create bootstrap theme based on Newism's naming conventions
+* Implement extension hooks / generator callbacks
