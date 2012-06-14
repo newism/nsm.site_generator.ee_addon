@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
 /**
  * XML Changelog for NSM Site Generator
@@ -11,7 +12,6 @@
  * @see				http://expressionengine-addons.com/nsm-addon-updater
  */
 -->
-<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:ee_addon="http://newism.com.au/nsm_site_generator/#rss-xml">
 	<channel>
 		<title>NSM Site Generator Changelog</title>
