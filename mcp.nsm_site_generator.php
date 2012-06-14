@@ -463,15 +463,15 @@ class Nsm_site_generator_mcp{
             $this->EE->db->from('channel_fields');
             $this->EE->db->where_in('group_id', array_keys($field_groups));
 
-            $channel_fields_query = $this->EE->db->get();
-            $channel_fields = $this->hydrate($channel_fields_query->result_array(), 'field_id');
+            $channelFieldsQuery = $this->EE->db->get();
+            $channelFields = $this->hydrate($channelFieldsQuery->result_array(), 'field_id');
 
             // Add entries to channel
             foreach($field_groups as $groupId => &$field_group) {
                 $field_group['channel_fields'] = array();
-                foreach ($channel_fields as $channel_field_id => $channel_field) {
-                    if($groupId == $channel_field['group_id']) {
-                        $field_group['channel_fields'][$channel_field_id] = $channel_field;
+                foreach ($channelFields as $channelField_id => $channelField) {
+                    if($groupId == $channelField['group_id']) {
+                        $field_group['channel_fields'][$channelField_id] = $channelField;
                     }
                 }
             }

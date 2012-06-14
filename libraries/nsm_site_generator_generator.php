@@ -42,6 +42,7 @@ class NsmSiteGeneratorGenerator
         $this->parseArrayStatusGroups($array);
         $this->parseArrayFieldGroups($array);
         $this->parseArrayChannels($array);
+        $this->parseArrayChannelFields($array);
         $this->parseArrayTemplateGroups($array);
         $this->parseArrayGlobalVariables($array);
         $this->parseArraySnippets($array);
@@ -129,7 +130,7 @@ class NsmSiteGeneratorGenerator
                     $statusGroupConfig['statuses'][$statusData['status']] = array_merge(array(
                     ), $statusData);;
                 }
-                
+
                 $this->statusGroups[$key] = $statusGroupConfig;
             }
         }
@@ -150,14 +151,35 @@ class NsmSiteGeneratorGenerator
                     'group_ref_id' => $key
                 ));
 
-                foreach ($fg['channel_fields'] as $fieldKey => $fieldData) {
-                    $fieldGroupConfig['channel_fields'][$fieldData['field_name']] = array_merge(array(
-                    ), $fieldData);
-                }
-
                 $this->fieldGroups[$fieldGroupConfig['group_ref_id']] = $fieldGroupConfig;
             }
         }
+    }
+
+    public function parseArrayChannelFields($array)
+    {
+        if(array_key_exists('field_groups', $array)) {
+            foreach ($array['field_groups'] as $count => $fg) {
+
+                $channelFields = array();
+                foreach ($fg['channel_fields'] as $fieldKey => $fieldData) {
+
+                    $key = 'field_group_' . $fg['group_id'];
+
+                    // Tweak relationships
+                    if(false == empty($fieldData['field_related_id'])) {
+                        $channelKey = 'channel_'.$fieldData['field_related_id'];
+                        $fieldData['field_related_id'] = "channel_".$fieldData['field_related_id'];
+                    }
+
+                    $channelFields[$fieldData['field_name']] = array_merge(array(
+                    ), $fieldData);
+                }
+                $this->fieldGroups[$key]['channel_fields'] = $channelFields;
+            }
+        }
+        var_dump($array);
+        exit;
     }
 
     public function parseArrayChannels($array)
@@ -255,6 +277,7 @@ class NsmSiteGeneratorGenerator
         $this->parseXmlCategoryGroups($xmlConfig);
         $this->parseXmlFieldGroups($xmlConfig);
         $this->parseXmlChannels($xmlConfig);
+        $this->parseXmlChannelFields($xmlConfig);
         $this->parseXmlTemplateGroups($xmlConfig);
         $this->parseXmlGlobalVariables($xmlConfig);
         $this->parseXmlSnippets($xmlConfig);
@@ -326,11 +349,6 @@ class NsmSiteGeneratorGenerator
             // get the custom field group
             $key = (string)$cfg['group_ref_id'];
             $this->fieldGroups[$key] = $this->attributes($cfg);
-            $this->fieldGroups[$key]['channel_fields'] = array();
-            foreach ($cfg->channel_field as $channel_field) {
-                $fieldKey = (string)$channel_field['field_name'];
-                $this->fieldGroups[$key]['channel_fields'][$fieldKey] = $this->attributes($channel_field);
-            }
         }
     }
 
@@ -338,7 +356,7 @@ class NsmSiteGeneratorGenerator
     {
         // Loop over channels
         foreach ($xmlConfig->xpath('//channels/channel') as $channel) {
-            $key = (string)$channel['channel_name'];
+            $key = (string)$channel['group_ref_id'];
             $this->channels[$key] = $this->attributes($channel);
             $this->channels[$key]['entries'] = array();
 
@@ -349,11 +367,28 @@ class NsmSiteGeneratorGenerator
                 // Loop over channel entry fields
                 foreach ($entry->channel_field as $field) {
                     $fieldKey = (string)$field['field_name'];
-                    $new_entry['channel_fields'][$fieldKey] = $this->attributes($field);
-                    $new_entry['channel_fields'][$fieldKey]['data'] = (string)$field;
+                    $fieldAttrs = $this->attributes($field);
+                    $fieldAttrs['data'] = (string)$field;
+                    $new_entry['channel_fields'][$fieldKey] = $fieldAttrs;
                 }
 
                 $this->channels[$key]['entries'][] = $new_entry;
+            }
+        }
+    }
+
+    public function parseXmlChannelFields($xmlConfig)
+    {
+        foreach ($xmlConfig->xpath('//field_groups/field_group') as $cfg) {
+            // get the custom field group
+            $key = (string)$cfg['group_ref_id'];
+            $this->fieldGroups[$key]['channel_fields'] = array();
+            foreach ($cfg->channel_field as $channelField) {
+
+                $fieldKey = (string)$channelField['field_name'];
+                $fieldAttrs = $this->attributes($channelField);
+
+                $this->fieldGroups[$key]['channel_fields'][$fieldKey] = $fieldAttrs;
             }
         }
     }
@@ -599,9 +634,11 @@ class NsmSiteGeneratorGenerator
 
                 } else {
 
+                    var_dump($fieldData['field_related_id']);
+
                     // Tweak the field related ID
                     $fieldData['field_related_id'] = (
-                        isset($fieldData['field_related_id'])
+                        false == empty($fieldData['field_related_id'])
                         && isset($this->channels[ $fieldData['field_related_id'] ]['channel_id'])
                     ) ? $this->channels[ $fieldData['field_related_id'] ]['channel_id'] : '';
 
@@ -627,7 +664,6 @@ class NsmSiteGeneratorGenerator
                         'site_id'                   => $this->siteId,
                         'field_settings'            => array()
                     ), $fieldData);
-
 
                     // API Fuck Yeah.
                     $fieldData['field_id'] = $this->EE->api_channel_fields->update_field($fieldData);
