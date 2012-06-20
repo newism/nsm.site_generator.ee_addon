@@ -114,7 +114,7 @@ class Nsm_site_generator_ext
 	 * @access public
 	 * @return The settings form HTML
 	 */
-	public	function settings_form() {
+	public function settings_form() {
 
 		$EE =& get_instance();
 		$EE->lang->loadfile($this->addon_id);

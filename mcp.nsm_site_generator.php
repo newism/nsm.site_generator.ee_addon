@@ -386,6 +386,7 @@ class Nsm_site_generator_mcp{
         if(true === $getCategories) {
             // Get the categories
             $this->EE->db->from('categories');
+            $this->EE->db->order_by('parent_id');
             $this->EE->db->where_in('group_id', array_keys($categoryGroups));
 
             $category_query = $this->EE->db->get();

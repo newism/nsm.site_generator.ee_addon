@@ -5,7 +5,7 @@
 	<?php if($log_item['type'] == "title") : ?>
 	<h2><?= $log_item["text"]; ?></h2>
 	<?php else : ?>
-	<div class="alert <?= $log_item['type']; ?>" style="padding-left:27px"><?= $log_item["text"]; ?></div>
+	<div class="alert <?= $log_item['type']; ?>" style="padding-left:<?= $log_item["depth"] * 20 + 20; ?>px"><?= $log_item["text"]; ?></div>
 	<?php endif; ?>
 <?php endforeach; ?>
 </div>

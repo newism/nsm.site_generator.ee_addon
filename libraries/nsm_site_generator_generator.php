@@ -97,17 +97,24 @@ class NsmSiteGeneratorGenerator
                 ));
 
                 // recursively build this category groups category config in a single depth array
-                // $categoryGroupConfig = $this->_buildCatsConfig($categoryGroup, $key);
-                foreach ($categoryGroup['categories'] as $categoryKey => $categoryData) {
-                  $categoryGroupConfig['categories'][$categoryKey] = array_merge(array(
-                        'site_id'               => $this->siteId,
-                        'parent_id'             => 0
-                    ), $categoryData);
-                }
+                $categoryGroupConfig['categories'] = $this->parseArrayCategories($categoryGroup['categories']);
 
                 $this->categoryGroups[$key] = $categoryGroupConfig;
             }
         }
+    }
+
+    public function parseArrayCategories($categories) {
+        $newCategories = array();
+        foreach ($categories as $categoryKey => $categoryData) {
+            $newCategories['category_'.$categoryKey] = array_merge($categoryData,
+                array(
+                    'site_id'               => $this->siteId,
+                    'parent_id'             => ($categoryData['parent_id']) ? 'category_' . $categoryData['parent_id'] : false,
+                    'categories'            => $this->parseArrayCategories($categoryData['categories'])
+            ));
+        }
+        return $newCategories;
     }
 
     public function parseArrayStatusGroups($array)
@@ -178,8 +185,6 @@ class NsmSiteGeneratorGenerator
                 $this->fieldGroups[$key]['channel_fields'] = $channelFields;
             }
         }
-        var_dump($array);
-        exit;
     }
 
     public function parseArrayChannels($array)
@@ -323,10 +328,23 @@ class NsmSiteGeneratorGenerator
         {
             $key = (string)$cg['group_ref_id'];
             $this->categoryGroups[$key] = $this->attributes($cg);
-            $this->categoryGroups[$key]['categories'] = array();
-            // recursively build this category groups category config in a single depth array
-            // $this->categoryGroups[$key]['cats'] = $this->_buildCatsConfig($cg, $key);
+            $this->categoryGroups[$key]['categories'] = $this->parseXmlCategories($cg->category);
         }
+    }
+
+    public function parseXmlCategories($categories) {
+
+        $newCategories = array();
+        foreach ($categories as $categoryData) {
+            $childCategories = $categoryData->category;
+            $categoryData = $this->attributes($categoryData);
+            $newCategories[] = array_merge(array(
+                'site_id'               => $this->siteId,
+                'parent_id'             => false,
+                'categories'            => $this->parseXmlCategories($childCategories)
+            ), $categoryData);
+        }
+        return $newCategories;
     }
 
     protected function parseXmlStatusGroups($xmlConfig)
@@ -433,7 +451,7 @@ class NsmSiteGeneratorGenerator
     {
         $this->logTitle("Starting Import");
 
-        $this->importCategories();
+        $this->importCategoryGroups();
         $this->importStatusGroups();
         $this->importFieldGroups();
         $this->importChannels();
@@ -444,7 +462,7 @@ class NsmSiteGeneratorGenerator
         $this->importGlobalVariables();
     }
 
-    protected function importCategories()
+    protected function importCategoryGroups()
     {
         $this->EE->load->model('category_model');
 
@@ -479,15 +497,82 @@ class NsmSiteGeneratorGenerator
                 $categoryGroupData['group_id'] = $this->EE->db->insert_id();
                 $this->logSuccess("log_ok_category_group_imported", $categoryGroupData);
                 $categoryGroupsCreated = true;
+
             }
+
+            $result = $this->importCategories($categoryGroupData['categories'], 0, $categoryGroupData);
+            $newCategoryCount = $result['new_category_count'];
+            $categoryGroupData['categories'] = $result['categories'];
+
+            if(false == $newCategoryCount) {
+                $this->logWarning("No categories created", array(), 1);
+            }
+
 
             // Re-assign back to the generator
             $this->categoryGroups[$categoryGroupKey] = $categoryGroupData;
         }
 
         if(false == $categoryGroupsCreated) {
-            $this->log("No category groups created");
+            $this->logWarning("No category groups created");
         }
+
+    }
+
+    protected function importCategories($categories, $parentId, $categoryGroup)
+    {
+        $newCategories = array();
+        $newCategoryCount = 0;
+
+        $categoryFields = array_flip(explode(' ', 'site_id parent_id group_id cat_name cat_url_title cat_description cat_image cat_order'));
+
+        $existingCategories = $this->hydrate($this->EE->category_model->get_channel_categories($categoryGroup["group_id"], "*")->result_array(), 'cat_url_title');
+
+        foreach ($categories as $categoryData) {
+
+            if(array_key_exists($categoryData['cat_url_title'], $existingCategories)) {
+
+                $this->logWarning('log_warning_category_exist', 
+                                    array_merge($categoryData, array('group_name' => $categoryGroup["group_name"])),
+                                    1
+                                );
+                $categoryData = array_merge($categoryData, $existingCategories[$categoryData['cat_url_title']]);
+
+            } else {
+
+                $categoryData = array_merge($categoryData, array(
+                    'site_id'               => $this->siteId,
+                    'parent_id'             => $parentId,
+                    'group_id'              => $categoryGroup['group_id']
+                ));
+
+                $this->EE->db->insert('categories', array_intersect_key(
+                    $categoryData,
+                    $categoryFields
+                ));
+
+                $categoryData['cat_id'] = $this->EE->db->insert_id();
+                $newCategoryCount++;
+
+                $this->logSuccess("log_ok_category_imported", 
+                                    array_merge($categoryData, array('group_name' => $categoryGroup["group_name"])),
+                                    1
+                                );
+            }
+
+            if(false == empty($categoryData['categories'])) {
+                $result = $this->importCategories($categoryData['categories'], $categoryData['cat_id'], $categoryGroup);
+                $categoryData['categories'] = $result["categories"];
+                $newCategoryCount = $newCategoryCount + $result["new_category_count"];
+            }
+
+            $newCategories[] = $categoryData;
+        }
+
+        return array(
+            "categories" => $newCategories,
+            "new_category_count" => $newCategoryCount
+        );
 
     }
 
@@ -535,7 +620,7 @@ class NsmSiteGeneratorGenerator
 
                 if(array_key_exists($statusData['status'], $existingStatuses)) {
                     $statusData = array_merge($statusData, $existingStatuses[$statusData['status']]);
-                    $this->logWarning("log_error_status_exist", array_merge($statusData, array("group_name" => $statusGroupData['group_name'])));
+                    $this->logWarning("log_error_status_exist", array_merge($statusData, array("group_name" => $statusGroupData['group_name'])), 1);
                 } else {
 
                     $statusData = array_merge(array(
@@ -544,7 +629,7 @@ class NsmSiteGeneratorGenerator
 
                     $this->EE->db->insert('statuses', $statusData);
                     $statusData['status_id'] = $this->EE->db->insert_id();
-                    $this->logSuccess("log_ok_status_imported", array_merge($statusData, array("group_name" => $statusGroupData['group_name'])));
+                    $this->logSuccess("log_ok_status_imported", array_merge($statusData, array("group_name" => $statusGroupData['group_name'])), 1);
                     $statusesCreated = true;
                 }
 
@@ -553,7 +638,7 @@ class NsmSiteGeneratorGenerator
             }
 
             if(false == $statusesCreated) {
-                $this->log("No statuses created");
+                $this->logWarning("No statuses created", array(), 1);
             }
 
             // Reassign back into the generator
@@ -561,7 +646,7 @@ class NsmSiteGeneratorGenerator
         }
 
         if(false == $statusGroupsCreated) {
-            $this->log("No status groups created");
+            $this->logWarning("No status groups created");
         }
     }
 
@@ -606,7 +691,7 @@ class NsmSiteGeneratorGenerator
         }
 
         if(false == $fieldGroupsCreated) {
-            $this->log("No field groups created");
+            $this->logWarning("No field groups created");
         }
 
     }
@@ -684,7 +769,7 @@ class NsmSiteGeneratorGenerator
         }
 
         if(false == $fieldsCreated) {
-            $this->log("No fields created");
+            $this->logWarning("No fields created");
         }
 
     }
@@ -759,7 +844,7 @@ class NsmSiteGeneratorGenerator
         }
         
         if(false == $channelsCreated) {
-            $this->log("No channels created");
+            $this->logWarning("No channels created");
         }
         
     }
@@ -861,7 +946,7 @@ class NsmSiteGeneratorGenerator
         }
 
         if(false == $channelEntriesCreated) {
-            $this->log("No channel entries created");
+            $this->logWarning("No channel entries created");
         }
 
     }
@@ -924,11 +1009,11 @@ class NsmSiteGeneratorGenerator
 
                 if(array_key_exists($templateData['template_name'], $existingTemplatees)) {
                     $templateData = array_merge($templateData, $existingTemplatees[$templateData['template_name']]);
-                    $this->logWarning("log_error_template_exists", array_merge($templateData, array("group_name" => $templateGroupData['group_name'])));
+                    $this->logWarning("log_error_template_exists", array_merge($templateData, array("group_name" => $templateGroupData['group_name'])), 1);
                 } else {
                     $this->EE->db->insert('templates', $templateData);
                     $templateData['template_id'] = $this->EE->db->insert_id();
-                    $this->logSuccess("log_ok_template_imported", array_merge($templateData, array("group_name" => $templateGroupData['group_name'])));
+                    $this->logSuccess("log_ok_template_imported", array_merge($templateData, array("group_name" => $templateGroupData['group_name'])), 1);
                     $templatesCreated = true;
                 }
 
@@ -941,7 +1026,7 @@ class NsmSiteGeneratorGenerator
         }
 
         if(false == $templateGroupsCreated) {
-            $this->log("No template groups created");
+            $this->logWarning("No template groups created");
         }
     }
 
@@ -976,7 +1061,7 @@ class NsmSiteGeneratorGenerator
         }
         
         if(false == $globalVariablesCreated) {
-            $this->log("No global variables created");
+            $this->logWarning("No global variables created");
         }
         
     }
@@ -1011,7 +1096,7 @@ class NsmSiteGeneratorGenerator
         }
         
         if(false == $snippetsCreated) {
-            $this->log("No snippets created");
+            $this->logWarning("No snippets created");
         }
         
     }
@@ -1158,6 +1243,7 @@ class NsmSiteGeneratorGenerator
     protected function categoryGroupsToXmlString($tabDepth = 1)
     {
         $tab = str_repeat($this->tab, $tabDepth);
+
         $out = "\n\n<category_groups>";
         foreach ($this->categoryGroups as $category_group) {
             $out .= "\n{$tab}<category_group ";
@@ -1167,6 +1253,7 @@ class NsmSiteGeneratorGenerator
             $out .= "\n{$tab}</category_group>";
         }
         $out .= "\n</category_groups>";
+
         return $out;
     }
 
@@ -1413,30 +1500,30 @@ class NsmSiteGeneratorGenerator
         return $this->log;
     }
 
-    protected function log($text, $replacements = array(), $type='') {
+    protected function log($text, $replacements = array(), $depth = 0, $type='') {
         $text = lang($text);
         foreach ($replacements as $k => $v) {
             if(!is_array($v)) {
                 $text = str_replace('{'.$k.'}', $v, $text);
             }
         }
-        $this->log[] = array('type' => $type, 'text' => $text);
+        $this->log[] = array('type' => $type, 'text' => $text, 'depth' => $depth);
     }
 
-    protected function logSuccess($lang_key, $replacements = array()){
-        return $this->log($lang_key, $replacements, 'success');
+    protected function logSuccess($lang_key, $replacements = array(), $depth = 0){
+        return $this->log($lang_key, $replacements, $depth, 'success');
     }
 
-    protected function logError($lang_key, $replacements = array()){
-        return $this->log($lang_key, $replacements, 'error');
+    protected function logError($lang_key, $replacements = array(), $depth = 0){
+        return $this->log($lang_key, $replacements, $depth, 'error');
     }
 
-    protected function logWarning($lang_key, $replacements = array()){
-        return $this->log($lang_key, $replacements, 'warning');
+    protected function logWarning($lang_key, $replacements = array(), $depth = 0){
+        return $this->log($lang_key, $replacements, $depth, 'warning');
     }
 
-    protected function logTitle($lang_key, $replacements = array()){
-        return $this->log($lang_key, $replacements, 'title');
+    protected function logTitle($lang_key, $replacements = array(), $depth = 0){
+        return $this->log($lang_key, $replacements, $depth, 'title');
     }
 
     /**

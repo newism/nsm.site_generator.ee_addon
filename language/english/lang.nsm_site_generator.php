@@ -48,10 +48,10 @@ $lang = array(
 
 	// categories
 	'log_warning_category_group_exist'		=> "Category group <strong>{group_name}</strong> already exists. Adding categories to the existing group.",
-	'log_error_category_exist'				=> "Category <strong>{cat_name}</strong> already exists in <strong>{group_name}</strong>.",
-	"log_ok_category_group_imported"				=> "Created category group <strong>{group_name}</strong> with id <strong>{group_id}</strong>.",
+	'log_warning_category_exist'				=> "Category <strong>{cat_name}</strong> already exists in <strong>{group_name}</strong>.",
+	"log_ok_category_group_imported"			=> "Created category group <strong>{group_name}</strong> with id <strong>{group_id}</strong>.",
 	"log_ok_category_imported"					=> "Created category <strong>{cat_name}</strong> in category group <strong>{group_name}</strong> with id <strong>{cat_id}</strong>.",
-	"log_notice_no_category_groups_imported"   => "No category groups were created.",
+	"log_notice_no_category_groups_imported"    => "No category groups were created.",
 
 	// statuses
 	"log_ok_status_group_imported"			=> "Created status group <strong>{group_name}</strong> with id <strong>{group_id}</strong>.",

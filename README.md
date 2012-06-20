@@ -13,7 +13,7 @@ Many years in the making it's finally starting to take shape.
 ## Todo:
 
 * Backup existing templates on export
-* Implement category import / export
+* Implement category custom fields import / export
 * Implement third party custom field dependency checking
 * Implement third party custom field hooks for import / export
 * Implement pages module for import / export
@@ -23,3 +23,4 @@ Many years in the making it's finally starting to take shape.
 ## Done: 
 
 * -Fix related custom field channel assignment- Fixed: Native relationships now work. This allows users to [update naive relationship fields to playa](http://pixelandtonic.com/playa/docs/conversion)
+* -Implement category import / export-
