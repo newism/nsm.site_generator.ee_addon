@@ -21,4 +21,4 @@ $config['name'] 	= NSM_SITE_GENERATOR_NAME;
 $config["version"] 	= NSM_SITE_GENERATOR_VERSION;
 
 
-$config['nsm_addon_updater']['versions_xml'] = 'http://github.com/newism/nsm.site_generator.ee_addon/raw/master/versions.xml';
+//$config['nsm_addon_updater']['versions_xml'] = 'http://github.com/newism/nsm.site_generator.ee_addon/raw/master/versions.xml';
