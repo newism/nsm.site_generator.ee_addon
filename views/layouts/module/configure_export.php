@@ -3,7 +3,7 @@
 ?>
 
 <div class="tg" id="channels">
-    <h2>Descibe the theme</h2>
+    <h2>Describe the theme</h2>
     <table class="data">
         <tr>
             <th scope="row">Title</th>
