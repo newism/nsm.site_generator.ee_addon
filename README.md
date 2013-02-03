@@ -22,5 +22,5 @@ Many years in the making it's finally starting to take shape.
 
 ## Done: 
 
-* -Fix related custom field channel assignment- Fixed: Native relationships now work. This allows users to [update naive relationship fields to playa](http://pixelandtonic.com/playa/docs/conversion)
-* -Implement category import / export-
+* ~~Fix related custom field channel assignment~~ Fixed: Native relationships now work. This allows users to [update naive relationship fields to playa](http://pixelandtonic.com/playa/docs/conversion)
+* ~~Implement category import / export~~
